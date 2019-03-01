@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/fond"
+    tools:context=".PlanningActivity"
+    android:scrollbars="none"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/linearLayout_main_container"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/edittext_bg"
+            android:layout_marginHorizontal="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:paddingVertical="2dp">
+
+            <ImageView
+                android:id="@+id/imageView_menu"
+                android:layout_width="20px"
+                android:layout_marginTop="4dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:src="@drawable/menu"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editText_your_destination"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginLeft="10dp"
+                android:pointerIcon="none"
+                android:cursorVisible="true"
+                android:background="#fff"
+                android:paddingLeft="10dp"
+                android:inputType="text"
+                android:focusedByDefault="false"
+                android:drawableRight="@drawable/search"
+                android:hint=" Quelle est votre destination ?"
+                android:textSize="13dp"
+                app:layout_constraintLeft_toRightOf="@id/imageView_menu" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="309dp" />
+        </LinearLayout>
+        <HorizontalScrollView
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:scrollbars="none"
+            android:paddingHorizontal="10dp"
+
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView_all_travels"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:text="Tous les voyages"
+                    android:textColor="#fff"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_categories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:text="Catégories"
+                    android:textColor="#fff"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_agencies_agenda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:text="Plannings d'agences" />
+
+                <TextView
+                    android:id="@+id/textView_promo_offer"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Offres promotionnelle"
+                    android:layout_marginHorizontal="5dp"/>
+                </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+</ScrollView>
