@@ -38,3 +38,22 @@ function delete_user($id)
     $req->execute([$id]);
     return $req;
 }
+
+function update_user($id,$username,$name,$cni,$password)
+{
+    global $pdo;
+    $req=$pdo->prepare('UPDATE users SET SET username=?,name=?,cni=?,password=? 
+      WHERE id=? ');
+    $req->execute
+    (
+        [
+            $username,
+            $name,
+            $cni,
+            $password,
+            $id
+        ]
+    );
+
+
+}
