@@ -3,6 +3,7 @@ package com.example.ruthelpc.traplare;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ public class PlanningActivity extends AppCompatActivity {
     TextView textView_categories;
     TextView textView_all_travels;
     LinearLayout linearLayout_main_container;
+    Intent i;
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
