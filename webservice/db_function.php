@@ -54,6 +54,5 @@ function update_user($id,$username,$name,$cni,$password)
             $id
         ]
     );
-
-
+    return $req;
 }
