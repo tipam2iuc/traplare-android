@@ -2,6 +2,8 @@ package com.example.ruthelpc.traplare;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -9,5 +11,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
     }
 }
