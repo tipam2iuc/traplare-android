@@ -1,45 +1,84 @@
-<application>
-  <component name="ActionsCollector">
-    <counts>
-      <entry action="$Copy" count="24" />
-      <entry action="$Cut" count="4" />
-      <entry action="$Delete" count="48" />
-      <entry action="$Paste" count="41" />
-      <entry action="$Redo" count="1" />
-      <entry action="$SelectAll" count="17" />
-      <entry action="$Undo" count="1493" />
-      <entry action="ActivateProjectToolWindow" count="4" />
-      <entry action="ActivateTerminalToolWindow" count="1" />
-      <entry action="Android Profiler" count="1" />
-      <entry action="Android.CreateResourceDirectory" count="1" />
-      <entry action="Android.CreateSampleDataDirectory" count="1" />
-      <entry action="Android.RunAndroidAvdManager" count="9" />
-      <entry action="Android.RunAndroidSdkManager" count="126" />
-      <entry action="Android.ShowThemeEditor" count="1" />
-      <entry action="Android.SyncProject" count="9" />
-      <entry action="ChooseRunConfiguration" count="2" />
-      <entry action="CleanGradleProject" count="3" />
-      <entry action="CloseAllEditors" count="1" />
-      <entry action="CodeCompletion" count="382" />
-      <entry action="ContextHelp" count="1" />
-      <entry action="CopyElement" count="6" />
-      <entry action="CopyPaths" count="2" />
-      <entry action="CopyReference" count="1" />
-      <entry action="Debug" count="280" />
-      <entry action="Debugger.EditFrameSource" count="1" />
-      <entry action="DialogOkAction Entrée" count="97" />
-      <entry action="EditorBackSpace" count="3862" />
-      <entry action="EditorChooseLookupItem" count="785" />
-      <entry action="EditorChooseLookupItemReplace" count="615" />
-      <entry action="EditorCopy" count="219" />
-      <entry action="EditorCut" count="847" />
-      <entry action="EditorDelete" count="532" />
-      <entry action="EditorDeleteLine" count="99" />
-      <entry action="EditorDeleteToWordStart" count="3" />
-      <entry action="EditorDown" count="1899" />
-      <entry action="EditorDuplicate" count="29" />
-      <entry action="EditorEnter" count="917" />
-      <entry action="EditorEscape" count="8" />
-      <entry action="EditorIndentSelection" count="6" />
-      <entry action="EditorLeft" count="666" />
-      <entry action="EditorLineEn
+@if "%DEBUG%" == "" @echo off
+@rem ##########################################################################
+@rem
+@rem  Gradle startup script for Windows
+@rem
+@rem ##########################################################################
+
+@rem Set local scope for the variables with windows NT shell
+if "%OS%"=="Windows_NT" setlocal
+
+set DIRNAME=%~dp0
+if "%DIRNAME%" == "" set DIRNAME=.
+set APP_BASE_NAME=%~n0
+set APP_HOME=%DIRNAME%
+
+@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+set DEFAULT_JVM_OPTS=
+
+@rem Find java.exe
+if defined JAVA_HOME goto findJavaFromJavaHome
+
+set JAVA_EXE=java.exe
+%JAVA_EXE% -version >NUL 2>&1
+if "%ERRORLEVEL%" == "0" goto init
+
+echo.
+echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+echo.
+echo Please set the JAVA_HOME variable in your environment to match the
+echo location of your Java installation.
+
+goto fail
+
+:findJavaFromJavaHome
+set JAVA_HOME=%JAVA_HOME:"=%
+set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+
+if exist "%JAVA_EXE%" goto init
+
+echo.
+echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
+echo.
+echo Please set the JAVA_HOME variable in your environment to match the
+echo location of your Java installation.
+
+goto fail
+
+:init
+@rem Get command-line arguments, handling Windows variants
+
+if not "%OS%" == "Windows_NT" goto win9xME_args
+
+:win9xME_args
+@rem Slurp the command line arguments.
+set CMD_LINE_ARGS=
+set _SKIP=2
+
+:win9xME_args_slurp
+if "x%~1" == "x" goto execute
+
+set CMD_LINE_ARGS=%*
+
+:execute
+@rem Setup the command line
+
+set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
+
+@rem Execute Gradle
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %CMD_LINE_ARGS%
+
+:end
+@rem End local scope for the variables with windows NT shell
+if "%ERRORLEVEL%"=="0" goto mainEnd
+
+:fail
+rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
+rem the _cmd.exe /c_ return code!
+if  not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
+exit /b 1
+
+:mainEnd
+if "%OS%"=="Windows_NT" endlocal
+
+:omega

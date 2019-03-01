@@ -4,15 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:background="@drawable/bluebackground1"
+    android:orientation="vertical"
+    tools:context=".LoginActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <EditText
+        android:id="@+id/editView_login"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:layout_marginHorizontal="20dp"
+        android:hint="Login"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/editView_password"/>
+
+    <EditText
+        android:id="@+id/editView_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:hint="Password"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/editView_login"
+        app:layout_constraintBottom_toTopOf="@id/button_sign_in"/>
+
+    <Button
+        android:id="@+id/button_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="Sign In"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/editView_password"
+        app:layout_constraintBottom_toTopOf="@id/button_sign_up"/>
+
+    <Button
+        android:id="@+id/button_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/button_sign_in"
+        app:layout_constraintBottom_toTopOf="@id/textView_forgotten_password"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView_forgotten_password"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginHorizontal="20dp"
+        android:text="forgotten password ?"
+        android:textAlignment="center"
+        android:textSize="13dp"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="254dp" />
 
+    <LinearLayout
+        android:id="@+id/app_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/textView_forgotten_password">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:text="CopyRight 2019" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="Privacy policy, use's terms"
+            android:textAlignment="viewEnd" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
