@@ -3,6 +3,7 @@ include 'db_function.php';
 require_once 'db_config.php';
 global $pdo;
 $response = array();
+$mylogin = array();
 
 if (isset($_REQUEST['username']) && isset($_REQUEST['password'])){
     $username = $_REQUEST['username'];
@@ -14,9 +15,10 @@ if (isset($_REQUEST['username']) && isset($_REQUEST['password'])){
         $user=$exist->fetch(PDO::FETCH_OBJ);
         $response["success"] = 1;
         $response["message"] = "sucessfull login";
-        $response["username"]=$user->username;
-        $response["id"]=$user->id;
+        $response["valuename"]=$user->username;
+        $response["valueid"]=$user->id;
         echo json_encode($response);
+
     }
     else {
         $response["success"] = 0;

@@ -24,11 +24,11 @@ function login($username,$password)
     global $pdo;
     $req=$pdo->prepare
     (
-        'SELECT username, FROM users 
-                     WHERE username=?'
+        'SELECT * FROM users 
+                     WHERE username=? AND password=?'
     );
-    $req->execute([$username]);
-    return $req;
+    $req->execute([$username,$password]);
+    return $req->fetch();
 
 }
 function delete_user($id)
