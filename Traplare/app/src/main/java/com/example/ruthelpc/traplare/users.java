@@ -3,7 +3,8 @@ package com.example.ruthelpc.traplare;
 import com.google.gson.annotations.SerializedName;
 
 public class users {
-
+    @SerializedName("id")
+    private int id;
     @SerializedName("username")
     private String username;
     @SerializedName("name")
@@ -16,6 +17,9 @@ public class users {
     private String message;
     @SerializedName("success")
     private String success;
+
+
+
     public String getMessage() {
         return message;
     }
