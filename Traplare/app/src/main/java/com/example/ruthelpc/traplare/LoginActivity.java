@@ -72,8 +72,15 @@ public class LoginActivity extends AppCompatActivity {
                     //startActivity(intent);
                     String username=editView_login.getText().toString();
                     String password=editView_password.getText().toString();
-
-                    login(username,password);
+                    if (username!="" && password!="")
+                    {
+                        login(username,password);
+                    }
+                    else
+                    {
+                        editView_login.setError("please enter your username");
+                        editView_password.setError("please enter your password");
+                    }
                 }
                 else{
                     startActivity(parent);
@@ -99,21 +106,23 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<users> call, @NonNull Response<users> response) {
                 String m =  response.body().getMessage();
-                String v=response.body().getSuccess();
-                if (v=="1")
+                int v=response.body().getSuccess();
+                String u=response.body().getUsername();
+                if (v==1)
                 {
                     Toast.makeText(LoginActivity.this,response.body().getMessage(),
                             Toast.LENGTH_SHORT).show();
-                    finish();
+                    Intent intent = new Intent(LoginActivity.this,PlanningActivity.class);
+                    startActivity(intent);
+
+                    // finish();
                 }
                 else
                 {
                     Toast.makeText(LoginActivity.this,response.body().getMessage(),
                             Toast.LENGTH_SHORT).show();
                 }
-
             }
-
             @Override
             public void onFailure(@NonNull Call<users> call, @NonNull Throwable t) {
 

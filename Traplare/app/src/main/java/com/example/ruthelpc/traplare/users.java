@@ -16,7 +16,18 @@ public class users {
     @SerializedName("message")
     private String message;
     @SerializedName("success")
-    private String success;
+    private int success;
+
+    public String getValuename() {
+        return valuename;
+    }
+
+    public void setValuename(String valuename) {
+        this.valuename = valuename;
+    }
+
+    @SerializedName("valuename")
+    private  String valuename;
 
 
 
@@ -28,11 +39,11 @@ public class users {
         this.message = message;
     }
 
-    public String getSuccess() {
+    public int getSuccess() {
         return success;
     }
 
-    public void setSuccess(String success) {
+    public void setSuccess(int success) {
         this.success = success;
     }
 
