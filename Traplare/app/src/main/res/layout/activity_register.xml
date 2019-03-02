@@ -15,23 +15,23 @@
         android:layout_height="70dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:text="LOGIN"
+        android:text="INSCRIPTION"
         android:textSize="32dp"
         android:textStyle="bold"
         android:layout_marginHorizontal="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/editView_login"
+        app:layout_constraintBottom_toTopOf="@+id/editView_first_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editView_login"
+        android:id="@+id/editView_first_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -42,15 +42,85 @@
         android:inputType="text"
         android:layout_marginBottom="0dp"
         android:background="@drawable/imput_login"
-        android:hint="Login"
+        android:hint="First name"
         android:textColorHint="#d0ecef"
         android:textColor="#e8fafc"
         android:textSize="13dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editView_password"
+        app:layout_constraintBottom_toTopOf="@+id/editView_last_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_Logo" />
+
+
+    <EditText
+        android:id="@+id/editView_last_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:inputType="text"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/imput_login"
+        android:hint="Last name"
+        android:textColorHint="#d0ecef"
+        android:textColor="#e8fafc"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout_identity_piece"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editView_first_name" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout_identity_piece"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/editView_last_name"
+            app:layout_constraintBottom_toTopOf="@id/editView_password"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinner_type_piece"
+                android:layout_width="0dp"
+                android:layout_weight=".3"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:pointerIcon="copy"
+                android:background="@drawable/imput_login"
+                android:textSize="13dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/editView_password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+
+            <EditText
+                android:id="@+id/editView_login"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:background="@drawable/imput_login"
+                android:hint="Login"
+                android:inputType="text"
+                android:textColor="#e8fafc"
+                android:textColorHint="#d0ecef"
+                android:textSize="13dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/editView_password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+
+
+        </LinearLayout>
+
 
     <EditText
         android:id="@+id/editView_password"
@@ -62,59 +132,38 @@
         android:inputType="textPassword"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
         android:background="@drawable/imput_login"
         android:hint="Password"
         android:textColorHint="#d0ecef"
         android:textColor="#e8fafc"
         android:textSize="13dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button_sign_in"
+        app:layout_constraintBottom_toTopOf="@+id/editView_address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editView_login" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_identity_piece" />
 
-    <Button
-        android:id="@+id/button_sign_in"
+
+    <EditText
+        android:id="@+id/editView_address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:inputType="textPassword"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="0dp"
-        android:background="@drawable/button_login"
-        android:text="Sign In"
-        android:textAllCaps="false"
-        android:textSize="13dp"
-        android:textColor="#d13c9ebe"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button_sign_up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editView_password" />
-
-    <Button
-        android:id="@+id/button_sign_up"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/button_login"
-        android:text="Sign Up"
-        android:textAllCaps="false"
-        android:textColor="#d13c9ebe"
+        android:background="@drawable/imput_login"
+        android:hint="Password"
+        android:textColorHint="#d0ecef"
+        android:textColor="#e8fafc"
         android:textSize="13dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView_forgotten_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_sign_in" />
+        app:layout_constraintTop_toBottomOf="@+id/editView_password" />
 
     <TextView
         android:id="@+id/textView_forgotten_password"
@@ -133,7 +182,7 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_sign_up" />
+        app:layout_constraintTop_toBottomOf="@+id/editView_address" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
