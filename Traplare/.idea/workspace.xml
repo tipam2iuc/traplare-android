@@ -7,9 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="183e7e2c-585e-416a-8622-0b1ad68031f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/ApiInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/users.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/users.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/users.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -71,14 +70,14 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gradle" value="2" />
-          <entry key="java" value="3" />
+          <entry key="java" value="4" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="2" />
-          <entry key="JAVA" value="3" />
+          <entry key="JAVA" value="4" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -86,16 +85,16 @@
         <counts>
           <entry key="dummy" value="9" />
           <entry key="gradle" value="1" />
-          <entry key="java" value="172" />
-          <entry key="txt" value="158" />
+          <entry key="java" value="299" />
+          <entry key="txt" value="299" />
           <entry key="xml" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="1" />
-          <entry key="JAVA" value="172" />
-          <entry key="PLAIN_TEXT" value="167" />
+          <entry key="JAVA" value="299" />
+          <entry key="PLAIN_TEXT" value="308" />
           <entry key="XML" value="8" />
         </counts>
       </usages-collector>
@@ -122,21 +121,21 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/ApiInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/users.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+            <state relative-caret-position="477">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
+                <element signature="e#490#491#0" expanded="true" />
+                <element signature="e#520#521#0" expanded="true" />
+                <element signature="e#566#567#0" expanded="true" />
+                <element signature="e#604#605#0" expanded="true" />
+                <element signature="e#638#639#0" expanded="true" />
+                <element signature="e#668#669#0" expanded="true" />
+                <element signature="e#714#715#0" expanded="true" />
+                <element signature="e#752#753#0" expanded="true" />
+                <element signature="e#373#374#0" expanded="true" />
                 <element signature="e#404#405#0" expanded="true" />
                 <element signature="e#452#453#0" expanded="true" />
                 <element signature="e#492#493#0" expanded="true" />
@@ -152,6 +151,18 @@
                 <element signature="e#812#813#0" expanded="true" />
                 <element signature="e#860#861#0" expanded="true" />
                 <element signature="e#900#901#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/ApiInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="477">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -347,7 +358,21 @@
       <option name="project" value="LOCAL" />
       <updated>1551495924998</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Creation de la classe permettant de mapper nos champs avec  la  base de donnees">
+      <created>1551496765871</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1551496765871</updated>
+    </task>
+    <task id="LOCAL-00005" summary="interfacede mapping et d'appel des  methodes distantes">
+      <created>1551497125705</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1551497125705</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -386,7 +411,9 @@
     <MESSAGE value="ajout des dependances de retrofit dans  le  gradel" />
     <MESSAGE value="AJOUT DE  LA  PERMISSION  POUR  POUVOIR UTILISER  INTERNET" />
     <MESSAGE value="creation du singleton de  la classe retrofit" />
-    <option name="LAST_COMMIT_MESSAGE" value="creation du singleton de  la classe retrofit" />
+    <MESSAGE value="Creation de la classe permettant de mapper nos champs avec  la  base de donnees" />
+    <MESSAGE value="interfacede mapping et d'appel des  methodes distantes" />
+    <option name="LAST_COMMIT_MESSAGE" value="interfacede mapping et d'appel des  methodes distantes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/HelpActivity.java">
@@ -448,6 +475,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/ApiInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/ApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -458,18 +495,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/ApiInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/ruthelpc/traplare/users.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        <state relative-caret-position="477">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
+            <element signature="e#490#491#0" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+            <element signature="e#566#567#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#638#639#0" expanded="true" />
+            <element signature="e#668#669#0" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
             <element signature="e#404#405#0" expanded="true" />
             <element signature="e#452#453#0" expanded="true" />
             <element signature="e#492#493#0" expanded="true" />
