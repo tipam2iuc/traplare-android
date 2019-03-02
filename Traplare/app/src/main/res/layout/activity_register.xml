@@ -21,7 +21,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
@@ -41,7 +41,7 @@
         android:layout_marginRight="20dp"
         android:inputType="text"
         android:layout_marginBottom="0dp"
-        android:background="@drawable/imput_login"
+        android:background="@drawable/input_login"
         android:hint="First name"
         android:textColorHint="#d0ecef"
         android:textColor="#e8fafc"
@@ -64,7 +64,7 @@
         android:layout_marginRight="20dp"
         android:inputType="text"
         android:layout_marginBottom="0dp"
-        android:background="@drawable/imput_login"
+        android:background="@drawable/input_login"
         android:hint="Last name"
         android:textColorHint="#d0ecef"
         android:textColor="#e8fafc"
@@ -80,20 +80,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/editView_last_name"
-            app:layout_constraintBottom_toTopOf="@id/editView_password"
+            app:layout_constraintBottom_toTopOf="@id/editView_telephone"
             android:layout_marginHorizontal="20dp"
             android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/spinner_type_piece"
                 android:layout_width="0dp"
-                android:layout_weight=".3"
+                android:layout_weight=".4"
+                android:popupTheme="@style/SpinnerItem"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
+                android:paddingLeft="15dp"
                 android:pointerIcon="copy"
-                android:background="@drawable/imput_login"
+                android:background="@drawable/spinner_suscrib"
                 android:textSize="13dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/editView_password"
@@ -102,12 +104,12 @@
                 app:layout_constraintTop_toBottomOf="parent" />
 
             <EditText
-                android:id="@+id/editView_login"
+                android:id="@+id/editView_identity_piece_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
-                android:background="@drawable/imput_login"
-                android:hint="Login"
+                android:layout_weight=".6"
+                android:background="@drawable/input_login"
+                android:hint="N° Identity"
                 android:inputType="text"
                 android:textColor="#e8fafc"
                 android:textColorHint="#d0ecef"
@@ -123,17 +125,17 @@
 
 
     <EditText
-        android:id="@+id/editView_password"
+        android:id="@+id/editView_telephone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:inputType="textPassword"
+        android:inputType="phone"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/imput_login"
-        android:hint="Password"
+        android:background="@drawable/input_login"
+        android:hint="Phone number"
         android:textColorHint="#d0ecef"
         android:textColor="#e8fafc"
         android:textSize="13dp"
@@ -151,78 +153,66 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:inputType="textPassword"
+        android:inputType="textPostalAddress"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/imput_login"
-        android:hint="Password"
+        android:background="@drawable/input_login"
+        android:hint="Address"
         android:textColorHint="#d0ecef"
         android:textColor="#e8fafc"
         android:textSize="13dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView_forgotten_password"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout_alternative_connect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editView_password" />
+        app:layout_constraintTop_toBottomOf="@+id/editView_telephone" />
 
-    <TextView
-        android:id="@+id/textView_forgotten_password"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editView_address"
+        android:id="@+id/linearLayout_alternative_connect"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/button_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_login"
+            android:text="Sign Up"
+            android:textAllCaps="false"
+            android:textSize="13dp"
+            android:textColor="#d13c9ebe"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/button_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editView_password" />
+        <TextView
+        android:id="@+id/textView_already_has_account"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="40dp"
-        android:text="forgotten password ?"
+        android:layout_marginBottom="30dp"
+        android:text="already have an account ?"
         android:textAlignment="center"
-        android:textSize="13dp"
         android:textColor="#d0ecef"
+        android:textSize="13dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editView_address" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_forgotten_password">
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="5dp"
-            android:background="@drawable/image_login"
-            android:src="@drawable/facebook" />
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="5dp"
-            android:background="@drawable/image_login"
-            android:src="@drawable/twitter" />
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="5dp"
-            android:background="@drawable/image_login"
-            android:src="@drawable/linkedin" />
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="5dp"
-            android:background="@drawable/image_login"
-            android:src="@drawable/google" />
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

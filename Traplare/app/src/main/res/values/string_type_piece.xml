@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_identity_piece">
+        <item>choose</item>
+        <item>CNI</item>
+        <item>Passport</item>
+        <item>Driver\'s license</item>
+    </string-array>
+</resources>

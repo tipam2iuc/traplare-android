@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- Combo box statut-->
     <string-array name="statut">
         <item>Marié</item>
@@ -11,6 +10,5 @@
     <string-array name="sex">
         <item>Feminin</item>
         <item>Masculin</item>
-
     </string-array>
 </resources>
