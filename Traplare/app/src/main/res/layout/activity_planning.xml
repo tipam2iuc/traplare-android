@@ -36,7 +36,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:layout_marginLeft="10dp"
-                android:focusableInTouchMode="true"
                 android:pointerIcon="none"
                 android:cursorVisible="true"
                 android:background="#fff"
@@ -46,7 +45,8 @@
                 android:drawableRight="@drawable/search"
                 android:hint=" Quelle est votre destination ?"
                 android:textSize="13dp"
-                app:layout_constraintLeft_toRightOf="@id/imageView_menu" />
+                app:layout_constraintLeft_toRightOf="@id/imageView_menu"
+            />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline"

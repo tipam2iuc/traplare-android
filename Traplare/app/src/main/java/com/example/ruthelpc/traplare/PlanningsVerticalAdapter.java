@@ -2,6 +2,7 @@ package com.example.ruthelpc.traplare;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,20 +32,46 @@ public class PlanningsVerticalAdapter extends RecyclerView.Adapter<PlanningsVert
         View view = null;
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext().getApplicationContext());
         view = inflater.inflate(R.layout.planning_option,viewGroup,false);
+
+        RecyclerView r;
+        PlanningsHorizontalalAdapter adapter_plannings;
+
+        ArrayList<voyage> voyageArrayList = new ArrayList<voyage>();
+        voyage v11 =  new voyage("garoua", "yaoundé");
+        voyage v2 = new voyage("douala", "bertoua");
+        voyage v3 =  new voyage("salaga", "mbammayo");
+        voyage v5 =   new voyage("garoua", "yaoundé");
+        voyage v6 =   new voyage("tocko", "boulai");
+        voyage v7 =   new voyage("ewon", "boulai");
+        voyage v8 =   new voyage("gab", "fonj");
+        voyage v9 =   new voyage("emn", "boulai");
+        voyage v10 =   new voyage("tocko", "mbanga");
+        voyageArrayList.add(v2);
+        voyageArrayList.add(v3);
+        voyageArrayList.add(v5);
+        voyageArrayList.add(v6);
+        voyageArrayList.add(v2);
+        voyageArrayList.add(v7);
+        voyageArrayList.add(v8);
+        voyageArrayList.add(v9);
+        voyageArrayList.add(v10);
+        voyageArrayList.add(v11);
+
+        r = view.findViewById(R.id.recycler_hotizontal);
+        r.setLayoutManager(new LinearLayoutManager(context));
+        adapter_plannings = new PlanningsHorizontalalAdapter(voyageArrayList,context);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        ((LinearLayoutManager) layoutManager).setOrientation(LinearLayout.HORIZONTAL);
+        r.setLayoutManager(layoutManager);
+        r.setAdapter(adapter_plannings);
+
         Log.i("CreateHolder","Holder Created");
         return new PlanningsHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final PlanningsHolder planningsHolder, final int position) {
-        //String iso = voyagesListe.get(position).getIso2();
-        //if(iso != "cm"){
-        //   planningsHolder.imageView_flag.setImageResource(context.getResources().getIdentifier(iso,"drawable",context.getApplicationContext().getPackageName()));
-        //}
-//        planningsHolder.textView_agence.setText(voyagesListe.get(position).agence_depart.compagnie.nom);
-        planningsHolder.textView_provenance.setText(voyagesListe.get(position).depart);
-        planningsHolder.textView_destination.setText(voyagesListe.get(position).destination);
-        //Log.i("BindingHolder","Holder Binded"+voyagesListe.get(position).getCountry()+" "+voyagesListe.get(position).getCode());
+
     }
 
     @Override
@@ -58,7 +85,6 @@ public class PlanningsVerticalAdapter extends RecyclerView.Adapter<PlanningsVert
         private TextView textView_agence;
         private TextView textView_provenance;
         private TextView textView_destination;
-
         public PlanningsHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +92,13 @@ public class PlanningsVerticalAdapter extends RecyclerView.Adapter<PlanningsVert
                 public void onClick(View v) {
                 }
             });
+
+
             //layout = itemView.findViewById(R.id.layout_template_travel);
-            imageView_flag = itemView.findViewById(R.id.imageView_main_container);
-            textView_agence = itemView.findViewById(R.id.textView_agency_value);
-            textView_provenance = itemView.findViewById(R.id.textView_agency_provenance_value);
-            textView_destination = itemView.findViewById(R.id.textView_agency_destination_value);
+            //imageView_flag = itemView.findViewById(R.id.imageView_main_container);
+            //textView_agence = itemView.findViewById(R.id.textView_agency_value);
+            //textView_provenance = itemView.findViewById(R.id.textView_agency_provenance_value);
+            //textView_destination = itemView.findViewById(R.id.textView_agency_destination_value);
         }
     }
 
