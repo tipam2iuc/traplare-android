@@ -18,7 +18,10 @@ import android.widget.TextView;
 import com.example.ruthelpc.traplare.modele.voyage;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class PlanningActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView imageView_menu;
@@ -34,34 +37,14 @@ public class PlanningActivity extends AppCompatActivity implements View.OnClickL
     private RecyclerView.Adapter adapter_plannings;
     private RecyclerView.LayoutManager layoutManager_phoneCode;
 
-    ArrayList<voyage> voyageArrayList = new ArrayList<voyage>();
-    voyage v11 =  new voyage("garoua", "yaoundé");
-    voyage v2 = new voyage("douala", "bertoua");
-    voyage v3 =  new voyage("salaga", "mbammayo");
-    voyage v5 =   new voyage("garoua", "yaoundé");
-    voyage v6 =   new voyage("tocko", "boulai");
-    voyage v7 =   new voyage("ewon", "boulai");
-    voyage v8 =   new voyage("gab", "fonj");
-    voyage v9 =   new voyage("emn", "boulai");
-    voyage v10 =   new voyage("tocko", "mbanga");
+    List<voyage> voyageArrayList;
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planning);
         //getSupportActionBar().hide();
-
-        voyageArrayList.add(v2);
-        voyageArrayList.add(v3);
-        voyageArrayList.add(v5);
-        voyageArrayList.add(v6);
-        voyageArrayList.add(v2);
-        voyageArrayList.add(v7);
-        voyageArrayList.add(v8);
-        voyageArrayList.add(v9);
-        voyageArrayList.add(v10);
-        voyageArrayList.add(v11);
-
+        voyageArrayList.add(new voyage("ddddd","dddddddddd"));
         recyclerView_voyagesList = findViewById(R.id.recycleView_voyagesList);
         recyclerView_voyagesList.setLayoutManager(new LinearLayoutManager(this));
         adapter_plannings = new PlanningsVerticalAdapter(voyageArrayList,this);
