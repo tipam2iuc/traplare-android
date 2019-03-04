@@ -20,7 +20,7 @@ import com.example.ruthelpc.traplare.modele.voyage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanningActivity extends AppCompatActivity {
+public class PlanningActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView imageView_menu;
     EditText editText_your_destination;
     TextView textView_promo_offer;
@@ -49,7 +49,7 @@ public class PlanningActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planning);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         voyageArrayList.add(v2);
         voyageArrayList.add(v3);
@@ -82,6 +82,8 @@ public class PlanningActivity extends AppCompatActivity {
         textView_categories.setTypeface(RobotoBold);
         textView_all_travels.setTypeface(RobotoBold);
 
+        imageView_menu.hasFocus();
+
         imageView_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,5 +92,12 @@ public class PlanningActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v != editText_your_destination){
+            editText_your_destination.setFocusable(false);
+        }
     }
 }
