@@ -1,6 +1,8 @@
 package com.example.ruthelpc.traplare;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,6 +29,12 @@ public class LoginActivity extends AppCompatActivity {
     Button button_sign_in;
     Button button_sign_up;
     Intent parent;
+    public static AssetManager asset;
+    String username;
+    String password;
+    ProgressDialog mProgressDialog;
+
+
     private ApiInterface apiInterface;
 
     @Override
@@ -37,13 +45,18 @@ public class LoginActivity extends AppCompatActivity {
             parent = data.getSelector();
             startActivity(parent);
         }
+        if (0 == resultCode){
+            username = data.getStringExtra("account");
+        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
+
+        asset = getAssets();
 
         textView_Logo = findViewById(R.id.textView_Logo);
         textView_forgotten_password = findViewById(R.id.textView_forgotten_password);
@@ -52,16 +65,24 @@ public class LoginActivity extends AppCompatActivity {
         button_sign_in = findViewById(R.id.button_sign_in);
         button_sign_up = findViewById(R.id.button_sign_up);
 
-        Typeface  RobotoReg = Typeface.createFromAsset(getAssets(),"fonts/Roboto-Bold.ttf");
+        textView_Logo.setTypeface(DataComplement.ProductSans);
+        textView_forgotten_password.setTypeface(DataComplement.RobotoReg);
+        editView_login.setTypeface(DataComplement.RobotoReg);
+        editView_password.setTypeface(DataComplement.RobotoReg);
+        button_sign_in.setTypeface(DataComplement.RobotoReg);
+        button_sign_up.setTypeface(DataComplement.RobotoReg);
 
-        Typeface  ProductSans= Typeface.createFromAsset(getAssets(),"fonts/Product Sans Bold.ttf");
-        textView_Logo.setTypeface(ProductSans);
-        textView_forgotten_password.setTypeface(RobotoReg);
-        editView_login.setTypeface(RobotoReg);
-        editView_password.setTypeface(RobotoReg);
-        button_sign_in.setTypeface(RobotoReg);
-        button_sign_up.setTypeface(RobotoReg);
+        if(username != null){
+            editView_login.setText(username);
+        }
 
+        textView_forgotten_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forgot = new Intent(LoginActivity.this, ForgottenActivity.class);
+                startActivity(forgot);
+            }
+        });
 
         button_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,11 +91,11 @@ public class LoginActivity extends AppCompatActivity {
                 {
                    // Intent intent = new Intent(LoginActivity.this,PlanningActivity.class);
                     //startActivity(intent);
-                    String username=editView_login.getText().toString();
-                    String password=editView_password.getText().toString();
+                    username = editView_login.getText().toString();
+                    password = editView_password.getText().toString();
                     if (username!="" && password!="")
                     {
-                        login(username,password);
+                        compute();
                     }
                     else
                     {
@@ -97,7 +118,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    private void compute() {
+        mProgressDialog = ProgressDialog.show(this, "Please wait",
+                "Long operation starts...", true);
 
+        new Thread((new Runnable() {
+            @Override
+            public void run() {
+                mProgressDialog.setMessage("Doing long operation 1...");
+                login(username,password);
+                mProgressDialog.dismiss();
+            }
+        })).start();
+        // ...
+    }
     public void login(final String username,final String password )
     {
         apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
@@ -108,15 +142,13 @@ public class LoginActivity extends AppCompatActivity {
                 String m =  response.body().getMessage();
                 int v=response.body().getSuccess();
                 String u=response.body().getUsername();
-                if (v==1)
+                if (v == 1)
                 {
                     Toast.makeText(LoginActivity.this,response.body().getMessage(),
                             Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(LoginActivity.this,PlanningActivity.class);
                     startActivity(intent);
-
-                    // finish();
                 }
                 else
                 {

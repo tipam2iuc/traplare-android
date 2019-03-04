@@ -18,10 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlanningsVerticalAdapter extends RecyclerView.Adapter<PlanningsVerticalAdapter.PlanningsHolder>{
-    private ArrayList<voyage> voyagesListe;
+    private List<voyage> voyagesListe;
     private Context context;
 
-    public PlanningsVerticalAdapter(ArrayList<voyage> voyagesListe, Context context){
+    public PlanningsVerticalAdapter(List<voyage> voyagesListe, Context context){
         this.voyagesListe = voyagesListe;
         this.context = context;
     }

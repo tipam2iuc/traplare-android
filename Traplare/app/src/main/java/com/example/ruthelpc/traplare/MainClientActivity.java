@@ -66,7 +66,7 @@ public class MainClientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_client);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         textView_Help = findViewById(R.id.textView_Help);
         textView_Parametre = findViewById(R.id.textView_Parametre);
         textView_NoteAvis = findViewById(R.id.textView_NoteAvis);

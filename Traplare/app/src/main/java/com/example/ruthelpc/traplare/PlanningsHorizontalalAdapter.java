@@ -1,7 +1,12 @@
 package com.example.ruthelpc.traplare;
 
+import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,6 +35,16 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
         View view = null;
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext().getApplicationContext());
         view = inflater.inflate(R.layout.planning_value,viewGroup,false);
+        ConstraintLayout c = view.findViewById(R.id.layout_template_travel2);
+        c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.custom_dialog);
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
+            }
+        });
         Log.i("CreateHolder","Holder Created");
         return new PlanningsHolder(view);
     }
@@ -52,24 +67,22 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
     }
 
     public static class PlanningsHolder extends RecyclerView.ViewHolder {
-        private LinearLayout layout;
+        private ConstraintLayout layout;
         private ImageView imageView_flag;
         private TextView textView_agence;
         private TextView textView_provenance;
         private TextView textView_destination;
 
-        public PlanningsHolder(@NonNull View itemView) {
+        public PlanningsHolder(@NonNull final View itemView) {
             super(itemView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                }
-            });
-            //layout = itemView.findViewById(R.id.layout_template_travel);
+
+            layout = itemView.findViewById(R.id.layout_template_travel2);
             imageView_flag = itemView.findViewById(R.id.imageView_main_container);
             textView_agence = itemView.findViewById(R.id.textView_agency_value);
             textView_provenance = itemView.findViewById(R.id.textView_agency_provenance_value);
             textView_destination = itemView.findViewById(R.id.textView_agency_destination_value);
+
+
         }
     }
 

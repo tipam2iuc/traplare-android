@@ -23,10 +23,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class PlanningActivity extends AppCompatActivity {
     ImageView imageView_menu;
@@ -37,9 +37,6 @@ public class PlanningActivity extends AppCompatActivity {
     TextView textView_all_travels;
     LinearLayout linearLayout_main_container;
     Intent i;
-    ApiInterface apiInterface;
-    RetrofitAdapter retrofitAdapter;
-   private ArrayList<Voyage2> voyage2ArrayList;
 
     private RecyclerView recyclerView_voyagesList;
     private RecyclerView.Adapter adapter_plannings;
@@ -74,10 +71,9 @@ public class PlanningActivity extends AppCompatActivity {
         voyageArrayList.add(v11);
 
         recyclerView_voyagesList = findViewById(R.id.recycleView_voyagesList);
-        //recyclerView_voyagesList.setLayoutManager(new LinearLayoutManager(this));
-       // adapter_plannings = new PlanningsVerticalAdapter(voyageArrayList,this);
-       // recyclerView_voyagesList.setAdapter(adapter_plannings);
-
+        recyclerView_voyagesList.setLayoutManager(new LinearLayoutManager(this));
+        adapter_plannings = new PlanningsVerticalAdapter(voyageArrayList,this);
+        recyclerView_voyagesList.setAdapter(adapter_plannings);
 
         imageView_menu = findViewById(R.id.imageView_menu);
         editText_your_destination = findViewById(R.id.editText_your_destination);
@@ -93,8 +89,6 @@ public class PlanningActivity extends AppCompatActivity {
         textView_agencies_agenda.setTypeface(RobotoBold);
         textView_categories.setTypeface(RobotoBold);
         textView_all_travels.setTypeface(RobotoBold);
-       // getVoyage2();
-
 
         imageView_menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,63 +97,6 @@ public class PlanningActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-/*
-    public void getVoyage2(){
-        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<Voyage2> call = apiInterface.getVoyage2();
-        call.enqueue(new Callback<Voyage2>() {
-            @Override
-            public void onResponse(Call<Voyage2> call, Response<Voyage2> response) {
-                String r=response.body().toString();
-              // writeRecycler(r);
-            }
-
-            @Override
-            public void onFailure(Call<Voyage2> call, Throwable t) {
-                Toast.makeText(PlanningActivity.this, "rp :"+
-                                t.getMessage().toString(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-    */
-/*
-    private void writeRecycler(String response){
-
-        try {
-            //getting the whole json object from the response
-            JSONObject obj = new JSONObject(response);
-       //     if(obj.optString("status").equals("true")){
-
-                ArrayList<Voyage2> modelRecyclerArrayList = new ArrayList<>();
-                JSONArray dataArray  = obj.getJSONArray("data");
-
-                for (int i = 0; i < dataArray.length(); i++) {
-
-                    Voyage2 modelRecycler = new Voyage2();
-                    JSONObject dataobj = dataArray.getJSONObject(i);
-
-
-                    modelRecycler.setCompagnie(dataobj.getString("compagnie"));
-                    modelRecyclerArrayList.add(modelRecycler);
-
-                }
-
-               retrofitAdapter = new RetrofitAdapter(this,modelRecyclerArrayList);
-                recyclerView_voyagesList.setAdapter(retrofitAdapter);
-                recyclerView_voyagesList.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-
-           // }else {
-         //       Toast.makeText(PlanningActivity.this, obj.optString("message")+"", Toast.LENGTH_SHORT).show();
-       //     }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
-    */
-
-
 }
