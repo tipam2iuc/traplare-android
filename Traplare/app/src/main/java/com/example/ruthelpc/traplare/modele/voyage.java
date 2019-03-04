@@ -19,6 +19,8 @@ public class voyage {
     public agence agence_arrive;
     public classe classe;
 
+
+
     public voyage(String destination, String depart){
         this.depart = depart;
         this.destination = destination;
