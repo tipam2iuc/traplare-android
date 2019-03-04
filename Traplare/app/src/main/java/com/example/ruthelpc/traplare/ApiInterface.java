@@ -19,6 +19,8 @@ public interface ApiInterface {
             @Field("name") String name,
             @Field("cni") String cni,
             @Field("password") String password
+           // @Field("email") String email,
+          //  @Field("phone") String phone
     );
 
     @FormUrlEncoded

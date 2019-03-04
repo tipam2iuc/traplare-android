@@ -3,6 +3,7 @@ package com.example.ruthelpc.traplare;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class PlanningActivity extends AppCompatActivity {
     ImageView imageView_menu;
     EditText editText_your_destination;
@@ -37,6 +42,8 @@ public class PlanningActivity extends AppCompatActivity {
     TextView textView_all_travels;
     LinearLayout linearLayout_main_container;
     Intent i;
+    private ApiInterface apiInterface;
+    List<Voyage2> voyagelist;
 
     private RecyclerView recyclerView_voyagesList;
     private RecyclerView.Adapter adapter_plannings;
@@ -57,7 +64,7 @@ public class PlanningActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planning);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         voyageArrayList.add(v2);
         voyageArrayList.add(v3);
@@ -71,9 +78,10 @@ public class PlanningActivity extends AppCompatActivity {
         voyageArrayList.add(v11);
 
         recyclerView_voyagesList = findViewById(R.id.recycleView_voyagesList);
-        recyclerView_voyagesList.setLayoutManager(new LinearLayoutManager(this));
-        adapter_plannings = new PlanningsVerticalAdapter(voyageArrayList,this);
-        recyclerView_voyagesList.setAdapter(adapter_plannings);
+       // recyclerView_voyagesList.setLayoutManager(new LinearLayoutManager(this));
+      //  adapter_plannings = new PlanningsVerticalAdapter(voyageArrayList,this);
+      //  recyclerView_voyagesList.setAdapter(adapter_plannings);
+        getAll();
 
         imageView_menu = findViewById(R.id.imageView_menu);
         editText_your_destination = findViewById(R.id.editText_your_destination);
@@ -99,4 +107,54 @@ public class PlanningActivity extends AppCompatActivity {
         });
 
     }
+
+
+    public  void getAll()
+    {
+        apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
+        Call<List<Voyage2>> call=apiInterface.getVoyage2();
+        call.enqueue(new Callback<List<Voyage2>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<Voyage2>> call, @NonNull Response<List<Voyage2>> response) {
+                voyagelist=response.body();
+                Log.i(testActivity.class.getSimpleName(), response.body().toString());
+
+                //int v=response.body().getSuccess();
+                //String u=response.body().getUsername();
+                recyclerView_voyagesList.setLayoutManager(new LinearLayoutManager(PlanningActivity.this));
+                adapter_plannings = new PlanningsVerticalAdapter(voyagelist,PlanningActivity.this);
+                recyclerView_voyagesList.setAdapter(adapter_plannings);
+
+                for (int i=0;i<voyagelist.size(); i++)
+                {
+                    Toast.makeText(PlanningActivity.this, voyagelist.get(i).getCompagnie(),
+                            Toast.LENGTH_SHORT).show();
+                }
+                /*if (m!="")
+                {
+                    Toast.makeText(testActivity.this,response.body().getCompagnie(),
+                            Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(testActivity.this,PlanningActivity.class);
+                    startActivity(intent);
+
+                    // finish();
+                }
+                else
+                {
+                    Toast.makeText(testActivity.this,response.body().getCompagnie(),
+                            Toast.LENGTH_SHORT).show();
+                }*/
+            }
+            @Override
+            public void onFailure(@NonNull Call<List<Voyage2>> call, @NonNull Throwable t) {
+
+                Toast.makeText(PlanningActivity.this,t.getLocalizedMessage(),
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+
 }

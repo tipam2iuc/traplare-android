@@ -18,6 +18,11 @@ public class users {
     @SerializedName("success")
     private int success;
 
+    @SerializedName("email")
+    private String email;
+    @SerializedName("phone")
+    private String phone;
+
     public String getValuename() {
         return valuename;
     }
