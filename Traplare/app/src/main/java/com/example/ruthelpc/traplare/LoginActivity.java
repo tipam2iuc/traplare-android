@@ -3,7 +3,10 @@ package com.example.ruthelpc.traplare;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -119,8 +122,10 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     private void compute() {
-        mProgressDialog = ProgressDialog.show(this, "Connexion",
-                "Veuillez patientez...", true);
+        mProgressDialog = ProgressDialog.show(this, "",
+                "Veuillez patientez", true);
+        mProgressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
+        mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         new Thread((new Runnable() {
             @Override
