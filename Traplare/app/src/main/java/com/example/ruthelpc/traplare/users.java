@@ -7,8 +7,8 @@ public class users {
     private int id;
     @SerializedName("username")
     private String username;
-    @SerializedName("name")
-    private String name;
+    @SerializedName("lastname")
+    private String lastname;
     @SerializedName("cni")
     private String cni;
     @SerializedName("password")
@@ -17,11 +17,44 @@ public class users {
     private String message;
     @SerializedName("success")
     private int success;
-
     @SerializedName("email")
     private String email;
     @SerializedName("phone")
     private String phone;
+    @SerializedName("firstname")
+    private String firstname;
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
 
     public String getValuename() {
         return valuename;
@@ -60,13 +93,6 @@ public class users {
         this.username = username;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getCni() {
         return cni;

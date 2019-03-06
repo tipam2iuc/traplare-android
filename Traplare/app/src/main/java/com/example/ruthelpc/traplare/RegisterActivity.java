@@ -1,5 +1,6 @@
 package com.example.ruthelpc.traplare;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -93,12 +94,14 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(RegisterActivity.this, RegisterStep2.class);
-                i.putExtra("first",editView_first_name.getText().toString());
-                i.putExtra("last",editView_last_name.getText().toString());
-                i.putExtra("adresse",editView_address.getText().toString());
-                i.putExtra("cni",editView_identity_piece_value.getText().toString());
-                i.putExtra("phone",editView_telephone.getText().toString());
-                startActivityForResult(i,0);
+                Bundle b = new Bundle();
+                b.putString("first", editView_first_name.getText().toString());
+                b.putString("last", editView_last_name.getText().toString());
+                b.putString("adresse", editView_address.getText().toString());
+                b.putString("cni", editView_identity_piece_value.getText().toString());
+                b.putString("phone", editView_telephone.getText().toString());
+                i.putExtras(b);
+                startActivity(i);
             }
         });
     }
