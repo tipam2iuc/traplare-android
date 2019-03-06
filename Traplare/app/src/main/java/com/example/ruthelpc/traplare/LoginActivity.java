@@ -123,14 +123,14 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void compute() {
         mProgressDialog = ProgressDialog.show(this, "",
-                "Veuillez patientez", true);
+                "Veuillez patienter ...", true);
         mProgressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
         mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         new Thread((new Runnable() {
             @Override
             public void run() {
-                mProgressDialog.setMessage("Veuillez patientez...");
+                mProgressDialog.setMessage("Veuillez patienter ...");
             }
         })).start();
         // ...
