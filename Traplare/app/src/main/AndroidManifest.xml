@@ -30,7 +30,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgottenActivity" />
         <activity android:name=".PlanningActivity" />
-        <activity android:name=".RegisterStep2"></activity>
+        <activity android:name=".RegisterStep2" />
+        <activity android:name=".SplashScreenActivity"></activity>
     </application>
 
 </manifest>
