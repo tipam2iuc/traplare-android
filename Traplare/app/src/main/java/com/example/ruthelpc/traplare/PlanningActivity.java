@@ -78,9 +78,7 @@ public class PlanningActivity extends AppCompatActivity {
         voyageArrayList.add(v11);
 
         recyclerView_voyagesList = findViewById(R.id.recycleView_voyagesList);
-       // recyclerView_voyagesList.setLayoutManager(new LinearLayoutManager(this));
-      //  adapter_plannings = new PlanningsVerticalAdapter(voyageArrayList,this);
-      //  recyclerView_voyagesList.setAdapter(adapter_plannings);
+        recyclerView_voyagesList.setLayoutManager(new LinearLayoutManager(PlanningActivity.this));
         getAll();
 
         imageView_menu = findViewById(R.id.imageView_menu);
@@ -101,8 +99,8 @@ public class PlanningActivity extends AppCompatActivity {
         imageView_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PlanningActivity.this, MainClientActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(PlanningActivity.this, MainClientActivity.class);
+            startActivity(intent);
             }
         });
 
@@ -117,38 +115,11 @@ public class PlanningActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<List<Voyage2>> call, @NonNull Response<List<Voyage2>> response) {
                 voyagelist=response.body();
-                Log.i(testActivity.class.getSimpleName(), response.body().toString());
-
-                //int v=response.body().getSuccess();
-                //String u=response.body().getUsername();
-                recyclerView_voyagesList.setLayoutManager(new LinearLayoutManager(PlanningActivity.this));
                 adapter_plannings = new PlanningsVerticalAdapter(voyagelist,PlanningActivity.this);
                 recyclerView_voyagesList.setAdapter(adapter_plannings);
-
-                for (int i=0;i<voyagelist.size(); i++)
-                {
-                    Toast.makeText(PlanningActivity.this, voyagelist.get(i).getCompagnie(),
-                            Toast.LENGTH_SHORT).show();
-                }
-                /*if (m!="")
-                {
-                    Toast.makeText(testActivity.this,response.body().getCompagnie(),
-                            Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(testActivity.this,PlanningActivity.class);
-                    startActivity(intent);
-
-                    // finish();
-                }
-                else
-                {
-                    Toast.makeText(testActivity.this,response.body().getCompagnie(),
-                            Toast.LENGTH_SHORT).show();
-                }*/
             }
             @Override
             public void onFailure(@NonNull Call<List<Voyage2>> call, @NonNull Throwable t) {
-
                 Toast.makeText(PlanningActivity.this,t.getLocalizedMessage(),
                         Toast.LENGTH_SHORT).show();
 

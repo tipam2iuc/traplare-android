@@ -9,49 +9,29 @@
     tools:context=".RegisterActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <EditText
-        android:id="@+id/editView_password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/input_login"
-        android:hint="Password"
-        android:inputType="text"
-        android:textColor="#e8fafc"
-        android:textColorHint="#d0ecef"
-        android:textSize="13dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout_alternative_connect"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editView_user_account" />
-
     <TextView
         android:id="@+id/textView_Logo"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textAlignment="center"
         android:text="INSCRIPTION"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         android:layout_marginHorizontal="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"        app:layout_constraintBottom_toTopOf="@+id/editView_first_name"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_etape1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editView_first_name"
+    <TextView
+        android:id="@+id/textView_etape1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -59,8 +39,25 @@
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Etape 1"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_Logo" />
+
+    <EditText
+        android:id="@+id/editView_first_name"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/input_login"
-        android:hint="Full name"
+        android:hint="Prenom"
         android:inputType="text"
         android:textColor="#e8fafc"
         android:textColorHint="#d0ecef"
@@ -68,155 +65,127 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/linearLayout_identity_piece"
-        app:layout_constraintTop_toBottomOf="@+id/textView_Logo" />
+        app:layout_constraintTop_toBottomOf="@id/textView_etape1" />
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout_identity_piece"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editView_first_name"
-        app:layout_constraintBottom_toTopOf="@id/editView_telephone"
-        tools:layout_editor_absoluteX="20dp">
+    <EditText
+        android:id="@+id/editView_last_name"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_login"
+        android:hint="Nom"
+        android:inputType="text"
+        android:textColor="#e8fafc"
+        android:textColorHint="#d0ecef"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editView_first_name" />
 
         <EditText
             android:id="@+id/editView_identity_piece_value"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
             android:layout_weight=".6"
             android:background="@drawable/input_login"
-            android:hint="National Identity"
+            android:hint="Numéro de carte national"
             android:inputType="text"
             android:textColor="#e8fafc"
             android:textColorHint="#d0ecef"
             android:textSize="13dp"
+            android:layout_marginHorizontal="25dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/editView_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
-
-
-    </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/editView_last_name" />
 
 
     <EditText
         android:id="@+id/editView_telephone"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:inputType="phone"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/input_login"
-        android:hint="Phone number"
-        android:textColorHint="#d0ecef"
+        android:hint="Numéro de téléphone"
+        android:inputType="phone"
         android:textColor="#e8fafc"
+        android:textColorHint="#d0ecef"
         android:textSize="13dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editView_address"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout_identity_piece" />
+        app:layout_constraintTop_toBottomOf="@+id/editView_identity_piece_value" />
 
 
     <EditText
         android:id="@+id/editView_address"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:inputType="textPostalAddress"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/input_login"
-        android:hint="Address mail"
-        android:textColorHint="#d0ecef"
+        android:hint="Adresse mail"
+        android:inputType="textPostalAddress"
         android:textColor="#e8fafc"
+        android:textColorHint="#d0ecef"
         android:textSize="13dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editView_user_account"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editView_telephone" />
 
-    <EditText
-        android:id="@+id/editView_user_account"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/input_login"
-        android:hint="Account name"
-        android:inputType="textPostalAddress"
-        android:textColor="#e8fafc"
-        android:textColorHint="#d0ecef"
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/button_login"
+        android:text="Suivant"
+        android:textAllCaps="false"
+        android:textColor="#f7e6f9ff"
         android:textSize="13dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editView_password"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editView_address" />
+        app:layout_constraintTop_toBottomOf="@id/editView_address" />
 
     <LinearLayout
-        android:id="@+id/linearLayout_alternative_connect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editView_password">
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:id="@+id/linearLayout_deja_compte"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_next">
 
-        <Button
-            android:id="@+id/button_sign_up"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button_login"
-            android:text="Sign Up"
-            android:textAllCaps="false"
-            android:textColor="#f7e6f9ff"
-            android:textSize="13dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/button_sign_up"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editView_password" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vous avez déjà un compte ?"
+            android:textAlignment="center"
+            android:textSize="13dp" />
 
         <TextView
             android:id="@+id/textView_already_has_account"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="already have an account ?"
-            android:textAlignment="center"
+            android:text="Se connecter"
+            android:layout_marginLeft="10dp"
             android:textColor="#0D669E"
             android:textSize="13dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editView_address" />
-
+            />
     </LinearLayout>
+
+
 </android.support.constraint.ConstraintLayout>

@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText editView_login;
     EditText editView_password;
     Button button_sign_in;
-    Button button_sign_up;
+    TextView textView_sign_up;
     Intent parent;
     public static AssetManager asset;
     String username;
@@ -63,14 +63,14 @@ public class LoginActivity extends AppCompatActivity {
         editView_login = findViewById(R.id.editView_login);
         editView_password = findViewById(R.id.editView_password);
         button_sign_in = findViewById(R.id.button_sign_in);
-        button_sign_up = findViewById(R.id.button_sign_up);
+        textView_sign_up = findViewById(R.id.textView_sign_up);
 
         textView_Logo.setTypeface(DataComplement.ProductSans);
         textView_forgotten_password.setTypeface(DataComplement.RobotoReg);
         editView_login.setTypeface(DataComplement.RobotoReg);
         editView_password.setTypeface(DataComplement.RobotoReg);
         button_sign_in.setTypeface(DataComplement.RobotoReg);
-        button_sign_up.setTypeface(DataComplement.RobotoReg);
+        textView_sign_up.setTypeface(DataComplement.RobotoReg);
 
         if(username != null){
             editView_login.setText(username);
@@ -87,30 +87,30 @@ public class LoginActivity extends AppCompatActivity {
         button_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(parent==null)
+            if(parent==null)
+            {
+               // Intent intent = new Intent(LoginActivity.this,PlanningActivity.class);
+                //startActivity(intent);
+                username = editView_login.getText().toString();
+                password = editView_password.getText().toString();
+                if (username!="" && password!="")
                 {
-                   // Intent intent = new Intent(LoginActivity.this,PlanningActivity.class);
-                    //startActivity(intent);
-                    username = editView_login.getText().toString();
-                    password = editView_password.getText().toString();
-                    if (username!="" && password!="")
-                    {
-                        compute();
-                    }
-                    else
-                    {
-                        editView_login.setError("please enter your username");
-                        editView_password.setError("please enter your password");
-                    }
+                    compute();
+                    login(username,password);
                 }
-                else{
-                    startActivity(parent);
+                else
+                {
+                    editView_login.setError("please enter your username");
+                    editView_password.setError("please enter your password");
                 }
-
+            }
+            else{
+                startActivity(parent);
+            }
             }
         });
 
-        button_sign_up.setOnClickListener(new View.OnClickListener() {
+        textView_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
@@ -119,15 +119,13 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     private void compute() {
-        mProgressDialog = ProgressDialog.show(this, "Please wait",
-                "Long operation starts...", true);
+        mProgressDialog = ProgressDialog.show(this, "Connexion",
+                "Veuillez patientez...", true);
 
         new Thread((new Runnable() {
             @Override
             public void run() {
-                mProgressDialog.setMessage("Doing long operation 1...");
-                login(username,password);
-                mProgressDialog.dismiss();
+                mProgressDialog.setMessage("Veuillez patientez...");
             }
         })).start();
         // ...
@@ -148,17 +146,19 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(LoginActivity.this,PlanningActivity.class);
+                    mProgressDialog.dismiss();
                     startActivity(intent);
                 }
                 else
                 {
+                    mProgressDialog.dismiss();
                     Toast.makeText(LoginActivity.this,response.body().getMessage(),
                             Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(@NonNull Call<users> call, @NonNull Throwable t) {
-
+                mProgressDialog.dismiss();
                 Toast.makeText(LoginActivity.this,t.getLocalizedMessage(),
                         Toast.LENGTH_SHORT).show();
 
