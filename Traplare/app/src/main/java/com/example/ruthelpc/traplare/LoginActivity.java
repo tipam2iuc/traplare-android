@@ -2,6 +2,7 @@ package com.example.ruthelpc.traplare;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -144,7 +145,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<users> call, @NonNull Response<users> response) {
                 String m =  response.body().getMessage();
                 int v=response.body().getSuccess();
-                String u=response.body().getFirstname();
+
+                String uf = response.body().getFirstname();
+                String un = response.body().getUsername();
+                users_connected User = new users_connected(un, uf);
+                connected_bank.add(User);
                 if (v == 1)
                 {
                     Toast.makeText(LoginActivity.this,response.body().getFirstname(),

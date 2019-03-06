@@ -2,22 +2,15 @@ package com.example.ruthelpc.traplare;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.view.MotionEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
-
-import static android.view.Gravity.LEFT;
-import static android.widget.ListPopupWindow.WRAP_CONTENT;
 
 public class MainClientActivity extends AppCompatActivity {
     TextView textView_Help;
@@ -33,6 +26,8 @@ public class MainClientActivity extends AppCompatActivity {
     TextView textView_AbonementNum;
     TextView textView_NotificationNum;
     TextView textView_PanierNum;
+    TextView textView_Profile_name;
+    TextView textView_Profile_first;
 
     CardView cardView_Help;
     CardView cardView_Parametre;
@@ -62,6 +57,10 @@ public class MainClientActivity extends AppCompatActivity {
     ImageView imageView_Panier;
     ImageView imageView_Planning;
     ImageView imageView_Abonement;
+    ImageView imageView_Profile;
+    String first;
+    String user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,11 +75,13 @@ public class MainClientActivity extends AppCompatActivity {
         textView_Panier = findViewById(R.id.textView_Panier);
         textView_Planning = findViewById(R.id.textView_Planning);
         textView_Abonement = findViewById(R.id.textView_Abonement);
-        textView_Profile = findViewById(R.id.textView_Profile);
+        textView_Profile = findViewById(R.id.textView_Profile_name);
         textView_AbonementNum = findViewById(R.id.textView_AbonementNum);
         textView_NotificationNum = findViewById(R.id.textView_NotificationNum);
         textView_PanierNum = findViewById(R.id.textView_PanierNum);
-
+        textView_Profile_first = findViewById(R.id.textView_Profile_first);
+        textView_Profile_name = findViewById(R.id.textView_Profile_name);
+        imageView_Profile = findViewById(R.id.imageView_Profile);
 
         cardView_Help = findViewById(R.id.cardView_Help);
         cardView_Parametre = findViewById(R.id.cardView_Parametre);
@@ -111,6 +112,38 @@ public class MainClientActivity extends AppCompatActivity {
         imageView_Panier = findViewById(R.id.imageView_Panier);
         imageView_Planning = findViewById(R.id.imageView_Planning);
         imageView_Abonement = findViewById(R.id.imageView_Abonement);
+
+        imageView_Profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popupMenu = new PopupMenu(MainClientActivity.this, imageView_Profile);
+                popupMenu.getMenuInflater().inflate(R.menu.menu_user, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        return false;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+
+        if (connected_bank.get()!= null) {
+            users_connected u = connected_bank.get();
+            String f_name;
+            String u_name;
+            if(u.firstname.length()<= 20)
+                f_name = u.firstname;
+            else
+                f_name = u.firstname.substring(0,19) + " ...";
+            if(u.username.length() <= 20)
+                u_name = u.username;
+            else
+                u_name = u.username.substring(0,19) + " ...";
+
+            textView_Profile_first.setText(f_name);
+            textView_Profile_name.setText(u_name);
+        }
 
         textView_Help.setOnClickListener(new View.OnClickListener() {
             @Override

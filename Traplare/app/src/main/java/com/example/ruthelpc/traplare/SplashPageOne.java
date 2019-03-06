@@ -27,7 +27,7 @@ public class SplashPageOne extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public SplashPageOne() {
-        
+
     }
 
     /**
