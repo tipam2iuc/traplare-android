@@ -1,5 +1,6 @@
 package com.example.ruthelpc.traplare;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -41,11 +42,14 @@ public class RegisterStep2 extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        first_name = data.getStringExtra("first");
-        last_name = data.getStringExtra("last");
-        cni = data.getStringExtra("cni");
-        phone = data.getStringExtra("phone");
-        email = data.getStringExtra("adresse");
+        if (requestCode==0 && resultCode== Activity.RESULT_OK)
+        {
+            first_name = data.getStringExtra("first");
+            last_name = data.getStringExtra("last");
+            cni = data.getStringExtra("cni");
+            phone = data.getStringExtra("phone");
+            email = data.getStringExtra("adresse");
+        }
     }
 
     @Override
@@ -53,6 +57,19 @@ public class RegisterStep2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_step2);
 
+        Intent intent = getIntent();
+        if (intent != null){
+            if (intent.hasExtra("first"))
+                first_name = intent.getStringExtra("first");
+            if (intent.hasExtra("last"))
+                last_name = intent.getStringExtra("last");
+            if (intent.hasExtra("cni"))
+                cni = intent.getStringExtra("cni");
+            if (intent.hasExtra("phone"))
+                phone = intent.getStringExtra("phone");
+            if (intent.hasExtra("adresse"))
+                email = intent.getStringExtra("adresse");
+        }
         editView_confirm_password = findViewById(R.id.editView_confirm_password);
         editView_password = findViewById(R.id.editView_password);
         editView_user_account = findViewById(R.id.editView_user_account);
@@ -92,10 +109,10 @@ public class RegisterStep2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                button_sign_up.setEnabled(editView_confirm_password.getText().length() >0
-                        && editView_password.getText().length() >0
-                        && editView_user_account.getText().length() >0
-                        && (editView_password.getText() == editView_confirm_password));
+            //   button_sign_up.setEnabled(editView_confirm_password.getText().length() >0
+            //           && editView_password.getText().length() >0
+            //           && editView_user_account.getText().length() >0
+            //           && (editView_password.getText() == editView_confirm_password));
             }
 
             @Override
@@ -113,18 +130,20 @@ public class RegisterStep2 extends AppCompatActivity {
             public void onClick(View v) {
                 password = editView_password.getText().toString();
                 username = editView_user_account.getText().toString();
-                Inscription(username,first_name, last_name,cni, phone, email,password, "");
+
+
+                Inscription(username,first_name, last_name,cni, phone, email,password);
             }
         });
         }
 
-        public void Inscription(final String usernam, final String first_name,
+        public void Inscription(final String username, final String first_name,
                                 final String last_name, final String cni,
                                 final String  phone, final String email,
-                                final String password,final String image)
+                                final String password)
         {
             apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
-            Call<users> call=apiInterface.login(username,password);
+            Call<users> call=apiInterface.inscription(username,first_name,cni,password,last_name,email,phone);
             call.enqueue(new Callback<users>() {
             @Override
             public void onResponse(@NonNull Call<users> call, @NonNull Response<users> response) {

@@ -16,11 +16,12 @@ public interface ApiInterface {
     @POST("inscription.php")
     Call<users> inscription(
             @Field("username") String username,
-            @Field("name") String name,
+            @Field("firstname") String firstname,
             @Field("cni") String cni,
-            @Field("password") String password
-           // @Field("email") String email,
-          //  @Field("phone") String phone
+            @Field("password") String password,
+            @Field("lastname") String lastname,
+            @Field("email") String email,
+            @Field("phone") String phone
     );
 
     @FormUrlEncoded
