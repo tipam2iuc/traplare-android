@@ -139,10 +139,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<users> call, @NonNull Response<users> response) {
                 String m =  response.body().getMessage();
                 int v=response.body().getSuccess();
-                String u=response.body().getUsername();
+                String u=response.body().getFirstname();
                 if (v == 1)
                 {
-                    Toast.makeText(LoginActivity.this,response.body().getMessage(),
+                    Toast.makeText(LoginActivity.this,response.body().getFirstname(),
                             Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(LoginActivity.this,PlanningActivity.class);
