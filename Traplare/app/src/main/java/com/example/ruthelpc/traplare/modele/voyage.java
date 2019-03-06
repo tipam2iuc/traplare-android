@@ -1,5 +1,7 @@
 package com.example.ruthelpc.traplare.modele;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class voyage {
@@ -18,11 +20,18 @@ public class voyage {
     }
 
     public int id;
+    @SerializedName("date_depart")
     public Date date_depart;
+    @SerializedName("date_arrivee")
     public Date date_arrivee;
+    @SerializedName("tarif")
     public double tarif;
+    @SerializedName("depart")
     public String depart;
+    @SerializedName("destination")
     public String destination;
+    @SerializedName("compagnie")
     public String compagnie;
+    @SerializedName("classe")
     public String classe;
 }

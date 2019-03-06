@@ -3,6 +3,8 @@ package com.example.ruthelpc.traplare;
 import android.app.TimePickerDialog;
 import android.util.JsonReader;
 
+import com.example.ruthelpc.traplare.modele.voyage;
+
 import java.util.ArrayList;
 import java.util.List;
 

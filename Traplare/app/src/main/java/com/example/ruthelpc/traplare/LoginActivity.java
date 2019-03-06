@@ -147,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
                 String u=response.body().getFirstname();
                 if (v == 1)
                 {
-                    Toast.makeText(LoginActivity.this,response.body().getFirstname(),
+                    Toast.makeText(LoginActivity.this,response.body().getMessage(),
                             Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(LoginActivity.this,PlanningActivity.class);
