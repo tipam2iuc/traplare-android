@@ -28,7 +28,7 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
     public PlanningsHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = null;
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext().getApplicationContext());
-        view = inflater.inflate(R.layout.planning_value,viewGroup,false);
+        view = inflater.inflate(R.layout.planning_travels,viewGroup,false);
         ConstraintLayout c = view.findViewById(R.id.layout_template_travel2);
         c.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +72,7 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
             super(itemView);
 
             layout = itemView.findViewById(R.id.layout_template_travel2);
-            textView_categorie = itemView.findViewById(R.id.textView_categories);
+            textView_categorie = itemView.findViewById(R.id.textView_travel_classe_value);
             imageView_flag = itemView.findViewById(R.id.imageView_main_container);
             textView_agence = itemView.findViewById(R.id.textView_agency_value);
             textView_provenance = itemView.findViewById(R.id.textView_agency_provenance_value);

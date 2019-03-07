@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainClientActivity extends AppCompatActivity {
     TextView textView_Help;
     TextView textView_Parametre;
@@ -58,6 +60,7 @@ public class MainClientActivity extends AppCompatActivity {
     ImageView imageView_Planning;
     ImageView imageView_Abonement;
     ImageView imageView_Profile;
+    CircleImageView imageView_Profile2;
     String first;
     String user;
 
@@ -82,6 +85,7 @@ public class MainClientActivity extends AppCompatActivity {
         textView_Profile_first = findViewById(R.id.textView_Profile_first);
         textView_Profile_name = findViewById(R.id.textView_Profile_name);
         imageView_Profile = findViewById(R.id.imageView_Profile);
+        imageView_Profile2 = findViewById(R.id.cicleImageView_Profile2);
 
         cardView_Help = findViewById(R.id.cardView_Help);
         cardView_Parametre = findViewById(R.id.cardView_Parametre);
@@ -113,6 +117,13 @@ public class MainClientActivity extends AppCompatActivity {
         imageView_Planning = findViewById(R.id.imageView_Planning);
         imageView_Abonement = findViewById(R.id.imageView_Abonement);
 
+        imageView_Profile2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainClientActivity.this, ProfileActivity.class);
+                startActivity(i);
+            }
+        });
         imageView_Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,23 +139,22 @@ public class MainClientActivity extends AppCompatActivity {
             }
         });
 
-        if (connected_bank.get()!= null) {
-            users_connected u = connected_bank.get();
             String f_name;
             String u_name;
-            if(u.firstname.length()<= 20)
-                f_name = u.firstname;
-            else
-                f_name = u.firstname.substring(0,19) + " ...";
-            if(u.username.length() <= 20)
-                u_name = u.username;
-            else
-                u_name = u.username.substring(0,19) + " ...";
+         users_connected u = (users_connected)Serializer.Deserialize("user_data",this);
+         if(u != null) {
+             if (u.firstname.length() <= 20)
+                 f_name = u.firstname;
+             else
+                 f_name = u.firstname.substring(0, 19) + " ...";
+             if (u.username.length() <= 20)
+                 u_name = u.username;
+             else
+                 u_name = u.username.substring(0, 19) + " ...";
 
-            textView_Profile_first.setText(f_name);
-            textView_Profile_name.setText(u_name);
-        }
-
+             textView_Profile_first.setText(f_name);
+             textView_Profile_name.setText(u_name);
+         }
         textView_Help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

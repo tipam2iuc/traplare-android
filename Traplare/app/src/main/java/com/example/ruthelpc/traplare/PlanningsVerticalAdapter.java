@@ -36,7 +36,7 @@ public class PlanningsVerticalAdapter extends RecyclerView.Adapter<PlanningsVert
     public PlanningsHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         view = null;
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext().getApplicationContext());
-        view = inflater.inflate(R.layout.planning_option,viewGroup,false);
+        view = inflater.inflate(R.layout.planning_days,viewGroup,false);
 
 
 

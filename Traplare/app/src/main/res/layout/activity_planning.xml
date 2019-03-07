@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:focusedByDefault="true"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:background="@drawable/bg2"
-    tools:context=".PlanningActivity"
-    android:scrollbars="none"
-    android:orientation="vertical">
-        <LinearLayout
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+
+        android:background="#00ffffff"
+        android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
             android:orientation="horizontal"
             android:background="@drawable/edittext_bg"
-            android:layout_marginHorizontal="12dp"
+            android:layout_marginHorizontal="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -27,29 +28,33 @@
 
             <ImageView
                 android:id="@+id/imageView_menu"
-                android:layout_width="30px"
-                android:layout_marginTop="4dp"
-                android:layout_height="wrap_content"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:src="@drawable/menu"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/editText_your_destination"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="36dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:pointerIcon="none"
                 android:cursorVisible="false"
                 android:background="#fff"
                 android:textColor="#252525"
                 android:paddingLeft="10dp"
+                app:layout_constraintTop_toTopOf="parent"
                 android:inputType="text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 android:drawableRight="@drawable/search"
                 android:hint=" Quelle est votre destination ?"
                 android:textSize="13dp"
                 app:layout_constraintLeft_toRightOf="@id/imageView_menu"
-            />
+                />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline"
@@ -57,69 +62,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="309dp" />
-        </LinearLayout>
-        <HorizontalScrollView
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:scrollbars="none"
-            android:paddingHorizontal="10dp"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout_search"
-            android:id="@+id/horizontalSView_menu_voyage"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="20dp"
-                android:layout_height="match_parent">
+        </android.support.constraint.ConstraintLayout>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/mytabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="fixed"
+        app:tabTextColor="#e6f9ff"
+        app:tabIndicatorColor="#e6f9ff"
+        app:tabGravity="fill"/>
+    </android.support.design.widget.AppBarLayout>
 
-                <TextView
-                    android:id="@+id/textView_all_travels"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="5dp"
-                    android:text="Tous les voyages"
-                    android:textColor="#fff"
-                    android:textSize="13dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView_categories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="5dp"
-                    android:text="Catégories"
-                    android:textColor="#fff"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView_agencies_agenda"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="5dp"
-                    android:textColor="#fff"
-                    android:textStyle="bold"
-                    android:text="Plannings d'agences" />
-
-                <TextView
-                    android:id="@+id/textView_promo_offer"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Offres promotionnelle"
-                    android:layout_marginHorizontal="5dp"/>
-                </LinearLayout>
-        </HorizontalScrollView>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycleView_voyagesList"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horizontalSView_menu_voyage"
-            app:layout_constraintBottom_toBottomOf="parent"
-            >
-
-        </android.support.v7.widget.RecyclerView>
-</android.support.constraint.ConstraintLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</android.support.design.widget.CoordinatorLayout>

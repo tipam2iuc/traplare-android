@@ -2,6 +2,7 @@ package com.example.ruthelpc.traplare;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +17,6 @@ import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Response;
 
 public class RegisterStep2 extends AppCompatActivity {
@@ -78,13 +78,16 @@ public class RegisterStep2 extends AppCompatActivity {
         button_sign_up = findViewById(R.id.button_sign_up);
         textView_etape2 = findViewById(R.id.textView_etape2);
 
-        textView_etape2.setTypeface(DataComplement.ProductSans);
-        editView_user_account.setTypeface(DataComplement.RobotoReg);
-        editView_confirm_password.setTypeface(DataComplement.RobotoReg);
-        textView_already_has_account.setTypeface(DataComplement.RobotoReg);
-        editView_password.setTypeface(DataComplement.RobotoReg);
-        button_precedent.setTypeface(DataComplement.RobotoReg);
-        button_sign_up.setTypeface(DataComplement.RobotoReg);
+        Typeface RobotoReg = Typeface.createFromAsset(getAssets(),"fonts/Roboto-Bold.ttf");
+        Typeface ProductSans = Typeface.createFromAsset(LoginActivity.asset,"fonts/Product Sans Bold.ttf");
+        Typeface RobotoBoldCondensed = Typeface.createFromAsset(LoginActivity.asset, "fonts/Roboto-BoldCondensed.ttf");
+        textView_etape2.setTypeface(ProductSans);
+        editView_user_account.setTypeface(RobotoReg);
+        editView_confirm_password.setTypeface(RobotoReg);
+        textView_already_has_account.setTypeface(RobotoReg);
+        editView_password.setTypeface(RobotoReg);
+        button_precedent.setTypeface(RobotoReg);
+        button_sign_up.setTypeface(RobotoReg);
 
         button_precedent.setOnClickListener(new View.OnClickListener() {
             @Override

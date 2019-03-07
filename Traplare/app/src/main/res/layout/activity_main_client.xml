@@ -27,7 +27,7 @@
             app:layout_constraintRight_toRightOf="parent" />
         <ImageView
             android:id="@+id/imageView_Profile"
-            app:layout_constraintTop_toBottomOf="@id/cicleImageView_Profile2"
+            app:layout_constraintTop_toBottomOf="@id/cicleImageView_Profile"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginRight="25dp"
@@ -96,6 +96,7 @@
                 android:clickable="true"
                 android:layout_marginHorizontal="5dp"
                 android:layout_marginVertical="5dp"
+                app:cardElevation="7dp"
                 android:layout_weight="1">
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
@@ -153,6 +154,7 @@
                 android:layout_height="0dp"
                 android:layout_marginHorizontal="5dp"
                 android:clickable="true"
+                app:cardElevation="7dp"
                 android:layout_marginVertical="5dp"
                 android:layout_weight="1">
                 <android.support.constraint.ConstraintLayout
@@ -195,6 +197,7 @@
                 android:layout_marginHorizontal="5dp"
                 android:clickable="true"
                 android:layout_marginVertical="5dp"
+                app:cardElevation="7dp"
                 android:layout_weight="1">
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
@@ -241,6 +244,8 @@
                 android:layout_marginHorizontal="5dp"
                 android:id="@+id/cardView_Planning"
                 android:layout_height="0dp"
+                app:cardElevation="7dp"
+
                 android:clickable="true"
                 android:layout_weight="1">
                 <android.support.constraint.ConstraintLayout
@@ -281,6 +286,7 @@
                 android:clickable="true"
                 android:id="@+id/cardView_Notification"
                 android:layout_height="0dp"
+                app:cardElevation="7dp"
                 android:layout_weight="1">
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
@@ -334,6 +340,7 @@
                 android:layout_marginHorizontal="5dp"
                 android:id="@+id/cardView_Parametre"
                 android:clickable="true"
+                app:cardElevation="7dp"
                 android:layout_height="0dp"
                 android:layout_weight="1">
                 <android.support.constraint.ConstraintLayout
@@ -381,6 +388,7 @@
                 android:layout_marginHorizontal="5dp"
                 android:id="@+id/cardView_Panier"
                 android:clickable="true"
+                app:cardElevation="7dp"
                 android:layout_height="0dp"
                 android:layout_weight="1">
                 <android.support.constraint.ConstraintLayout
@@ -439,6 +447,7 @@
                 android:id="@+id/cardView_Signaler"
                 android:clickable="true"
                 android:layout_height="0dp"
+                app:cardElevation="7dp"
                 android:layout_weight="1">
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
@@ -479,6 +488,7 @@
                 android:clickable="true"
                 android:id="@+id/cardView_Help"
                 android:layout_height="0dp"
+                app:cardElevation="7dp"
                 android:layout_weight="1">
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"

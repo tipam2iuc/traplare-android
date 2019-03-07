@@ -1,8 +1,7 @@
 package com.example.ruthelpc.traplare;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.NonNull;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,11 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -45,14 +39,18 @@ public class RegisterActivity extends AppCompatActivity {
         editView_address = findViewById(R.id.editView_address);
         button_next = findViewById(R.id.button_next);
 
-        textView_Logo.setTypeface(DataComplement.ProductSans);
-        textView_etape1.setTypeface(DataComplement.ProductSans);
-        textView_already_has_account.setTypeface(DataComplement.RobotoReg);
-        editView_last_name.setTypeface(DataComplement.RobotoReg);
-        editView_first_name.setTypeface(DataComplement.RobotoReg);
-        editView_identity_piece_value.setTypeface(DataComplement.RobotoReg);
-        editView_telephone.setTypeface(DataComplement.RobotoReg);
-        editView_address.setTypeface(DataComplement.RobotoReg);
+        Typeface RobotoReg = Typeface.createFromAsset(getAssets(),"fonts/Roboto-Bold.ttf");
+        Typeface ProductSans = Typeface.createFromAsset(LoginActivity.asset,"fonts/Product Sans Bold.ttf");
+        Typeface RobotoBoldCondensed = Typeface.createFromAsset(LoginActivity.asset, "fonts/Roboto-BoldCondensed.ttf");
+
+        textView_Logo.setTypeface(ProductSans);
+        textView_etape1.setTypeface(ProductSans);
+        textView_already_has_account.setTypeface(RobotoReg);
+        editView_last_name.setTypeface(RobotoReg);
+        editView_first_name.setTypeface(RobotoReg);
+        editView_identity_piece_value.setTypeface(RobotoReg);
+        editView_telephone.setTypeface(RobotoReg);
+        editView_address.setTypeface(RobotoReg);
 
         TextWatcher change = new TextWatcher() {
             @Override

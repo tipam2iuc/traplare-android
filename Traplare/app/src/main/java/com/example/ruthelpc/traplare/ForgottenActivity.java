@@ -1,6 +1,7 @@
 package com.example.ruthelpc.traplare;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,11 +26,14 @@ public class ForgottenActivity extends AppCompatActivity {
         editView_password = findViewById(R.id.editView_password);
         textView_new_account = findViewById(R.id.textView_create_new_account);
 
-        textView_Logo.setTypeface(DataComplement.ProductSans);
-        editView_user_account.setTypeface(DataComplement.RobotoReg);
-        editView_user_phone.setTypeface(DataComplement.RobotoReg);
-        editView_password.setTypeface(DataComplement.RobotoReg);
-        textView_new_account.setTypeface(DataComplement.RobotoReg);
+        Typeface ProductSans = Typeface.createFromAsset(LoginActivity.asset,"fonts/Product Sans Bold.ttf");
+        Typeface RobotoReg = Typeface.createFromAsset(getAssets(),"fonts/Roboto-Bold.ttf");
+
+        textView_Logo.setTypeface(ProductSans);
+        editView_user_account.setTypeface(RobotoReg);
+        editView_user_phone.setTypeface(RobotoReg);
+        editView_password.setTypeface(RobotoReg);
+        textView_new_account.setTypeface(RobotoReg);
 
         textView_new_account.setOnClickListener(new View.OnClickListener() {
             @Override
