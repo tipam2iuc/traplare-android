@@ -8,18 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.ruthelpc.traplare.ModelRecycler;
-import com.example.ruthelpc.traplare.R;
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 public class RetrofitAdapter extends RecyclerView.Adapter<RetrofitAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
-    private ArrayList<Voyage2> dataModelArrayList;
+    private ArrayList<Voyage> dataModelArrayList;
 
-    public RetrofitAdapter(Context ctx, ArrayList<Voyage2> dataModelArrayList){
+    public RetrofitAdapter(Context ctx, ArrayList<Voyage> dataModelArrayList){
 
         inflater = LayoutInflater.from(ctx);
         this.dataModelArrayList=dataModelArrayList;

@@ -1,11 +1,5 @@
 package com.example.ruthelpc.traplare;
 
-import android.app.TimePickerDialog;
-import android.util.JsonReader;
-
-import com.example.ruthelpc.traplare.modele.voyage;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,5 +29,5 @@ public interface ApiInterface {
 
     //@FormUrlEncoded
     @POST("display_voyages.php")
-    Call< List<Voyage2>>getVoyage2();
+    Call<List<Voyage>>getVoyage2();
 }

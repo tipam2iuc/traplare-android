@@ -19,17 +19,18 @@
         android:theme="@style/Theme.NoTitleBar.WithColoredSpinners">
         <activity android:name=".MainActivity2" />
         <activity android:name=".HelpActivity" />
-        <activity android:name=".OtherActivity" />
         <activity android:name=".LoginActivity">
+
+        </activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".ForgottenActivity" />
+        <activity android:name=".PlanningActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".ForgottenActivity" />
-        <activity android:name=".PlanningActivity" />
         <activity android:name=".RegisterStep2" />
         <activity android:name=".SplashScreenActivity"></activity>
     </application>

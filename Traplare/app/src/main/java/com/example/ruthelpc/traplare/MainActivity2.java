@@ -69,12 +69,12 @@ public class MainActivity2 extends AppCompatActivity {
             JSONObject obj = new JSONObject(response);
           //  if(obj.optString("status").equals("true")){
 
-                ArrayList<Voyage2> modelRecyclerArrayList = new ArrayList<>();
+                ArrayList<Voyage> modelRecyclerArrayList = new ArrayList<>();
                 JSONArray dataArray  = obj.getJSONArray("data");
 
                 for (int i = 0; i < dataArray.length(); i++) {
 
-                    Voyage2 modelRecycler = new Voyage2();
+                    Voyage modelRecycler = new Voyage();
                     JSONObject dataobj = dataArray.getJSONObject(i);
 
                   //  modelRecycler.setImgURL(dataobj.getString("imgURL"));

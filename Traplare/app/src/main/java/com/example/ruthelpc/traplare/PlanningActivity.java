@@ -9,25 +9,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.ruthelpc.traplare.modele.voyage;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.Calendar;
+import java.util.Currency;
+import java.util.Date;
 import java.util.List;
-import java.util.ListIterator;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,16 +33,17 @@ public class PlanningActivity extends AppCompatActivity {
     TextView textView_agencies_agenda;
     TextView textView_categories;
     TextView textView_all_travels;
+
     LinearLayout linearLayout_main_container;
     Intent i;
     private ApiInterface apiInterface;
-    List<Voyage2> voyagelist;
+    List<Voyage> voyages;
 
     private RecyclerView recyclerView_voyagesList;
     private RecyclerView.Adapter adapter_plannings;
     private RecyclerView.LayoutManager layoutManager_phoneCode;
 
-    ArrayList<voyage> voyageArrayList = new ArrayList<voyage>();
+    ArrayList<Voyage> voyageArrayList = new ArrayList<Voyage>();
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,18 +84,28 @@ public class PlanningActivity extends AppCompatActivity {
     public  void getAll()
     {
         apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<Voyage2>> call=apiInterface.getVoyage2();
-        call.enqueue(new Callback<List<Voyage2>>() {
+        Call<List<Voyage>> call=apiInterface.getVoyage2();
+        call.enqueue(new Callback<List<Voyage>>() {
             @Override
-            public void onResponse(@NonNull Call<List<Voyage2>> call, @NonNull Response<List<Voyage2>> response) {
-                voyagelist=response.body();
-                adapter_plannings = new PlanningsVerticalAdapter(voyagelist,PlanningActivity.this);
+            public void onResponse(@NonNull Call<List<Voyage>> call, @NonNull Response<List<Voyage>> response) {
+                voyages =response.body();
+                ArrayList<Date> dates = new ArrayList<>();
+                for (Voyage v : voyages){
+                    int day = v.getDate_depart().getDate();
+                    int month = v.getDate_depart().getMonth();
+                    int year = v.getDate_depart().getYear();
+                    Date date = new Date(year,month,day);
+                    Date toDay = new Date();
+                    if((dates.isEmpty() || !dates.contains(date)) && date.compareTo(toDay) >= 0)
+                        dates.add(date);
+                }
+                adapter_plannings = new PlanningsVerticalAdapter(dates,PlanningActivity.this, (ArrayList<Voyage>) voyages);
                 recyclerView_voyagesList.setAdapter(adapter_plannings);
             }
             @Override
-            public void onFailure(@NonNull Call<List<Voyage2>> call, @NonNull Throwable t) {
-                Toast.makeText(PlanningActivity.this,t.getLocalizedMessage(),
-                        Toast.LENGTH_SHORT).show();
+            public void onFailure(@NonNull Call<List<Voyage>> call, @NonNull Throwable t) {
+                //Toast.makeText(PlanningActivity.this,t.getLocalizedMessage(),
+                //}   Toast.LENGTH_SHORT).show();
             }
         });
     }

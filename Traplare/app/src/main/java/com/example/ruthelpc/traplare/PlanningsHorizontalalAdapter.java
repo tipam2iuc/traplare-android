@@ -1,11 +1,8 @@
 package com.example.ruthelpc.traplare;
 
-import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,18 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.example.ruthelpc.traplare.modele.voyage;
 
 import java.util.ArrayList;
 
 public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<PlanningsHorizontalalAdapter.PlanningsHolder>{
-    private ArrayList<voyage> voyagesListe;
+    private ArrayList<Voyage> voyagesListe;
     private Context context;
 
-    public PlanningsHorizontalalAdapter(ArrayList<voyage> voyagesListe, Context context){
+    public PlanningsHorizontalalAdapter(ArrayList<Voyage> voyagesListe, Context context){
         this.voyagesListe = voyagesListe;
         this.context = context;
     }
@@ -55,9 +49,9 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
         //if(iso != "cm"){
         //   planningsHolder.imageView_flag.setImageResource(context.getResources().getIdentifier(iso,"drawable",context.getApplicationContext().getPackageName()));
         //}
-//        planningsHolder.textView_agence.setText(voyagesListe.get(position).agence_depart.compagnie.nom);
-        planningsHolder.textView_provenance.setText(voyagesListe.get(position).depart);
-        planningsHolder.textView_destination.setText(voyagesListe.get(position).destination);
+        planningsHolder.textView_agence.setText(voyagesListe.get(position).getCompagnie());
+        planningsHolder.textView_provenance.setText(voyagesListe.get(position).getDepart());
+        planningsHolder.textView_destination.setText(voyagesListe.get(position).getDestination());
         //Log.i("BindingHolder","Holder Binded"+voyagesListe.get(position).getCountry()+" "+voyagesListe.get(position).getCode());
     }
 
@@ -70,6 +64,7 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
         private ConstraintLayout layout;
         private ImageView imageView_flag;
         private TextView textView_agence;
+        private TextView textView_categorie;
         private TextView textView_provenance;
         private TextView textView_destination;
 
@@ -77,6 +72,7 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
             super(itemView);
 
             layout = itemView.findViewById(R.id.layout_template_travel2);
+            textView_categorie = itemView.findViewById(R.id.textView_categories);
             imageView_flag = itemView.findViewById(R.id.imageView_main_container);
             textView_agence = itemView.findViewById(R.id.textView_agency_value);
             textView_provenance = itemView.findViewById(R.id.textView_agency_provenance_value);
