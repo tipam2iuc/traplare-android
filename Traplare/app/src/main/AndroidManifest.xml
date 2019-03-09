@@ -12,7 +12,7 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/AppTheme">
         <activity android:name=".MainClientActivity" />
         <![CDATA[
         android:theme="@style/Theme.NoTitleBar.WithColoredSpinners">
@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterStep2" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".AccountActivity"></activity>
     </application>
 
 </manifest>

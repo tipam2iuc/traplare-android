@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccountActivity">
+    <LinearLayout
+        android:id="@+id/linearLayout_profile"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout_infos"
+        android:layout_height="0dp"
+        android:background="@drawable/pcessai"
+        android:orientation="vertical"
+        android:elevation="4dp"
+        app:layout_constraintVertical_weight=".25">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="#6c000000"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView_back_to_menu"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="7dp"
+                android:layout_margin="2dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/dw_back_to_menu"
+                android:src="@drawable/ic_back"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_user_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="User Account"
+                android:textSize="20dp"
+                android:layout_marginBottom="30dp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="NotSibling" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_infos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg"
+        android:orientation="vertical"
+        android:transitionName="couverture"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/mytabs_profile"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_profile"
+        app:layout_constraintVertical_weight=".75"
+        tools:layout_editor_absoluteX="0dp">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </LinearLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="90dp"
+        android:transitionName="profile"
+        android:elevation="5dp"
+        android:scaleType="centerCrop"
+        app:civ_border_color="#50ffffff"
+        app:civ_border_width="2dp"
+        android:id="@+id/cicleImageView_Profile2"
+        android:layout_height="90dp"
+        android:src="@drawable/ppessai"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/mytabs_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:splitMotionEvents="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tabGravity="center"
+        app:tabIndicatorColor="#066FA7"
+        app:tabIndicatorGravity="top"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="#000f16"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+        tools:layout_editor_absoluteX="16dp" />
+</android.support.constraint.ConstraintLayout>

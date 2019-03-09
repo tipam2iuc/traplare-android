@@ -10,4 +10,7 @@
     <color name="colorSpecial2">#01579b</color>
     <color name="colorSpecial3">#4AB5D5</color>
     <color name="colorPlanning">#EEEEEE</color>
+    <color name="colorCard1">#ff0</color>
+    <color name="colorCard2">#f0f</color>
+    <color name="colorCard3">#0ff</color>
 </resources>
