@@ -2,6 +2,7 @@ package com.example.ruthelpc.traplare;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,6 +28,8 @@ public class RegisterStep2 extends AppCompatActivity {
     EditText editView_password;
     Button button_precedent;
     Button button_sign_up;
+    private Bitmap bitmap;
+
 
     private ApiInterface apiInterface;
 
