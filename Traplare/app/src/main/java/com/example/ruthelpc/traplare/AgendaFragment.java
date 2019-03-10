@@ -5,7 +5,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -17,11 +20,15 @@ import android.widget.RelativeLayout;
 
 import com.example.ruthelpc.traplare.R;
 
+import java.util.ArrayList;
+
 public class AgendaFragment extends Fragment {
+    RecyclerView recycler_reservation;
+    private RecyclerView.Adapter adapter_plannings;
+    public AgendaFragment() {
+    }
 
 
-    public AgendaFragment(){}
-    RelativeLayout relativeLayout_card_empiled;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,38 +37,11 @@ public class AgendaFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_agenda, container, false);
-        relativeLayout_card_empiled = view.findViewById(R.id.relativeLayout_card_empiled);
-        for (int i = 0 ; i < 4 ; i++){
-            View view1 = inflater.inflate(R.layout.template_card, container,false);
-            CardView  cardView = view1.findViewById(R.id.card_view_carte);
-
-            CardView.LayoutParams layoutParams = new CardView.LayoutParams(toDp(150),toDp(150));
-
-            layoutParams.setMargins((i+1)*3,(i+1)*3,0,0);
-
-            if(i == 0)
-                cardView.setCardBackgroundColor(getResources().getColor(R.color.colorCard1));
-            else if (i == 1)
-                cardView.setCardBackgroundColor(getResources().getColor(R.color.colorCard2));
-            else if (i == 3)
-                cardView.setCardBackgroundColor(getResources().getColor(R.color.colorCard3));
-            relativeLayout_card_empiled.addView(cardView, layoutParams);
-        }
+        final View view = inflater.inflate(R.layout.fragment_agenda, container, false);
+        recycler_reservation = view.findViewById(R.id.recycler_reservation);
+        recycler_reservation.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        adapter_plannings = new AgendaAdapter(15, view.getContext());
+        recycler_reservation.setAdapter(adapter_plannings);
         return view;
-
-    }
-    public static int toDp(int dp) {
-        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
-    }
-    private MotionEvent swapXY(MotionEvent ev, View view) {
-        float width = view.getWidth();
-        float height = view.getHeight();
-
-        float newX = (ev.getY() / height) * width;
-        float newY = ev.getY();
-
-        ev.setLocation(newX, newY);
-        return ev;
     }
 }

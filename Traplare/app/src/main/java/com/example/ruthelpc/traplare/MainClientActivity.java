@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -125,14 +126,18 @@ public class MainClientActivity extends AppCompatActivity {
         imageView_Planning = findViewById(R.id.imageView_Planning);
         imageView_Abonement = findViewById(R.id.imageView_Abonement);
 
-        imageView_Profile2.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+        imageView_Profile2.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
                 Intent i = new Intent(MainClientActivity.this, AccountActivity.class);
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation(MainClientActivity.this, v, "profile");
-                startActivity(i, options.toBundle());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    startActivity(i, options.toBundle());
+                }
+                else
+                    startActivity(i);
+                return false;
             }
         });
         imageView_Profile.setOnClickListener(new View.OnClickListener() {

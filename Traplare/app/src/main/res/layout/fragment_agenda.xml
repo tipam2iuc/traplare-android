@@ -5,17 +5,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linearLayout_search"
     android:layout_gravity="center"
-    android:paddingVertical="2dp"
     android:layout_width="match_parent">
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout_card_empiled"
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/button_add_reservation"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:backgroundTint="#DB4437"
+        app:fabCustomSize="50dp"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="center"
+        android:src="@drawable/add"
+        app:elevation="7dp"
+        android:layout_height="wrap_content"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_reservation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Hello  world"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="2dp">
+        android:layout_height="match_parent">
 
-    </RelativeLayout>
+    </android.support.v7.widget.RecyclerView>
 </android.support.constraint.ConstraintLayout>

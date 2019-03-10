@@ -13,7 +13,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainClientActivity" />
+        <activity
+            android:name=".MainClientActivity"
+            android:launchMode="singleTop"/>
         <![CDATA[
         android:theme="@style/Theme.NoTitleBar.WithColoredSpinners">
         ]]>
@@ -21,7 +23,10 @@
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgottenActivity" />
-        <activity android:name=".PlanningActivity">
+        <activity
+            android:name=".PlanningActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName=".MainClientActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

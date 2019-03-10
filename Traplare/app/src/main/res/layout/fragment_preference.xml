@@ -74,6 +74,7 @@
                     android:layout_height="30dp"
                     android:src="@drawable/ic_edit"
                     android:padding="5dp"
+                    android:background="@drawable/dw_edit_profil"
                     android:id="@+id/imageView_edit_paiement"
                     app:layout_constraintBottom_toBottomOf="@id/textView_paiement_value"
                     app:layout_constraintTop_toTopOf="@id/textView_paiement"
@@ -84,12 +85,14 @@
                     android:id="@+id/imageView_edit_profil_voyage"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_marginBottom="8dp"
                     android:padding="5dp"
                     android:src="@drawable/ic_edit"
-                    app:layout_constraintBottom_toBottomOf="@id/textView_phone_value"
+                    android:background="@drawable/dw_edit_profil"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_destination_value"
                     app:layout_constraintLeft_toRightOf="@id/textView_paiement"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/textView_phone" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_destination" />
 
                 <ImageView
                     android:id="@+id/imageView_edit_abonement"
@@ -98,6 +101,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:padding="5dp"
+                    android:background="@drawable/dw_edit_profil"
                     android:src="@drawable/ic_edit"
                     app:layout_constraintBottom_toBottomOf="@id/textView_abonement_value"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -109,6 +113,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:padding="5dp"
+                    android:background="@drawable/dw_edit_profil"
                     android:src="@drawable/ic_add"
                     app:layout_constraintBottom_toBottomOf="@id/textView_abonement_value"
                     app:layout_constraintLeft_toRightOf="@id/textView_paiement"
@@ -116,10 +121,10 @@
                     app:layout_constraintTop_toTopOf="@id/textView_abonement" />
 
                 <TextView
-                    android:id="@+id/textView_prenom"
+                    android:id="@+id/textView_profil_voyage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:text="Profil de voyage"
                     android:textSize="13dp"
 
@@ -133,10 +138,10 @@
                     android:layout_height="wrap_content"
                     android:text="Marge tarifaire"
                     android:textSize="10dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textView_prenom" />
+                    app:layout_constraintTop_toBottomOf="@id/textView_profil_voyage" />
 
                 <TextView
                     android:id="@+id/textView_marge_tarifaire_value"
@@ -150,7 +155,7 @@
                     app:layout_constraintTop_toBottomOf="@id/textView_marge_tarifaire" />
 
                 <TextView
-                    android:id="@+id/textView_num_identity"
+                    android:id="@+id/textView_class"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -161,18 +166,18 @@
                     app:layout_constraintTop_toBottomOf="@id/textView_marge_tarifaire_value" />
 
                 <TextView
-                    android:id="@+id/textView_num_identity_value"
+                    android:id="@+id/textView_class_value"
                     android:layout_width="wrap_content"
                     android:layout_height="13dp"
-                    android:text="ABCNU0001478"
+                    android:text="class value"
                     android:textSize="12dp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textView_num_identity" />
+                    app:layout_constraintTop_toBottomOf="@id/textView_class" />
 
                 <TextView
-                    android:id="@+id/textView_email"
+                    android:id="@+id/textView_interval"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -180,21 +185,21 @@
                     android:textSize="10dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textView_num_identity_value" />
+                    app:layout_constraintTop_toBottomOf="@id/textView_class_value" />
 
                 <TextView
-                    android:id="@+id/textView_phone"
+                    android:id="@+id/textView_destination"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Téléphone"
+                    android:text="Destination"
                     android:textSize="10dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textView_email_value" />
+                    app:layout_constraintTop_toBottomOf="@id/textView_interval_value" />
 
                 <TextView
-                    android:id="@+id/textView_email_value"
+                    android:id="@+id/textView_interval_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="17h - 23h"
@@ -202,18 +207,18 @@
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textView_email" />
+                    app:layout_constraintTop_toBottomOf="@id/textView_interval" />
 
                 <TextView
-                    android:id="@+id/textView_phone_value"
+                    android:id="@+id/textView_destination_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="+237 6 XX XX XX XX"
+                    android:text="Destination value"
                     android:textSize="12dp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textView_phone" />
+                    app:layout_constraintTop_toBottomOf="@id/textView_destination" />
 
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>

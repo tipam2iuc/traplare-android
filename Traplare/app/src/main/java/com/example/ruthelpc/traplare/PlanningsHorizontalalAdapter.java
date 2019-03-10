@@ -18,6 +18,7 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
     private ArrayList<Voyage> voyagesListe;
     private Context context;
 
+
     public PlanningsHorizontalalAdapter(ArrayList<Voyage> voyagesListe, Context context){
         this.voyagesListe = voyagesListe;
         this.context = context;
@@ -29,30 +30,37 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
         View view = null;
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext().getApplicationContext());
         view = inflater.inflate(R.layout.planning_travels,viewGroup,false);
-        ConstraintLayout c = view.findViewById(R.id.layout_template_travel2);
-        c.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.custom_dialog);
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.show();
-            }
-        });
+        if (PlanningsVerticalAdapter.wellLoad == true) {
+            ConstraintLayout c = view.findViewById(R.id.layout_template_travel2);
+            c.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.custom_dialog);
+                    dialog.setCanceledOnTouchOutside(true);
+                    dialog.show();
+                }
+            });
+        }
         Log.i("CreateHolder","Holder Created");
         return new PlanningsHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final PlanningsHolder planningsHolder, final int position) {
-        //String iso = voyagesListe.get(position).getIso2();
-        //if(iso != "cm"){
-        //   planningsHolder.imageView_flag.setImageResource(context.getResources().getIdentifier(iso,"drawable",context.getApplicationContext().getPackageName()));
-        //}
-        planningsHolder.textView_agence.setText(voyagesListe.get(position).getCompagnie());
-        planningsHolder.textView_provenance.setText(voyagesListe.get(position).getDepart());
-        planningsHolder.textView_destination.setText(voyagesListe.get(position).getDestination());
-        //Log.i("BindingHolder","Holder Binded"+voyagesListe.get(position).getCountry()+" "+voyagesListe.get(position).getCode());
+        if(PlanningsVerticalAdapter.wellLoad) {
+            planningsHolder.textView_agence.setText(voyagesListe.get(position).getCompagnie());
+            planningsHolder.textView_provenance.setText(voyagesListe.get(position).getDepart());
+            planningsHolder.textView_destination.setText(voyagesListe.get(position).getDestination());
+        }
+        else{
+            planningsHolder.textView_agence.setBackgroundColor(planningsHolder.textView_agence.getResources().getColor(R.color.colorBlue));
+            planningsHolder.textView_agence.setText(voyagesListe.get(position).getDepart());
+            planningsHolder.textView_provenance.setText(voyagesListe.get(position).getDepart());
+            planningsHolder.textView_provenance.setBackgroundColor(planningsHolder.textView_agence.getResources().getColor(R.color.colorBlue));
+            planningsHolder.textView_destination.setText(voyagesListe.get(position).getDestination());
+            planningsHolder.textView_destination.setBackgroundColor(planningsHolder.textView_agence.getResources().getColor(R.color.colorBlue));
+        }
     }
 
     @Override

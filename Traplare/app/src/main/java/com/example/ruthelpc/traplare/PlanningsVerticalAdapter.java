@@ -23,11 +23,13 @@ public class PlanningsVerticalAdapter extends RecyclerView.Adapter<PlanningsVert
     private ArrayList<Voyage> voyagesList;
     private List<Date> dayList;
     private Context context;
+    public static boolean wellLoad;
     View view;
 
-    public PlanningsVerticalAdapter(List<Date> dayList, Context context, ArrayList<Voyage> voyages){
+    public PlanningsVerticalAdapter(List<Date> dayList, Context context, ArrayList<Voyage> voyages, boolean wellLoad){
         this.dayList = dayList;
         this.context = context;
+        this.wellLoad = wellLoad;
         voyagesList = voyages;
     }
 
@@ -37,36 +39,51 @@ public class PlanningsVerticalAdapter extends RecyclerView.Adapter<PlanningsVert
         view = null;
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext().getApplicationContext());
         view = inflater.inflate(R.layout.planning_days,viewGroup,false);
-
-
-
         Log.i("CreateHolder","Holder Created "+ i);
         return new PlanningsHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final PlanningsHolder planningsHolder, final int position) {
-        RecyclerView r;
-        PlanningsHorizontalalAdapter adapter_plannings;
-        ArrayList<Voyage> voyageArrayList = new ArrayList<Voyage>();
-        for (Voyage v : voyagesList) {
-            int year  = v.getDate_depart().getYear();
-            int month = v.getDate_depart().getMonth();
-            int day = v.getDate_depart().getDate();
-            Date d = new Date(year,month,day);
-            if(dayList.get(position).compareTo(d) == 0)
-                voyageArrayList.add(v);
+        if(wellLoad) {
+            RecyclerView r;
+            PlanningsHorizontalalAdapter adapter_plannings;
+            ArrayList<Voyage> voyageArrayList = new ArrayList<Voyage>();
+            for (Voyage v : voyagesList) {
+                int year = v.getDate_depart().getYear();
+                int month = v.getDate_depart().getMonth();
+                int day = v.getDate_depart().getDate();
+                Date d = new Date(year, month, day);
+                if (dayList.get(position).compareTo(d) == 0)
+                    voyageArrayList.add(v);
+            }
+            r = view.findViewById(R.id.recycler_hotizontal);
+            r.setLayoutManager(new LinearLayoutManager(context));
+            adapter_plannings = new PlanningsHorizontalalAdapter(voyageArrayList, context);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+            ((LinearLayoutManager) layoutManager).setOrientation(LinearLayout.HORIZONTAL);
+            r.setLayoutManager(layoutManager);
+            r.setAdapter(adapter_plannings);
+            SimpleDateFormat sdf = new SimpleDateFormat("E d MMM yy", Locale.getDefault());
+            String dJour = sdf.format(dayList.get(position));
+            planningsHolder.textView_Date.setText(dJour);
         }
-        r = view.findViewById(R.id.recycler_hotizontal);
-        r.setLayoutManager(new LinearLayoutManager(context));
-        adapter_plannings = new PlanningsHorizontalalAdapter(voyageArrayList,context);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-        ((LinearLayoutManager) layoutManager).setOrientation(LinearLayout.HORIZONTAL);
-        r.setLayoutManager(layoutManager);
-        r.setAdapter(adapter_plannings);
-        SimpleDateFormat sdf = new SimpleDateFormat("E d MMM yy",Locale.getDefault());
-        String dJour = sdf.format(dayList.get(position));
-        planningsHolder.textView_Date.setText(dJour);
+        else
+        {
+            RecyclerView r;
+            PlanningsHorizontalalAdapter adapter_plannings;
+            ArrayList<Voyage> voyageArrayList = new ArrayList<Voyage>();
+            for (Voyage v : voyagesList) {
+                voyageArrayList.add(v);
+            }
+            r = view.findViewById(R.id.recycler_hotizontal);
+            r.setLayoutManager(new LinearLayoutManager(context));
+            adapter_plannings = new PlanningsHorizontalalAdapter(voyageArrayList, context);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+            ((LinearLayoutManager) layoutManager).setOrientation(LinearLayout.HORIZONTAL);
+            r.setLayoutManager(layoutManager);
+            r.setAdapter(adapter_plannings);
+        }
     }
 
     @Override
