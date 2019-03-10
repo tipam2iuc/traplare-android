@@ -63,7 +63,7 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.AgendaHold
             super(itemView);
             //layout = itemView.findViewById(R.id.layout_template_travel);
             //imageView_flag = itemView.findViewById(R.id.imageView_main_container);
-y            textView_date = itemView.findViewById(R.id.textView_date);
+           textView_date = itemView.findViewById(R.id.textView_date);
             //textView_provenance = itemView.findViewById(R.id.textView_agency_provenance_value);
             //textView_destination = itemView.findViewById(R.id.textView_agency_destination_value);
         }

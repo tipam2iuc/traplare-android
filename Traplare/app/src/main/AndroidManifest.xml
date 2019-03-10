@@ -20,11 +20,11 @@
         android:theme="@style/Theme.NoTitleBar.WithColoredSpinners">
         ]]>
         <activity android:name=".HelpActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".PlanningActivity"></activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgottenActivity" />
         <activity
-            android:name=".PlanningActivity"
+            android:name=".LoginActivity"
             android:windowSoftInputMode="stateHidden"
             android:parentActivityName=".MainClientActivity">
             <intent-filter>
