@@ -3,6 +3,7 @@ package com.example.ruthelpc.traplare;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -36,16 +37,48 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.AgendaHold
         view = null;
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext().getApplicationContext());
         view = inflater.inflate(R.layout.template_item_agenda,viewGroup,false);
-        Log.i("CreateHolder","Holder Created "+ i);
+        Log.i("CreateHolder","Holder Created ");
+
         return new AgendaHolder(view);
     }
     Date date = new Date();
+    int today = date.getDate();
+    ArrayList<Integer> l = new ArrayList<Integer>();
     @Override
     public void onBindViewHolder(@NonNull final AgendaHolder agendaHolder, final int position) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd",Locale.getDefault());
         int day= date.getDate();
-        agendaHolder.textView_date.setText(String.valueOf(day));
+        agendaHolder.textView_date.setText(String.valueOf(position));
         date.setDate(day+1);
+        if(today == position){
+            AgendaFragment.indexaujourd = position;
+            AgendaFragment.recycler_reservation.smoothScrollToPosition(position);
+            agendaHolder.textView_date.setTextColor(view.getResources().getColor(R.color.colorBlue));
+        }
+        else {
+            AgendaFragment.indexaujourd=0;
+            agendaHolder.textView_date.setTextColor(view.getResources().getColor(R.color.default_text));
+        }
+        switch (x%(position+1)){
+            case 1:
+                agendaHolder.card_view_template.setBackgroundColor(view.getResources().getColor(R.color.colorCard1));
+                break;
+            case 2:
+                agendaHolder.card_view_template.setBackgroundColor(view.getResources().getColor(R.color.colorCard2));
+                break;
+            case 3:
+                agendaHolder.card_view_template.setBackgroundColor(view.getResources().getColor(R.color.colorCard3));
+                break;
+            case 5:
+                agendaHolder.card_view_template.setBackgroundColor(view.getResources().getColor(R.color.colorCard4));
+                break;
+            case 7:
+                agendaHolder.card_view_template.setBackgroundColor(view.getResources().getColor(R.color.colorCard5));
+                break;
+                default:
+                    agendaHolder.card_view_template.setBackgroundColor(view.getResources().getColor(R.color.colorCard6));
+                    break;
+        }
     }
 
     @Override
@@ -56,6 +89,7 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.AgendaHold
     public static class AgendaHolder extends RecyclerView.ViewHolder {
         private ConstraintLayout layout;
         private ImageView imageView_flag;
+        private CardView card_view_template;
         private TextView textView_date;
         private TextView textView_provenance;
         private TextView textView_destination;
@@ -63,7 +97,8 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.AgendaHold
             super(itemView);
             //layout = itemView.findViewById(R.id.layout_template_travel);
             //imageView_flag = itemView.findViewById(R.id.imageView_main_container);
-           textView_date = itemView.findViewById(R.id.textView_date);
+            card_view_template = itemView.findViewById(R.id.card_view_template);
+            textView_date = itemView.findViewById(R.id.textView_date);
             //textView_provenance = itemView.findViewById(R.id.textView_agency_provenance_value);
             //textView_destination = itemView.findViewById(R.id.textView_agency_destination_value);
         }

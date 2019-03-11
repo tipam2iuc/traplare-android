@@ -25,6 +25,13 @@ public class AccountActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private ImageView imageView_back_to_menu;
     private ImageView cicleImageView_Profile2;
+    private int[] tabIcons = {
+            R.drawable.ic_profile,
+            R.drawable.ic_preference,
+            R.drawable.ic_agenda,
+            R.drawable.ic_stat,
+            R.drawable.ic_edit_p
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +65,15 @@ public class AccountActivity extends AppCompatActivity {
                 return false;
             }
         });
+        setupTabIcons();
     }
-
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
+        tabLayout.getTabAt(3).setIcon(tabIcons[3]);
+        tabLayout.getTabAt(4).setIcon(tabIcons[4]);
+    }
 
     private void setViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
