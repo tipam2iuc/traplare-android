@@ -14,7 +14,7 @@
         android:background="@drawable/pcessai"
         android:orientation="vertical"
         android:elevation="4dp"
-        app:layout_constraintVertical_weight=".2">
+        app:layout_constraintVertical_weight=".15">
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:background="#6c000000"
@@ -37,7 +37,7 @@
                 android:id="@+id/textView_user_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:text="User Account"
                 android:textSize="20dp"
                 android:layout_marginBottom="30dp"
@@ -69,6 +69,7 @@
             android:id="@+id/viewpager_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#c8ffffff"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </LinearLayout>
     <de.hdodenhof.circleimageview.CircleImageView
@@ -91,21 +92,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.38" />
-
+        app:layout_constraintGuide_percent="0.32" />
     <android.support.design.widget.TabLayout
         android:id="@+id/mytabs_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:splitMotionEvents="true"
+
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_infos"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/dw_shadow"
         app:tabGravity="center"
         app:tabIndicatorColor="#066FA7"
         app:tabIndicatorGravity="top"
         app:tabMode="scrollable"
-        app:tabSelectedTextColor="#000f16"
-        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-        tools:layout_editor_absoluteX="16dp" />
+        app:tabTextColor="#969696"
+        app:tabSelectedTextColor="#646464"
+        app:tabTextAppearance="@style/TabStyle"/>
 </android.support.constraint.ConstraintLayout>

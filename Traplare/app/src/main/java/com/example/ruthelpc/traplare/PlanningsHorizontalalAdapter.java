@@ -52,6 +52,8 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
             planningsHolder.textView_agence.setText(voyagesListe.get(position).getCompagnie());
             planningsHolder.textView_provenance.setText(voyagesListe.get(position).getDepart());
             planningsHolder.textView_destination.setText(voyagesListe.get(position).getDestination());
+            planningsHolder.textView_categorie.setText(voyagesListe.get(position).getClasse());
+            planningsHolder.textView_agency_tarif_value.setText(String.valueOf(voyagesListe.get(position).getTarif())+ " XAF");
         }
         else{
             planningsHolder.textView_agence.setBackgroundColor(planningsHolder.textView_agence.getResources().getColor(R.color.colorBlue));
@@ -75,6 +77,7 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
         private TextView textView_categorie;
         private TextView textView_provenance;
         private TextView textView_destination;
+        private TextView textView_agency_tarif_value;
 
         public PlanningsHolder(@NonNull final View itemView) {
             super(itemView);
@@ -85,6 +88,7 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
             textView_agence = itemView.findViewById(R.id.textView_agency_value);
             textView_provenance = itemView.findViewById(R.id.textView_agency_provenance_value);
             textView_destination = itemView.findViewById(R.id.textView_agency_destination_value);
+            textView_agency_tarif_value = itemView.findViewById(R.id.textView_agency_tarif_value);
 
 
         }

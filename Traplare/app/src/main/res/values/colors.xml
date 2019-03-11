@@ -10,7 +10,11 @@
     <color name="colorSpecial2">#01579b</color>
     <color name="colorSpecial3">#4AB5D5</color>
     <color name="colorPlanning">#EEEEEE</color>
-    <color name="colorCard1">#ff0</color>
-    <color name="colorCard2">#f0f</color>
-    <color name="colorCard3">#0ff</color>
+    <color name="colorCard1">#7ACBBD</color>
+    <color name="colorCard2">#FFB72B</color>
+    <color name="colorCard3">#865FC1</color>
+    <color name="colorCard4">#E64783</color>
+    <color name="colorCard5">#FF8737</color>
+    <color name="colorCard6">#4989F4</color>
+    <color name="default_text">#1e1e1e</color>
 </resources>
