@@ -1,18 +1,28 @@
+
 <?php
-require_once "db_config.php;";
+require_once 'db_config.php';
 
-function add_reservertion($idvoyage,$date_reservation,$confirmation,$iduser,$nom,$prenom,$cni,$phone)
+function insert_reservation($idvoyage,$iduser,$date_reservation,$cni,$nom,$prenom,$telephone,$code)
 {
+    global $pdo;
+    $req=$pdo->prepare('INSERT INTO reservation VALUES(null,?,?,?,?,?,?,?,?) ');
+    return $req->execute
+    (
+        [
+            $idvoyage,
+            $iduser,
+            $date_reservation,
+            $cni,
+            $nom,
+            $prenom,
+            $telephone,
+            $code
+        ]
+    );
+}
 
-    global  $pdo;
-    if (!empty($idvoyage)&& !empty($date_reservation)&& !empty($confirmation)&& !empty($iduser)
-    && !empty($nom)&& !empty($prenom)&&!empty($cni) && !empty($phone)
-    )
-    {
-         $req =$pdo->prepare
-         (
-             'INSERT INTO reservation VALUES (null ,?,?,?,?,?,?,?,?)'
-         );
-       return  $req->execute([$idvoyage,$date_reservation,$confirmation,$iduser,$nom,$prenom,$cni,$phone]);
-    }
+function str_random ($length)
+{
+    $alphabet="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ%_#@?!";
+    return  substr(str_shuffle(str_repeat($alphabet,$length)),0,$length);
 }

@@ -2,7 +2,7 @@
 include("db_config.php");
 
 
- function inscription($username,$firstname,$cni,$password,$lastname,$email,$phone)
+ function inscription($username,$firstname,$cni,$password,$lastname,$email,$phone,$image)
 {
     global $pdo;
     if (!empty($username)  && !empty($cni) && !empty($password) && !empty($lastname)
@@ -12,7 +12,7 @@ include("db_config.php");
         (
             'INSERT INTO 
                            users 
-                        VALUES (null ,?,?,?,?,?,?,?)'
+                        VALUES (null ,?,?,?,?,?,?,?,?)'
         );
       return   $req->execute
         (
@@ -23,7 +23,8 @@ include("db_config.php");
                 $password,
                 $lastname,
                 $email,
-                $phone
+                $phone,
+                $image
             ]
         );
     }
