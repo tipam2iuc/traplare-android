@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReservationActivity">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        app:cardElevation="15dp">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textView_depart_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Depart"
+                android:gravity="left"
+                android:textSize="14dp"
+                android:textColor="#585BBB"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"
+                android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/textView_depart_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Adresse de depart"
+                android:textSize="11dp"
+                app:layout_constraintLeft_toLeftOf="@id/textView_depart_title"
+                app:layout_constraintTop_toBottomOf="@id/textView_depart_title" />
+
+            <TextView
+                android:id="@+id/textView_heure_depart_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11 h 40 min"
+                android:textSize="11dp"
+                app:layout_constraintLeft_toLeftOf="@id/textView_depart_title"
+                app:layout_constraintTop_toBottomOf="@id/textView_depart_value" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                android:src="@drawable/arrow"
+                app:layout_constraintTop_toTopOf="@id/textView_arrive_title"
+                app:layout_constraintBottom_toBottomOf="@id/textView_arrive_title"
+                app:layout_constraintLeft_toRightOf="@id/textView_depart_title"
+                app:layout_constraintRight_toLeftOf="@id/textView_arrive_title"/>
+
+            <TextView
+                android:id="@+id/textView_arrive_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arrivée"
+                android:textSize="14dp"
+                android:textColor="#585BBB"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="25dp"
+                android:gravity="right"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/textView_arrive_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginTop="5dp"
+                android:text="Adresse d'arrivée"
+                android:textSize="11dp"
+                app:layout_constraintRight_toRightOf="@id/textView_arrive_title"
+                app:layout_constraintTop_toBottomOf="@id/textView_arrive_title" />
+
+            <TextView
+                android:id="@+id/textView_heure_arrive_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="15 h 40 min"
+                android:textSize="11dp"
+                app:layout_constraintRight_toRightOf="@id/textView_arrive_title"
+                app:layout_constraintTop_toBottomOf="@id/textView_arrive_value" />
+
+            <TextView
+                android:id="@+id/textView_class_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:text="Normal"
+                android:textSize="13dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@id/textView_depart_value"
+                app:layout_constraintRight_toRightOf="@id/textView_arrive_title"
+                app:layout_constraintTop_toBottomOf="@id/textView_heure_arrive_value" />
+
+            <TextView
+                android:id="@+id/textView_passager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:gravity="left"
+                android:text="Passager"
+                android:textColor="#585BBB"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_class_value" />
+
+            <TextView
+                android:id="@+id/textView_passager_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:gravity="left"
+                android:text="Balock Ruthel Cedrick Ascens"
+                android:textSize="11dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_passager" />
+
+            <TextView
+                android:id="@+id/textView_siege"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="25dp"
+                android:gravity="left"
+                android:text="Place"
+                android:textColor="#585BBB"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_class_value" />
+
+            <TextView
+                android:id="@+id/textView_siege_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:gravity="left"
+                android:text="C25"
+                android:textSize="11dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_siege" />
+
+            <TextView
+                android:id="@+id/textView_telephone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:gravity="left"
+                android:text="Téléphne"
+                android:textColor="#585BBB"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_passager_value" />
+
+            <TextView
+                android:id="@+id/textView_telephone_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:gravity="left"
+                android:text="+237 6 98 55 42 96"
+                android:textSize="11dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_telephone" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>
