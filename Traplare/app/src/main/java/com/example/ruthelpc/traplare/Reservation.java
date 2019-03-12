@@ -19,6 +19,27 @@ public class Reservation {
     private String prenom;
     @SerializedName("telephone")
     private String telephone;
+    @SerializedName("success")
+    private int success;
+
+    public int getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(int success) {
+        this.success = success;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @SerializedName("message")
+    private String message;
     public int getIdvoyage() {
         return idvoyage;
     }
