@@ -15,18 +15,18 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainClientActivity"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop" />
         <![CDATA[
         android:theme="@style/Theme.NoTitleBar.WithColoredSpinners">
         ]]>
         <activity android:name=".HelpActivity" />
-        <activity android:name=".PlanningActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgottenActivity" />
         <activity
-            android:name=".LoginActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:parentActivityName=".MainClientActivity">
+            android:name=".PlanningActivity"
+            android:parentActivityName=".MainClientActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,7 +34,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterStep2" />
-        <activity android:name=".AccountActivity"></activity>
+        <activity android:name=".AccountActivity" />
+        <activity android:name=".ReservationActivity"></activity>
     </application>
 
 </manifest>

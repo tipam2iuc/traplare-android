@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorGreen">#40C02E</color>
     <color name="colorBlue"> #0091ea</color>
+    <color name="colorNonConnect"> #0091ea</color>
     <color name="colorWhite"> #FFFFFF</color>
     <color name="colorSpecial1">#e2e2e2</color>
     <color name="colorSpecial2">#01579b</color>
@@ -16,5 +17,5 @@
     <color name="colorCard4">#E64783</color>
     <color name="colorCard5">#FF8737</color>
     <color name="colorCard6">#4989F4</color>
-    <color name="default_text">#1e1e1e</color>
+    <color name="default_text">#282828</color>
 </resources>
