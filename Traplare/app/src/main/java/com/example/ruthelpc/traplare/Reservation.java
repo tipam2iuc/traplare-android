@@ -19,7 +19,6 @@ public class Reservation {
     private String prenom;
     @SerializedName("telephone")
     private String telephone;
-
     public int getIdvoyage() {
         return idvoyage;
     }
