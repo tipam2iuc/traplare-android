@@ -21,6 +21,17 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
+    @POST("add_reservation.php")
+    Call<Reservation> reservation
+            (
+                    @Field("date_reservation") String date_reservation ,
+                    @Field("cni") String cni,
+                    @Field("prenom") String prenom ,
+                    @Field("nom") String nom ,
+                    @Field("telephone") String telephone
+            );
+
+    @FormUrlEncoded
     @POST("login.php")
     Call<users> login(
             @Field("username") String username,
