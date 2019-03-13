@@ -19,6 +19,8 @@
         <![CDATA[
         android:theme="@style/Theme.NoTitleBar.WithColoredSpinners">
         ]]>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".AvisClient"></activity>
         <activity android:name=".HelpActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
