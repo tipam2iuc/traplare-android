@@ -1,23 +1,35 @@
 <?php
 include("db_config.php");
 
-function inscription($username,$name,$cni,$password){
+
+ function inscription($username,$firstname,$cni,$password,$lastname,$email,$phone,$image)
+{
     global $pdo;
-    $req= $pdo->prepare
-    (
-        'INSERT INTO 
-                            users 
-                        VALUES (null ,?,?,?,?)'
-    );
-    return $req->execute
-    (
-        [
-            $username,
-            $name,
-            $cni,
-            $password
-        ]
-    );
+    if (!empty($username)  && !empty($cni) && !empty($password) && !empty($lastname)
+    && !empty($email) && !empty($phone) && !empty($firstname))
+    {
+        $req= $pdo->prepare
+        (
+            'INSERT INTO 
+                           users 
+                        VALUES (null ,?,?,?,?,?,?,?,?)'
+        );
+      return   $req->execute
+        (
+            [
+               $username,
+                $firstname,
+                $cni,
+                $password,
+                $lastname,
+                $email,
+                $phone,
+                $image
+            ]
+        );
+    }
+
+
 }
 function login($username,$password)
 {

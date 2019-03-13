@@ -5,9 +5,13 @@
     android:id="@+id/linearLayout_search"
     android:layout_gravity="center"
     android:paddingVertical="2dp" android:layout_width="match_parent">
-    <TextView
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_card_empiled"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Hello  world"/>
+        android:text="Hello  world">
+
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

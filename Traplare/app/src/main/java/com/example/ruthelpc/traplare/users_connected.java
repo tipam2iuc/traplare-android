@@ -1,5 +1,7 @@
 package com.example.ruthelpc.traplare;
 
+import android.content.Context;
+
 public class users_connected {
     public String username;
     public String firstname;
@@ -9,4 +11,7 @@ public class users_connected {
         this.username = username;
         this.firstname = firstname;
     }
+
+
+
 }

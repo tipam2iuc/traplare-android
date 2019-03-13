@@ -41,10 +41,8 @@ public class PlanningActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planning);
-
         viewPager = findViewById(R.id.viewpager);
         setViewPager(viewPager);
-
         tabLayout = findViewById(R.id.mytabs);
         tabLayout.setupWithViewPager(viewPager);
         Typeface RobotoBoldCondensed = Typeface.createFromAsset(getAssets(), "fonts/Roboto-BoldCondensed.ttf");
@@ -58,7 +56,6 @@ public class PlanningActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     private void setViewPager(ViewPager viewPager) {

@@ -2,15 +2,22 @@ package com.example.ruthelpc.traplare;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+
+import com.example.ruthelpc.traplare.modele.Usertools;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -60,6 +67,8 @@ public class MainClientActivity extends AppCompatActivity {
     ImageView imageView_Planning;
     ImageView imageView_Abonement;
     ImageView imageView_Profile;
+
+    LinearLayout linearLayout_infos;
     CircleImageView imageView_Profile2;
     String first;
     String user;
@@ -96,7 +105,7 @@ public class MainClientActivity extends AppCompatActivity {
         cardView_Panier = findViewById(R.id.cardView_Panier);
         cardView_Planning = findViewById(R.id.cardView_Planning);
         cardView_Abonement = findViewById(R.id.cardView_Abonement);
-
+        linearLayout_infos = findViewById(R.id.linearLayout_infos);
         constraintLayout_Help = findViewById(R.id.constraintLayout_Help);
         constraintLayout_Parametre = findViewById(R.id.constraintLayout_Parametre);
         constraintLayout_NoteAvis = findViewById(R.id.constraintLayout_NoteAvis);
@@ -117,11 +126,18 @@ public class MainClientActivity extends AppCompatActivity {
         imageView_Planning = findViewById(R.id.imageView_Planning);
         imageView_Abonement = findViewById(R.id.imageView_Abonement);
 
-        imageView_Profile2.setOnClickListener(new View.OnClickListener() {
+        imageView_Profile2.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainClientActivity.this, ProfileActivity.class);
-                startActivity(i);
+            public boolean onTouch(View v, MotionEvent event) {
+                Intent i = new Intent(MainClientActivity.this, AccountActivity.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(MainClientActivity.this, v, "profile");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    startActivity(i, options.toBundle());
+                }
+                else
+                    startActivity(i);
+                return false;
             }
         });
         imageView_Profile.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +157,8 @@ public class MainClientActivity extends AppCompatActivity {
 
             String f_name;
             String u_name;
-         users_connected u = (users_connected)Serializer.Deserialize("user_data",this);
+
+         users_connected u = Usertools.getConnect(MainClientActivity.this);
          if(u != null) {
              if (u.firstname.length() <= 20)
                  f_name = u.firstname;

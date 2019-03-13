@@ -10,7 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 
-public abstract class Serializer {
+public class Serializer {
 
     public  static void Serilize(String filename, Object object, Context context)
     {

@@ -1,6 +1,7 @@
 package com.example.ruthelpc.traplare;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -15,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.ruthelpc.traplare.modele.Usertools;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,11 +38,14 @@ public class LoginActivity extends AppCompatActivity {
     ProgressDialog mProgressDialog;
 
 
+    public static Context context;
+
     private ApiInterface apiInterface;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        context = getApplicationContext();
         if (2 == requestCode && RESULT_OK == resultCode) {
             // Fetch the score from the Intent
             parent = data.getSelector();
@@ -146,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
                 String uf = response.body().getFirstname();
                 String un = response.body().getUsername();
                 users_connected User = new users_connected(un, uf);
-                Serializer.Serilize("user_data", User, getApplicationContext());
+        Usertools.saveConnect(uf,un,LoginActivity.this);
                 if (v == 1)
                 {
                     Toast.makeText(LoginActivity.this,response.body().getMessage(),

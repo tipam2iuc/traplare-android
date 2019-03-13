@@ -1,15 +1,19 @@
 package com.example.ruthelpc.traplare;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -22,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText editView_address;
     Button button_next;
     TextView textView_already_has_account;
+    private Bitmap bitmap;
 
 
     @Override
@@ -102,5 +107,19 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+    private void chooseFile() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+    }
+
+    public String getStringImage(){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
     }
 }

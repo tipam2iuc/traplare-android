@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textView_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:paddingHorizontal="5dp"
+        android:text="15"
+        android:textAlignment="center"
+        android:textSize="38dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:text="Mai"
+        android:id="@+id/textViex_month"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/textView_date"
+        app:layout_constraintLeft_toLeftOf="@id/textView_date"
+        app:layout_constraintRight_toRightOf="@id/textView_date"
+        android:paddingHorizontal="5dp"
+        android:textAlignment="center"/>
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toRightOf="@id/textView_date"
+        app:layout_constraintTop_toTopOf="@id/textView_date"
+        android:layout_marginLeft="20dp"
+        app:cardBackgroundColor="#3988E4"
+        app:cardCornerRadius="10dp"
+        android:id="@+id/card_view_template"
+        app:layout_constraintBottom_toBottomOf="@id/textViex_month"
+        android:layout_marginRight="10dp"
+        app:layout_constraintRight_toRightOf="parent">
+
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>
