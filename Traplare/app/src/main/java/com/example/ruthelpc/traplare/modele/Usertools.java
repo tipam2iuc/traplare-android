@@ -9,9 +9,9 @@ public  class Usertools {
 private static users_connected u;
 private static String data="profil";
 
-public static void  saveConnect(String username, String firstname, Context context)
+public static void  saveConnect(int ui, String username, String firstname, Context context)
 {
-    u=new users_connected(username,firstname);
+    u=new users_connected(ui, username,firstname);
     Serializer.Serilize(data,u,context);
 }
 

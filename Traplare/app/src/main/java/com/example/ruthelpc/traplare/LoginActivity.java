@@ -151,8 +151,11 @@ public class LoginActivity extends AppCompatActivity {
 
                 String uf = response.body().getFirstname();
                 String un = response.body().getUsername();
-                users_connected User = new users_connected(un, uf);
-        Usertools.saveConnect(uf,un,LoginActivity.this);
+                int ui = response.body().getId();
+                users_connected User = new users_connected(ui, un, uf);
+
+                connected_bank.add(User);
+        Usertools.saveConnect(ui,uf,un,LoginActivity.this);
                 if (v == 1)
                 {
                     Toast.makeText(LoginActivity.this,response.body().getMessage(),

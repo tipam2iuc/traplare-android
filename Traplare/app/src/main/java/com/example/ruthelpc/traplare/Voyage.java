@@ -9,6 +9,8 @@ import java.util.Locale;
 public class Voyage {
     @SerializedName("compagnie")
     private String compagnie;
+    @SerializedName("id")
+    private int id;
     @SerializedName("message")
     private String message;
     @SerializedName("depart")
@@ -31,6 +33,12 @@ public class Voyage {
     }
     public void setDepart(String depart) {
         this.depart = depart;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setDepart(int id) {
+        this.id = id;
     }
     public double getTarif() {return tarif;}
     public void setTarif(double tarif) {this.tarif = tarif;}

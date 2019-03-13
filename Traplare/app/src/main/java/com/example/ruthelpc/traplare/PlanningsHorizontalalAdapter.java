@@ -3,8 +3,11 @@ package com.example.ruthelpc.traplare;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +19,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<PlanningsHorizontalalAdapter.PlanningsHolder>{
-    private ArrayList<Voyage> voyagesListe;
+    public static ArrayList<Voyage> voyagesListe;
     private Context context;
 
 
@@ -47,6 +50,7 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(v.getContext(), ReservationActivity.class);
+                    i.putExtra("idvoyage",voyagesListe.get(position).getId());
                     v.getContext().startActivity(i);
                 }
             });

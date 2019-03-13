@@ -35,7 +35,8 @@
         </activity>
         <activity android:name=".RegisterStep2" />
         <activity android:name=".AccountActivity" />
-        <activity android:name=".ReservationActivity"></activity>
+        <activity android:name=".ReservationActivity">
+        </activity>
     </application>
 
 </manifest>

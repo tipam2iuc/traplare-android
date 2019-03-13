@@ -6,29 +6,44 @@
     android:background="@drawable/bg"
     android:layout_height="match_parent"
     tools:context=".ReservationActivity">
-
+    <ImageView
+        android:id="@+id/imageView_back_to_menu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_back"
+        android:background="@drawable/dw_back_to_menu"
+        app:layout_constraintLeft_toLeftOf="parent"/>
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         app:cardElevation="15dp">
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/constraintLayout_ticket"
+            android:layout_height="wrap_content"
+            android:paddingBottom="30dp">
 
             <TextView
                 android:id="@+id/textView_depart_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
                 android:gravity="left"
                 android:text="Depart"
                 android:textColor="#585BBB"
                 android:textSize="13dp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView_arrive_title" />
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
@@ -67,9 +82,9 @@
                 android:textColor="#585BBB"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="50dp"
                 android:gravity="right"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="20dp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -99,10 +114,11 @@
                 android:layout_marginTop="20dp"
                 android:gravity="left"
                 android:text="Catégorie"
+                android:textColor="#585BBB"
                 android:textSize="13dp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="@id/textView_depart_value"
-                app:layout_constraintTop_toBottomOf="@id/textView_heure_arrive_value" />
+                app:layout_constraintTop_toBottomOf="@+id/textView_heure_depart_value" />
 
             <TextView
                 android:id="@+id/textView_tarif_value"
@@ -128,26 +144,28 @@
                 android:id="@+id/textView_class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:gravity="left"
                 android:text="Tarif"
+                android:textColor="#585BBB"
                 android:textSize="14dp"
                 android:textStyle="bold"
                 app:layout_constraintRight_toRightOf="@id/textView_arrive_title"
-                app:layout_constraintTop_toTopOf="@+id/textView_tarif" />
+                app:layout_constraintTop_toBottomOf="@+id/textView_heure_arrive_value" />
 
             <TextView
                 android:id="@+id/textView_passager_nom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:gravity="left"
                 android:text="Nom"
                 android:textColor="#585BBB"
                 android:textSize="13dp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView_class_value" />
+                app:layout_constraintTop_toBottomOf="@+id/textView_tarif_value" />
 
             <TextView
                 android:id="@+id/textView_passager_nom_value"
@@ -155,7 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:gravity="left"
-                android:text="Balock"
+                android:text="N/A"
                 android:textSize="11dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView_passager_nom" />
@@ -180,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:gravity="left"
-                android:text="Ruthel Cedrick Ascens"
+                android:text="N/A"
                 android:textSize="11dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView_passager_prenom" />
@@ -256,7 +274,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:gravity="left"
-                android:text="+237 6 98 55 42 96"
+                android:text="N/A"
                 android:textSize="11dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView_telephone" />
@@ -306,7 +324,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:gravity="left"
-                android:text="IUC16E0021794"
+                android:text="N/A"
                 android:textSize="11dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView_CNI" />
@@ -337,54 +355,38 @@
                 app:layout_constraintTop_toBottomOf="@id/textView_heure_reservation" />
 
         </android.support.constraint.ConstraintLayout>
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout_ticket">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="Reserver"
+                android:layout_marginBottom="15dp"
+                android:paddingHorizontal="50dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:background="#0987C1"
+                android:textColor="#fff"
+                android:shadowRadius="5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/flatbutton_edit_passager_nom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="210dp"
         android:src="@drawable/ic_edit"
         app:backgroundTint="#f1f1f1"
         app:elevation="16dp"
-        app:fabCustomSize="30dp"
+        app:fabCustomSize="50dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_edit"
-        app:backgroundTint="#f1f1f1"
-        app:elevation="16dp"
-        app:fabCustomSize="30dp"
-        android:id="@+id/flatbutton_edit_passager_prenom"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/flatbutton_edit_passager_nom"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/flatbutton_edit_telephone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_edit"
-        app:backgroundTint="#f1f1f1"
-        app:elevation="16dp"
-        app:fabCustomSize="30dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintLeft_toLeftOf="@id/flatbutton_edit_passager_nom"
-        app:layout_constraintTop_toBottomOf="@id/flatbutton_edit_passager_prenom"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:elevation="16dp"
-        app:fabCustomSize="30dp"
-        app:layout_constraintTop_toBottomOf="@id/flatbutton_edit_telephone"
-        app:layout_constraintLeft_toLeftOf="@id/flatbutton_edit_telephone"
-        android:src="@drawable/ic_edit"
-        app:backgroundTint="#f1f1f1"
-        android:layout_marginTop="30dp"/>
 </android.support.constraint.ConstraintLayout>

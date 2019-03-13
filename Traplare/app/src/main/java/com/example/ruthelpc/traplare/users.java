@@ -63,6 +63,13 @@ public class users {
     public void setValuename(String valuename) {
         this.valuename = valuename;
     }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int valuename) {
+        this.id = valuename;
+    }
 
     @SerializedName("valuename")
     private  String valuename;
