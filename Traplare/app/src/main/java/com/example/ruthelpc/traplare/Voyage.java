@@ -26,6 +26,8 @@ public class Voyage {
     @SerializedName("class")
     private String classe;
 
+
+
     public String getDepart() {
         return depart;
     }

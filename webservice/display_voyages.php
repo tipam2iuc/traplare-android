@@ -29,6 +29,7 @@ while ($voyage=$req->fetch())
         "depart"=>$voyage["depart"],
         "destination"=>$voyage["destination"],
         "class"=>$voyage["class"],
+        "id"=>$voyage["id"],
     );
     $compteur++;
 }
