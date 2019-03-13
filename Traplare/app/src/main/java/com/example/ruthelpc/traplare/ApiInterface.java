@@ -24,6 +24,8 @@ public interface ApiInterface {
     @POST("add_reservation.php")
     Call<Reservation> reservation
             (
+                    @Field("idvoyage") int idvoyage ,
+                    @Field("iduser") int iduser ,
                     @Field("date_reservation") String date_reservation ,
                     @Field("cni") String cni,
                     @Field("prenom") String prenom ,
