@@ -14,7 +14,7 @@ public class Voyage {
     @SerializedName("message")
     private String message;
     @SerializedName("depart")
-    private String depart;
+    public String depart;
     @SerializedName("destination")
     private String destination;
     @SerializedName("date_depart")
@@ -22,7 +22,6 @@ public class Voyage {
     @SerializedName("date_arrivee")
     private String date_arrivee;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.getDefault());
-
     @SerializedName("tarif")
     private double tarif;
     @SerializedName("class")
