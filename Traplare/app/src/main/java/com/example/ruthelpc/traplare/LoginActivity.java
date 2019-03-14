@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.example.ruthelpc.traplare.modele.Usertools;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     String username;
     String password;
     ProgressDialog mProgressDialog;
+    public static List<user_reservation>usersList;
 
 
     public static Context context;
@@ -129,8 +132,6 @@ public class LoginActivity extends AppCompatActivity {
         mProgressDialog = ProgressDialog.show(this, "",
                 "Veuillez patienter ...", true);
         mProgressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
-        mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
         new Thread((new Runnable() {
             @Override
             public void run() {
@@ -142,38 +143,34 @@ public class LoginActivity extends AppCompatActivity {
     public void login(final String username,final String password )
     {
         apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
-        Call<users> call=apiInterface.login(username,password);
-        call.enqueue(new Callback<users>() {
+        Call<List<user_reservation> > call=apiInterface.login(username,password);
+        call.enqueue(new Callback<List<user_reservation>>() {
             @Override
-            public void onResponse(@NonNull Call<users> call, @NonNull Response<users> response) {
-                String m =  response.body().getMessage();
-                int v=response.body().getSuccess();
-
-                String uf = response.body().getFirstname();
-                String un = response.body().getUsername();
-                users_connected User = new users_connected(un, uf);
-        Usertools.saveConnect(uf,un,LoginActivity.this);
-                if (v == 1)
-                {
-                    Toast.makeText(LoginActivity.this,response.body().getMessage(),
-                            Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(LoginActivity.this,PlanningActivity.class);
-                    mProgressDialog.dismiss();
-                    startActivity(intent);
-                }
+            public void onResponse(@NonNull Call<List<user_reservation>> call, @NonNull Response<List<user_reservation>> response) {
+                //String m =  response.body().get(1).;
+                //String uf = response.body().getFirstname();
+                //String un = response.body().getUsername();
+//                users_connected User = new users_connected(un, uf);
+//                Usertools.saveConnect(uf,un,LoginActivity.this);
+                    usersList=response.body();
+                    if(usersList.size() > 1) {
+                        Intent intent = new Intent(LoginActivity.this, PlanningActivity.class);
+                        mProgressDialog.dismiss();
+                        finish();
+                        startActivity(intent);
+                    }
                 else
                 {
                     mProgressDialog.dismiss();
-                    Toast.makeText(LoginActivity.this,response.body().getMessage(),
+                    Toast.makeText(LoginActivity.this,"Erreur lors de la connexion au serveur",
                             Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
-            public void onFailure(@NonNull Call<users> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<user_reservation>> call, @NonNull Throwable t) {
                 mProgressDialog.dismiss();
-                Toast.makeText(LoginActivity.this,t.getLocalizedMessage(),
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,"Impossible de se connecter au serveur",
+                        Toast.LENGTH_LONG).show();
 
             }
         });

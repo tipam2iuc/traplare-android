@@ -22,6 +22,7 @@ $compteur=0;
 while ($voyage=$req->fetch())
 {
     $response[$compteur]=array(
+        "id"=>$voyage["id"],
         "compagnie"=>$voyage["compagnie"],
         "tarif"=>$voyage["tarif"],
         "date_depart"=>$voyage["date_depart"],
@@ -29,6 +30,7 @@ while ($voyage=$req->fetch())
         "depart"=>$voyage["depart"],
         "destination"=>$voyage["destination"],
         "class"=>$voyage["class"],
+        "id"=>$voyage["id"],
     );
     $compteur++;
 }

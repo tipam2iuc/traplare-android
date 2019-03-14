@@ -3,8 +3,11 @@ package com.example.ruthelpc.traplare;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +19,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<PlanningsHorizontalalAdapter.PlanningsHolder>{
-    private ArrayList<Voyage> voyagesListe;
+    public static ArrayList<Voyage> voyagesListe;
     private Context context;
 
 
@@ -43,10 +46,24 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
             planningsHolder.textView_destination.setText(voyagesListe.get(position).getDestination());
             planningsHolder.textView_categorie.setText(voyagesListe.get(position).getClasse());
             planningsHolder.textView_agency_tarif_value.setText(String.valueOf(voyagesListe.get(position).getTarif())+ " XAF");
+
             planningsHolder.imageView_rseerve.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(v.getContext(), ReservationActivity.class);
+                    final int idv = voyagesListe.get(position).getId();
+                    for (Voyage voy: voyagesListe) {
+                        if (voy.getId() == idv){
+                            i.putExtra("depart", voy.getDepart());
+                            i.putExtra("compagnie", voy.getCompagnie());
+                            i.putExtra("destination", voy.getDestination());
+                            i.putExtra("date_depart", voy.getDate_depart());
+                            i.putExtra("date_arrive", voy.getDate_arrivee());
+                            i.putExtra("classe", voy.getClasse());
+                            i.putExtra("tarif", voy.getTarif());
+                            i.putExtra("id", voy.getId());
+                        }
+                    }
                     v.getContext().startActivity(i);
                 }
             });

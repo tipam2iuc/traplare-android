@@ -1,5 +1,6 @@
 package com.example.ruthelpc.traplare;
 
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,6 +25,8 @@ public interface ApiInterface {
     @POST("add_reservation.php")
     Call<Reservation> reservation
             (
+                    @Field("idvoyage") int idvoyage ,
+                    @Field("iduser") int iduser ,
                     @Field("date_reservation") String date_reservation ,
                     @Field("cni") String cni,
                     @Field("prenom") String prenom ,
@@ -32,8 +35,8 @@ public interface ApiInterface {
             );
 
     @FormUrlEncoded
-    @POST("login.php")
-    Call<users> login(
+    @POST("liste_voyage_for_user.php")
+    Call<List<user_reservation>> login(
             @Field("username") String username,
             @Field("password") String password
     );

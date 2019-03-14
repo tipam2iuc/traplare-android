@@ -104,7 +104,7 @@
                 <TextView
                     android:id="@+id/textView_num_identity_value"
                     android:layout_width="wrap_content"
-                    android:layout_height="13dp"
+                    android:layout_height="wrap_content"
                     android:text="ABCNU0001478"
                     android:textSize="12dp"
                     android:textStyle="bold"

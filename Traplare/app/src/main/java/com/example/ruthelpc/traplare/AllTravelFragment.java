@@ -38,7 +38,7 @@ public class AllTravelFragment extends Fragment {
     TextView textView_categories;
     TextView textView_all_travels;
     private ApiInterface apiInterface;
-    List<Voyage> voyages;
+    public static List<Voyage> voyages;
 
     private RecyclerView recyclerView_voyagesList;
     private RecyclerView.Adapter adapter_plannings;

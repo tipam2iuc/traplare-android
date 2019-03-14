@@ -16,10 +16,6 @@
         <activity
             android:name=".MainClientActivity"
             android:launchMode="singleTop" />
-        <![CDATA[
-        android:theme="@style/Theme.NoTitleBar.WithColoredSpinners">
-        ]]>
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".AvisClient"></activity>
         <activity android:name=".HelpActivity" />
         <activity android:name=".LoginActivity">
@@ -34,12 +30,11 @@
         <activity
             android:name=".PlanningActivity"
             android:parentActivityName=".MainClientActivity"
-            android:windowSoftInputMode="stateHidden">
-
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity android:name=".RegisterStep2" />
         <activity android:name=".AccountActivity" />
-        <activity android:name=".ReservationActivity"></activity>
+        <activity android:name=".ReservationActivity">
+        </activity>
     </application>
 
 </manifest>
