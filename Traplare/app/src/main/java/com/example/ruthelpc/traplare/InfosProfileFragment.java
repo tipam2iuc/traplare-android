@@ -1,6 +1,6 @@
 package com.example.ruthelpc.traplare;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class InfosProfileFragment extends Fragment {
     public InfosProfileFragment(){}
-    public  user_reservation ur = LoginActivity.usersList.get(1);
+    public  user_reservation ur;
     TextView textView_nom_user_value;
     TextView textView_nom_famille_value;
     TextView textView_prenom_value;

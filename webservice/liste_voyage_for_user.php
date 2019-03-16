@@ -15,7 +15,11 @@ if (isset($_REQUEST['username']) && isset($_REQUEST['password'])){
             $response[$compteur]=array
             (
                 "nom"=>$v->nom,
+                "nom_user"=>$v->lastname,
+                "prenom"=>$v->prenom,
+                "prenom_user"=>$v->firstname,
                 "cni"=>$v->cni,
+                "telephone_user"=>$v->phone,
                 "username"=>$v->username,
                 "email"=>$v->email,
                 "idvoyage"=>$v->idvoyage,

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ruthelpc.traplare">
-
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <!-- To auto-complete the email text field in the login form with the client's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -13,28 +12,25 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainClientActivity"
-            android:launchMode="singleTop" />
-        <activity android:name=".AvisClient"></activity>
-        <activity android:name=".HelpActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainClientActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".AvisClient" />
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".LoginActivity"/>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgottenActivity" />
-        <activity
-            android:name=".PlanningActivity"
-            android:parentActivityName=".MainClientActivity"
-            android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name=".PlanningActivity" android:parentActivityName=".MainClientActivity" android:windowSoftInputMode="stateHidden" />
         <activity android:name=".RegisterStep2" />
         <activity android:name=".AccountActivity" />
-        <activity android:name=".ReservationActivity">
-        </activity>
+        <activity android:name=".ReservationActivity"/>
     </application>
 
 </manifest>
