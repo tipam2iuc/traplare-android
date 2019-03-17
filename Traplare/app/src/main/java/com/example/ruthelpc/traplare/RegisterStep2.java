@@ -29,17 +29,18 @@ public class RegisterStep2 extends AppCompatActivity {
     Button button_precedent;
     Button button_sign_up;
     private Bitmap bitmap;
-
+    ProgressDialog mProgressDialog;
+    client client;
 
     private ApiInterface apiInterface;
 
-    String first_name;
-    String last_name;
+    String prenom;
+    String nom;
     String cni;
-    String phone;
+    String telephone;
     String email;
-    String image;
-    String password;
+    String photo;
+    String mot_de_passe;
     String username;
     int principalViewId;
 
@@ -63,13 +64,13 @@ public class RegisterStep2 extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null){
             if (intent.hasExtra("first"))
-                first_name = intent.getStringExtra("first");
+                prenom = intent.getStringExtra("first");
             if (intent.hasExtra("last"))
-                last_name = intent.getStringExtra("last");
+                nom = intent.getStringExtra("last");
             if (intent.hasExtra("cni"))
                 cni = intent.getStringExtra("cni");
             if (intent.hasExtra("phone"))
-                phone = intent.getStringExtra("phone");
+                telephone = intent.getStringExtra("phone");
             if (intent.hasExtra("adresse"))
                 email = intent.getStringExtra("adresse");
         }
@@ -134,47 +135,99 @@ public class RegisterStep2 extends AppCompatActivity {
         button_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                password = editView_password.getText().toString();
+                mot_de_passe = editView_password.getText().toString();
                 username = editView_user_account.getText().toString();
 
-
-                Inscription(username,first_name, last_name,cni, phone, email,password);
+                compute();
+                register(username,nom,prenom,cni,email,telephone,photo,mot_de_passe);
             }
         });
         }
 
-        public void Inscription(final String username, final String first_name,
-                                final String last_name, final String cni,
-                                final String  phone, final String email,
-                                final String password)
+        public void register(final String username, final String nom,
+                             final String prenom, final String cni,
+                             final String  email, final String telephone,
+                             final String photo, final String mot_de_passe)
         {
             apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
-            Call<users> call=apiInterface.inscription(username,first_name,cni,password,last_name,email,phone);
-            call.enqueue(new Callback<users>() {
+            Call<client> call=apiInterface.register(username,nom,prenom,cni,email,telephone,photo,mot_de_passe);
+            call.enqueue(new Callback<client>() {
             @Override
-            public void onResponse(@NonNull Call<users> call, @NonNull Response<users> response) {
+            public void onResponse(@NonNull Call<client> call, @NonNull Response<client> response) {
                 String m =  response.body().getMessage();
                 int v=response.body().getSuccess();
-                String u=response.body().getUsername();
-                    if (v == 1)
+                if (v == 1)
                 {
                     Toast.makeText(RegisterStep2.this,response.body().getMessage(),
                     Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(RegisterStep2.this,LoginActivity.class);
+                    //login(username, mot_de_passe, RegisterStep2.this, PlanningActivity.class, mProgressDialog);
+                    Intent intent = new Intent(RegisterStep2.this,PlanningActivity.class);
                     startActivity(intent);
                 }
                 else
                 {
+                    mProgressDialog.dismiss();
                     Toast.makeText(RegisterStep2.this,response.body().getMessage(),
                     Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
-            public void onFailure(@NonNull Call<users> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<client> call, @NonNull Throwable t) {
+                mProgressDialog.dismiss();
                 Toast.makeText(RegisterStep2.this,t.getLocalizedMessage(),
                 Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    private void compute() {
+        mProgressDialog = ProgressDialog.show(this, "",
+                "Veuillez patienter ...", true);
+        mProgressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
+        new Thread((new Runnable() {
+            @Override
+            public void run() {
+                mProgressDialog.setMessage("Veuillez patienter ...");
+            }
+        })).start();
+        // ...
+    }
+
+    public void login(final String username_cli,
+                      final String mot_de_passe_cli,
+                      final Context context,
+                      final Class classe,
+                      final ProgressDialog mProgressDialog)
+    {
+        apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
+        Call<client>call=apiInterface.login(username_cli, mot_de_passe_cli);
+        call.enqueue(new Callback<client>() {
+
+            @Override
+            public void onResponse(@NonNull Call<client> call,
+                                   @NonNull Response<client> response) {
+                client =response.body();
+                if(client.getSuccess() == 1) {
+                    Intent intent = new Intent(context, classe);
+                    mProgressDialog.dismiss();
+                    finish();
+                    startActivity(intent);
+                }
+                else
+                {
+                    mProgressDialog.dismiss();
+                    Toast.makeText(context,client.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(@NonNull Call<client> call, @NonNull Throwable t) {
+                mProgressDialog.dismiss();
+                Toast.makeText(context,t.getLocalizedMessage(),
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
 }

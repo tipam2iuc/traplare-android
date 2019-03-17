@@ -3,7 +3,6 @@ package com.example.ruthelpc.traplare;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-
-import com.example.ruthelpc.traplare.modele.Usertools;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -158,20 +155,19 @@ public class MainClientActivity extends AppCompatActivity {
             String f_name;
             String u_name;
 
-         users_connected u = Usertools.getConnect(MainClientActivity.this);
-         if(u != null) {
-             if (u.firstname.length() <= 20)
-                 f_name = u.firstname;
-             else
-                 f_name = u.firstname.substring(0, 19) + " ...";
-             if (u.username.length() <= 20)
-                 u_name = u.username;
-             else
-                 u_name = u.username.substring(0, 19) + " ...";
+ //        if(u != null) {
+   //          if (u.firstname.length() <= 20)
+          //       f_name = u.firstname;
+     //        else
+       //          f_name = u.firstname.substring(0, 19) + " ...";
+         //    if (u.username.length() <= 20)
+           //      u_name = u.username;
+             //else
+               //  u_name = u.username.substring(0, 19) + " ...";
 
-             textView_Profile_first.setText(f_name);
-             textView_Profile_name.setText(u_name);
-         }
+      //       textView_Profile_first.setText(f_name);
+        //     textView_Profile_name.setText(u_name);
+        // }
         textView_Help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

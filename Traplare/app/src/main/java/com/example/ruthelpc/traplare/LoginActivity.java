@@ -4,9 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,10 +12,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.ruthelpc.traplare.modele.Usertools;
 
 import java.util.List;
 
@@ -38,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     String username;
     String password;
     ProgressDialog mProgressDialog;
-    public static List<user_reservation>usersList;
+    public static client client;
 
 
     public static Context context;
@@ -106,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (username!="" && password!="")
                 {
                     compute();
-                    login(username,password);
+                    login(username,password, LoginActivity.this, PlanningActivity.class, mProgressDialog);
                 }
                 else
                 {
@@ -140,37 +137,38 @@ public class LoginActivity extends AppCompatActivity {
         })).start();
         // ...
     }
-    public void login(final String username,final String password )
+    public void login(final String username_cli,
+                      final String mot_de_passe_cli,
+                      final Context context,
+                      final Class classe,
+                      final ProgressDialog mProgressDialog)
     {
         apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<user_reservation> > call=apiInterface.login(username,password);
-        call.enqueue(new Callback<List<user_reservation>>() {
+        Call<client>call=apiInterface.login(username_cli, mot_de_passe_cli);
+        call.enqueue(new Callback<client>() {
+
             @Override
-            public void onResponse(@NonNull Call<List<user_reservation>> call, @NonNull Response<List<user_reservation>> response) {
-                //String m =  response.body().get(1).;
-                //String uf = response.body().getFirstname();
-                //String un = response.body().getUsername();
-//                users_connected User = new users_connected(un, uf);
-//                Usertools.saveConnect(uf,un,LoginActivity.this);
-                    usersList=response.body();
-                    if(usersList.size() > 1) {
-                        Intent intent = new Intent(LoginActivity.this, PlanningActivity.class);
-                        mProgressDialog.dismiss();
-                        finish();
-                        startActivity(intent);
-                    }
+            public void onResponse(@NonNull Call<client> call,
+                                   @NonNull Response<client> response) {
+                client =response.body();
+                if(client.getSuccess() == 1) {
+                    Intent intent = new Intent(context, classe);
+                    mProgressDialog.dismiss();
+                    finish();
+                    startActivity(intent);
+                }
                 else
                 {
                     mProgressDialog.dismiss();
-                    Toast.makeText(LoginActivity.this,"Erreur lors de la connexion au serveur",
+                    Toast.makeText(LoginActivity.this,client.getMessage(),
                             Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
-            public void onFailure(@NonNull Call<List<user_reservation>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<client> call, @NonNull Throwable t) {
                 mProgressDialog.dismiss();
-                Toast.makeText(LoginActivity.this,"Impossible de se connecter au serveur",
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this,t.getLocalizedMessage(),
+                        Toast.LENGTH_SHORT).show();
 
             }
         });

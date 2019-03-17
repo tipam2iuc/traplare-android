@@ -8,8 +8,12 @@ function login2($username,$password)
         'SELECT  
               reservation.nom,
               reservation.cni,
+              reservation.prenom,
               users.username,
+              users.lastname ,
+              users.firstname ,
               users.email ,
+              users.phone ,
               reservation.idvoyage,
               reservation.date_reservation,
               reservation.telephone,
