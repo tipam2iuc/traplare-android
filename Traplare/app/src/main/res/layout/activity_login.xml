@@ -17,7 +17,7 @@
             android:transitionName="logo"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/imageView_logo"
             android:layout_height="100dp"
@@ -69,10 +69,19 @@
             android:textColor="#e8fafc"
             android:textColorHint="#d0ecef"
             android:textSize="13dp"
+            android:paddingRight="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editView_login" />
-
+        <ImageView
+            android:id="@+id/imageView_show_hide_password"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/hide"
+            app:layout_constraintTop_toTopOf="@id/editView_password"
+            app:layout_constraintRight_toRightOf="@id/editView_password"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/editView_password"/>
         <Button
             android:id="@+id/button_sign_in"
             android:layout_width="0dp"
@@ -183,15 +192,16 @@
                 android:layout_marginLeft="25dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:text="Google"
-                android:textColor="#B42726"
+                android:textColor="#BD3736"
                 android:drawablePadding="0dp"
                 android:layout_marginRight="5dp"
                 app:layout_constraintRight_toLeftOf="@+id/logo_facebook"
-                android:padding="10dp"
                 android:id="@+id/logo_google"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="15dp"
                 android:textAllCaps="false"
                 app:layout_constraintTop_toBottomOf="@+id/textView_alternative_connexion"
-                android:drawableLeft="@drawable/google" />
+                android:drawableLeft="@drawable/ic_google" />
         <Button
             android:layout_width="0dp"
             android:id="@+id/logo_facebook"
@@ -205,9 +215,11 @@
             android:text="Facebook"
             android:textAllCaps="false"
             android:drawablePadding="7dp"
-            android:padding="10dp"
+            android:textColor="#0E488F"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="10dp"
             app:layout_constraintTop_toBottomOf="@+id/textView_alternative_connexion"
-            android:drawableLeft="@drawable/facebook"
+            android:drawableLeft="@drawable/ic_facebook"
             />
 
     </android.support.constraint.ConstraintLayout>

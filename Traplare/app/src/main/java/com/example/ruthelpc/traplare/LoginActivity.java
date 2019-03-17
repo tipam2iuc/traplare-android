@@ -5,18 +5,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText editView_password;
     Button button_sign_in;
     TextView textView_sign_up;
+    ImageView imageView_show_hide_password ;
+    ImageView imageView_logo ;
     Intent parent;
     public static AssetManager asset;
     String username;
@@ -69,6 +72,8 @@ public class LoginActivity extends AppCompatActivity {
         editView_password = findViewById(R.id.editView_password);
         button_sign_in = findViewById(R.id.button_sign_in);
         textView_sign_up = findViewById(R.id.textView_sign_up);
+        imageView_show_hide_password = findViewById(R.id.imageView_show_hide_password);
+        imageView_logo = findViewById(R.id.imageView_logo);
 
         Typeface ProductSans = Typeface.createFromAsset(LoginActivity.asset,"fonts/Product Sans Bold.ttf");
         Typeface RobotoReg = Typeface.createFromAsset(getAssets(),"fonts/Roboto-Bold.ttf");
@@ -79,6 +84,19 @@ public class LoginActivity extends AppCompatActivity {
         button_sign_in.setTypeface(RobotoReg);
         textView_sign_up.setTypeface(RobotoReg);
 
+        imageView_show_hide_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(editView_password.getInputType() == InputType.TYPE_TEXT_VARIATION_PASSWORD){
+                    imageView_show_hide_password.setImageDrawable(getResources().getDrawable(R.drawable.view));
+                    editView_password.setInputType(InputType.TYPE_CLASS_TEXT);}
+
+                else if(editView_password.getInputType() == InputType.TYPE_CLASS_TEXT) {
+                    imageView_show_hide_password.setImageDrawable(getResources().getDrawable(R.drawable.hide));
+                    editView_password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+            }
+        });
         if(username != null){
             editView_login.setText(username);
         }
@@ -120,8 +138,16 @@ public class LoginActivity extends AppCompatActivity {
         textView_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
+                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(LoginActivity.this,
+                                imageView_logo,
+                                "logo");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    startActivity(i, options.toBundle());
+                }
+                else
+                    startActivity(i);
             }
         });
     }
