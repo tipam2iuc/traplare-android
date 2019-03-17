@@ -163,14 +163,14 @@ public class LoginActivity extends AppCompatActivity {
         })).start();
         // ...
     }
-    public void login(final String username_cli,
+    public void login(final String telephone_cli,
                       final String mot_de_passe_cli,
                       final Context context,
                       final Class classe,
                       final ProgressDialog mProgressDialog)
     {
         apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
-        Call<client>call=apiInterface.login(username_cli, mot_de_passe_cli);
+        Call<client>call=apiInterface.login(telephone_cli, mot_de_passe_cli);
         call.enqueue(new Callback<client>() {
 
             @Override
