@@ -1,6 +1,8 @@
 package com.example.ruthelpc.traplare;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
@@ -48,10 +50,10 @@ public class RegisterStep2 extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode==0 && resultCode== Activity.RESULT_OK)
         {
-            first_name = data.getStringExtra("first");
-            last_name = data.getStringExtra("last");
+            prenom = data.getStringExtra("first");
+            nom = data.getStringExtra("last");
             cni = data.getStringExtra("cni");
-            phone = data.getStringExtra("phone");
+            telephone = data.getStringExtra("phone");
             email = data.getStringExtra("adresse");
         }
     }
