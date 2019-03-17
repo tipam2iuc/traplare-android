@@ -160,31 +160,12 @@ class voyage
     /**
      * @return mixed
      */
-     public  function get_travels()
+     public function get_travels()
     {
         global $pdo;
-            $req= $pdo->prepare
-            (
-                'SELECT * FROM 
-                           voyage
-                          WHERE $date_debut_voy >= CURRENT()'
-            );
-            return $req->execute
-            (
-                [
-                    $username_cli,
-                    $nom_cli,
-                    $prenom_cli,
-                    $cni_cli,
-                    $email_cli,
-                    $telephone_cli,
-                    $photo_cli,
-                    $password
-                ]
-            );
-        }
-
-
+           $req= $pdo->prepare("SELECT * FROM voyage  WHERE date_depart>=NOW()");
+           $req->execute();
+        return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
 

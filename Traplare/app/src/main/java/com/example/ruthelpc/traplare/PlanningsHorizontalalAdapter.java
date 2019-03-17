@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<PlanningsHorizontalalAdapter.PlanningsHolder>{
     public static ArrayList<Voyage> voyagesListe;
     private Context context;
+    View view = null;
 
 
     public PlanningsHorizontalalAdapter(ArrayList<Voyage> voyagesListe, Context context){
@@ -31,7 +32,7 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
     @NonNull
     @Override
     public PlanningsHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = null;
+        view = null;
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext().getApplicationContext());
         view = inflater.inflate(R.layout.planning_travels,viewGroup,false);
         Log.i("CreateHolder","Holder Created");
@@ -69,12 +70,16 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
             });
         }
         else{
-            planningsHolder.textView_agence.setBackgroundColor(planningsHolder.textView_agence.getResources().getColor(R.color.colorBlue));
-            planningsHolder.textView_agence.setText(voyagesListe.get(position).getDepart());
-            planningsHolder.textView_provenance.setText(voyagesListe.get(position).getDepart());
-            planningsHolder.textView_provenance.setBackgroundColor(planningsHolder.textView_agence.getResources().getColor(R.color.colorBlue));
-            planningsHolder.textView_destination.setText(voyagesListe.get(position).getDestination());
-            planningsHolder.textView_destination.setBackgroundColor(planningsHolder.textView_agence.getResources().getColor(R.color.colorBlue));
+            planningsHolder.textView_agence.setBackgroundColor(planningsHolder.view.getResources().getColor(R.color.colorNonConnect));
+            planningsHolder.textView_agence.setTextColor(planningsHolder.view.getResources().getColor(R.color.colorNonConnect));
+            planningsHolder.textView_provenance.setBackgroundColor(planningsHolder.view.getResources().getColor(R.color.colorNonConnect));
+            planningsHolder.textView_provenance.setTextColor(planningsHolder.view.getResources().getColor(R.color.colorNonConnect));
+            planningsHolder.textView_destination.setBackgroundColor(planningsHolder.view.getResources().getColor(R.color.colorNonConnect));
+            planningsHolder.textView_destination.setTextColor(planningsHolder.view.getResources().getColor(R.color.colorNonConnect));
+            planningsHolder.textView_categorie.setBackgroundColor(planningsHolder.view.getResources().getColor(R.color.colorNonConnect));
+            planningsHolder.textView_categorie.setTextColor(planningsHolder.view.getResources().getColor(R.color.colorNonConnect));
+            planningsHolder.textView_agency_tarif_value.setBackgroundColor(planningsHolder.view.getResources().getColor(R.color.colorNonConnect));
+            planningsHolder.textView_agency_tarif_value.setTextColor(planningsHolder.view.getResources().getColor(R.color.colorNonConnect));
         }
     }
 
@@ -92,10 +97,11 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
         private TextView textView_provenance;
         private TextView textView_destination;
         private TextView textView_agency_tarif_value;
+        View view;
 
         public PlanningsHolder(@NonNull final View itemView) {
             super(itemView);
-
+            view = itemView;
             layout = itemView.findViewById(R.id.layout_template_travel2);
             textView_categorie = itemView.findViewById(R.id.textView_travel_classe_value);
             imageView_flag = itemView.findViewById(R.id.imageView_main_container);

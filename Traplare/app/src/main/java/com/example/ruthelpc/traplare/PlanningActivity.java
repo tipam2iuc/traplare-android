@@ -60,9 +60,9 @@ public class PlanningActivity extends AppCompatActivity {
 
     private void setViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AllTravelFragment(), "Les voyages");
-        adapter.addFragment(new CategotiesFragment(),"Catégories");
-        adapter.addFragment(new PromotionsFragment(), "Les Promos");
+        adapter.addFragment(new AllTravelFragment(), "Accueil");
+        adapter.addFragment(new CategotiesFragment(),"Mes modèles");
+        adapter.addFragment(new PromotionsFragment(), "Offres promotionnels");
         viewPager.setAdapter(adapter);
     }
 

@@ -55,7 +55,7 @@
         android:id="@+id/linearLayout_infos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/bg"
+        android:background="@drawable/fond1"
         android:orientation="vertical"
         android:transitionName="couverture"
         app:layout_constraintLeft_toLeftOf="parent"
