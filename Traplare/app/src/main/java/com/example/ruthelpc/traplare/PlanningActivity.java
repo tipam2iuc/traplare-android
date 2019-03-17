@@ -33,7 +33,7 @@ import retrofit2.Response;
 
 public class PlanningActivity extends AppCompatActivity {
     ImageView imageView_menu;
-    EditText editText_your_destination;
+    TextView editText_your_destination;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     Intent i;
