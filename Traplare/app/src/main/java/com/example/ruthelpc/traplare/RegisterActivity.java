@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_step2);
+        setContentView(R.layout.activity_register);
 
         editView_confirm_password = findViewById(R.id.editView_confirm_password);
         editView_password = findViewById(R.id.editView_password);
