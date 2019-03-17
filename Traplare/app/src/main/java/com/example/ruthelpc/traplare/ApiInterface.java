@@ -12,12 +12,7 @@ public interface ApiInterface {
     @POST("controlleur/register.php")
     Call<client> register(
             @Field("username_cli") String username,
-            @Field("nom_cli") String nom,
-            @Field("prenom_cli") String prenom,
-            @Field("cni_cli") String cni,
-            @Field("email_cli") String email,
             @Field("telephone_cli") String telephone,
-            @Field("photo_cli") String photo,
             @Field("mot_de_passe") String mot_de_passe
     );
 

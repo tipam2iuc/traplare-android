@@ -101,20 +101,20 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mot_de_passe = editView_password.getText().toString();
                 username = editView_user_account.getText().toString();
+                telephone=editView_telephone.getText().toString();
 
                 compute();
-                register(username,nom,prenom,cni,email,telephone,photo,mot_de_passe);
+                register(username,telephone,mot_de_passe);
             }
         });
         }
 
-        public void register(final String username, final String nom,
-                             final String prenom, final String cni,
-                             final String  email, final String telephone,
-                             final String photo, final String mot_de_passe)
+        public void register(final String username, final String telephone, final String mot_de_passe)
+
+
         {
             apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
-            Call<client> call=apiInterface.register(username,nom,prenom,cni,email,telephone,photo,mot_de_passe);
+            Call<client> call=apiInterface.register(username,telephone,mot_de_passe);
             call.enqueue(new Callback<client>() {
             @Override
             public void onResponse(@NonNull Call<client> call, @NonNull Response<client> response) {
@@ -124,7 +124,7 @@ public class RegisterActivity extends AppCompatActivity {
                 {
                 //    Toast.makeText(RegisterActivity.this,response.body().getMessage(),
                 //    Toast.LENGTH_SHORT).show();
-                    login(username, mot_de_passe, RegisterActivity.this, PlanningActivity.class, mProgressDialog);
+                    login(telephone, mot_de_passe, RegisterActivity.this, PlanningActivity.class, mProgressDialog);
                     Intent intent = new Intent(RegisterActivity.this,PlanningActivity.class);
                     startActivity(intent);
                 }
