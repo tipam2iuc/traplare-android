@@ -21,7 +21,7 @@
             app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/imageView_logo"
             android:layout_height="100dp"
-            android:src="@drawable/logo_traplare_img"/>
+            android:src="@drawable/logo_traplare_img2"/>
         <TextView
             android:id="@+id/textView_Logo"
             android:layout_width="0dp"
@@ -47,7 +47,7 @@
             android:layout_marginHorizontal="25dp"
             android:inputType="text"
             android:background="@drawable/input_login"
-            android:hint="Identifiant"
+            android:hint="Téléphone"
             android:textColorHint="#d0ecef"
             android:textColor="#e8fafc"
             android:textSize="13dp"

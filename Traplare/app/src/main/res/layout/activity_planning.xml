@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@drawable/bg2"
+    android:background="@drawable/fond2"
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
@@ -21,7 +21,6 @@
             android:layout_marginTop="15dp"
             android:focusedByDefault="true"
             android:focusable="true"
-            android:layout_marginBottom="15dp"
             android:orientation="horizontal"
             android:paddingVertical="2dp"
             android:paddingRight="20dp"
@@ -65,22 +64,19 @@
             android:layout_height="wrap_content"
             app:tabGravity="fill"
             app:tabIndicatorColor="#e6f9ff"
-            app:tabMode="fixed"
+            app:tabMode="scrollable"
             app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
             app:tabTextColor="#e6f9ff" />
     </android.support.design.widget.AppBarLayout>
     <android.support.design.widget.FloatingActionButton
-        android:layout_width="60dp"
+        android:layout_width="50dp"
         app:backgroundTint="#FAFAFA"
-        android:layout_height="60dp"
-        app:elevation="10dp"
-        android:elevation="10dp"
-        android:alpha="10"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="20dp"
-        android:src="@drawable/search"
-        app:fabCustomSize="60dp"
+        android:src="@drawable/ic_search"
+        app:fabCustomSize="50dp"
         android:layout_marginBottom="20dp"/>
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"

@@ -83,6 +83,11 @@ public class PlanningsVerticalAdapter extends RecyclerView.Adapter<PlanningsVert
             ((LinearLayoutManager) layoutManager).setOrientation(LinearLayout.HORIZONTAL);
             r.setLayoutManager(layoutManager);
             r.setAdapter(adapter_plannings);
+            planningsHolder.textView_Date.setText("Erreur de connexion");
+            planningsHolder.textView_Date.setPadding(5,2,0,0);
+            planningsHolder.textView_Date.setCompoundDrawablePadding(10);
+            planningsHolder.textView_Date.setCompoundDrawablesWithIntrinsicBounds(planningsHolder.view.getResources().
+                    getDrawable(R.drawable.ic_error),null,null,null);
         }
     }
 
@@ -93,12 +98,11 @@ public class PlanningsVerticalAdapter extends RecyclerView.Adapter<PlanningsVert
 
     public static class PlanningsHolder extends RecyclerView.ViewHolder {
         private ConstraintLayout layout;
-        private ImageView imageView_flag;
+        View view;
         private TextView textView_Date;
-        private TextView textView_provenance;
-        private TextView textView_destination;
         public PlanningsHolder(@NonNull View itemView) {
             super(itemView);
+            view = itemView;
             layout = itemView.findViewById(R.id.layout_template_travel);
             //imageView_flag = itemView.findViewById(R.id.imageView_main_container);
             textView_Date = itemView.findViewById(R.id.textView_Date);
