@@ -161,7 +161,7 @@ public class RegisterStep2 extends AppCompatActivity {
                     Toast.makeText(RegisterStep2.this,response.body().getMessage(),
                     Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(RegisterStep2.this,PlanningActivity.class);
+                    Intent intent = new Intent(RegisterStep2.this,LoginActivity.class);
                     startActivity(intent);
                 }
                 else

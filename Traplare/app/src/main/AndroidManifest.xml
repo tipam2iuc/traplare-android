@@ -30,7 +30,9 @@
         <activity
             android:name=".PlanningActivity"
             android:parentActivityName=".MainClientActivity"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden">
+
+        </activity>
         <activity android:name=".RegisterStep2" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".ReservationActivity">
