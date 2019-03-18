@@ -65,10 +65,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/editText_cni"
+                    android:id="@+id/editText_matricule"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="N² CNI"
+                    android:hint="Matricule"
                     android:marginBottom="20dp"
                     android:layout_marginHorizontal="25dp"
                     android:textSize="13dp"/>
@@ -105,11 +105,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/editText_motdepasse"
+                    android:id="@+id/editText_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Mot de passe"
-                    android:inputType="textPassword|numberPassword"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
                     android:marginBottom="20dp"
                     android:layout_marginHorizontal="25dp"
                     android:textSize="13dp"/>
@@ -119,10 +119,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/editText_confirm_motdepasse"
+                    android:id="@+id/editText_dateEmbauche"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Confirmer mot de passe"
+                    android:hint="Date d'embauche"
+                    android:inputType="textDate"
+                    android:marginBottom="20dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:textSize="13dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/editText_poste"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Poste"
+                    android:inputType="text"
+                    android:marginBottom="20dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:textSize="13dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/editText_agence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Agence"
                     android:inputType="textPassword|numberPassword"
                     android:marginBottom="20dp"
                     android:layout_marginHorizontal="25dp"
@@ -142,8 +170,7 @@
             android:background="#1F98E0"
             android:text="Enregistrer"
             android:textColor="@android:color/white"
-            android:layout_marginHorizontal="15dp"
-            />
+            android:layout_marginHorizontal="25dp" />
 
     </android.support.constraint.ConstraintLayout>
 
