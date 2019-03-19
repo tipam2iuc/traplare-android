@@ -65,7 +65,8 @@ public class PlanningActivity extends AppCompatActivity {
             }
         });
 
-        final ResizeAnimation animation = new ResizeAnimation(searchView_find,50, 150, true);
+
+        final ResizeAnimation animation = new ResizeAnimation(searchView_find,ToDp(searchView_find.getWidth()), ToDp(250), true);
 
         animation.setDuration(5000);
         /*animation.setAnimationListener(new Animation.AnimationListener() {
@@ -130,5 +131,7 @@ public class PlanningActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
-
+    public int ToDp(int px) {
+        return px / ((int)getApplicationContext().getResources().getDisplayMetrics().density);
+    }
 }
