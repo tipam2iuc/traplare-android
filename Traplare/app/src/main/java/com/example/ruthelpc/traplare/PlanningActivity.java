@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,9 +16,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,6 +37,8 @@ import retrofit2.Response;
 public class PlanningActivity extends AppCompatActivity {
     ImageView imageView_menu;
     TextView editText_your_destination;
+    SearchView searchView_find;
+    FloatingActionButton button_search;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     Intent i;
@@ -41,19 +46,50 @@ public class PlanningActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planning);
+
+        button_search = findViewById(R.id.button_search_travel);
         viewPager = findViewById(R.id.viewpager);
+        searchView_find = findViewById(R.id.searchView_find_travel);
         setViewPager(viewPager);
         tabLayout = findViewById(R.id.mytabs);
         tabLayout.setupWithViewPager(viewPager);
         Typeface RobotoBoldCondensed = Typeface.createFromAsset(getAssets(), "fonts/Roboto-BoldCondensed.ttf");
         imageView_menu = findViewById(R.id.imageView_menu);
-        editText_your_destination = findViewById(R.id.editText_your_destination);
+        editText_your_destination = findViewById(R.id.editText_your_Title);
         editText_your_destination.setTypeface(RobotoBoldCondensed);
         imageView_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PlanningActivity.this, MainClientActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        final ResizeAnimation animation = new ResizeAnimation(searchView_find,50, 150, true);
+
+        animation.setDuration(5000);
+        /*animation.setAnimationListener(new Animation.AnimationListener() {
+
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+        });
+        */
+        button_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchView_find.startAnimation(animation);
             }
         });
     }

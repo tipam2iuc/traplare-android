@@ -37,7 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/editText_your_destination"
+                android:id="@+id/editText_your_Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:focusableInTouchMode="true"
@@ -56,6 +56,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="309dp" />
+            <SearchView
+                android:id="@+id/searchView_find_travel"
+                app:layout_constraintLeft_toRightOf="@id/editText_your_Title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="#fff"
+                android:layout_height="match_parent"
+                android:layout_width="30dp"/>
         </android.support.constraint.ConstraintLayout>
 
         <android.support.design.widget.TabLayout
@@ -76,6 +85,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="20dp"
         android:src="@drawable/ic_search"
+        android:id="@+id/button_search_travel"
         app:fabCustomSize="50dp"
         android:layout_marginBottom="20dp"/>
         <android.support.v4.view.ViewPager

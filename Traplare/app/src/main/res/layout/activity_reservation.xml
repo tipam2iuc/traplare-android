@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:text="Ma réservation"
+        android:text="Ticket    "
         android:textColor="#ffffff"
         android:textSize="16dp"
         android:textStyle="bold"
@@ -23,7 +23,6 @@
         android:id="@+id/imageView_back_to_menu"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:clickable="true"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,6 +41,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:id="@+id/constraintLayout_ticket"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_height="wrap_content"
             android:paddingBottom="30dp">
             <ImageView
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:gravity="left"
                 android:text="Depart"
                 android:textColor="#585BBB"
@@ -86,10 +86,19 @@
                 android:id="@+id/textView_depart_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Adresse de depart"
+                android:text="Ville départ"
                 android:textSize="10dp"
                 app:layout_constraintLeft_toLeftOf="@id/textView_depart_title"
                 app:layout_constraintTop_toBottomOf="@id/textView_depart_title" />
+
+            <TextView
+                android:id="@+id/textView_depart_ville_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adresse de depart"
+                android:textSize="10dp"
+                app:layout_constraintLeft_toLeftOf="@id/textView_depart_title"
+                app:layout_constraintTop_toBottomOf="@id/textView_depart_value" />
 
             <TextView
                 android:id="@+id/textView_heure_depart_value"
@@ -98,7 +107,7 @@
                 android:text="10 h 40 min"
                 android:textSize="10dp"
                 app:layout_constraintLeft_toLeftOf="@id/textView_depart_title"
-                app:layout_constraintTop_toBottomOf="@id/textView_depart_value" />
+                app:layout_constraintTop_toBottomOf="@id/textView_depart_ville_value" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="30dp"
@@ -114,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:gravity="right"
                 android:text="Arrivée"
                 android:textColor="#585BBB"
@@ -124,6 +133,16 @@
                 app:layout_constraintTop_toBottomOf="@id/textView_compagnie"/>
 
             <TextView
+                android:id="@+id/textView_arrive_ville_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="ville d'arrivée"
+                android:textSize="10dp"
+                app:layout_constraintRight_toRightOf="@id/textView_arrive_title"
+                app:layout_constraintTop_toBottomOf="@id/textView_arrive_title" />
+
+            <TextView
                 android:id="@+id/textView_arrive_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -131,7 +150,7 @@
                 android:text="Adresse d'arrivée"
                 android:textSize="10dp"
                 app:layout_constraintRight_toRightOf="@id/textView_arrive_title"
-                app:layout_constraintTop_toBottomOf="@id/textView_arrive_title" />
+                app:layout_constraintTop_toBottomOf="@id/textView_arrive_ville_value" />
 
             <TextView
                 android:id="@+id/textView_heure_arrive_value"

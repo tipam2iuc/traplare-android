@@ -42,27 +42,30 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
     @Override
     public void onBindViewHolder(@NonNull final PlanningsHolder planningsHolder, final int position) {
         if(PlanningsVerticalAdapter.wellLoad) {
-            planningsHolder.textView_agence.setText(voyagesListe.get(position).getCompagnie());
-            planningsHolder.textView_provenance.setText(voyagesListe.get(position).getDepart());
-            planningsHolder.textView_destination.setText(voyagesListe.get(position).getDestination());
-            planningsHolder.textView_categorie.setText(voyagesListe.get(position).getClasse());
-            planningsHolder.textView_agency_tarif_value.setText(String.valueOf(voyagesListe.get(position).getTarif())+ " XAF");
+            planningsHolder.textView_agence.setText(voyagesListe.get(position).getNom_com());
+            planningsHolder.textView_provenance.setText(voyagesListe.get(position).getVille_depart());
+            planningsHolder.textView_destination.setText(voyagesListe.get(position).getVille_arrive());
+            planningsHolder.textView_categorie.setText(voyagesListe.get(position).getCategorie_cla());
+            planningsHolder.textView_agency_tarif_value.setText(String.valueOf(voyagesListe.get(position).getPrix_voy())+ " XAF");
 
             planningsHolder.imageView_rseerve.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(v.getContext(), ReservationActivity.class);
-                    final int idv = voyagesListe.get(position).getId();
+                    final int idv = voyagesListe.get(position).getId_voy();
                     for (Voyage voy: voyagesListe) {
-                        if (voy.getId() == idv){
-                            i.putExtra("depart", voy.getDepart());
-                            i.putExtra("compagnie", voy.getCompagnie());
-                            i.putExtra("destination", voy.getDestination());
-                            i.putExtra("date_depart", voy.getDate_depart());
-                            i.putExtra("date_arrive", voy.getDate_arrivee());
-                            i.putExtra("classe", voy.getClasse());
-                            i.putExtra("tarif", voy.getTarif());
-                            i.putExtra("id", voy.getId());
+                        if (voy.getId_voy() == idv){
+                            i.putExtra("depart", voy.getAgence_depart());
+                            i.putExtra("matricule", voy.getMatricule_bus());
+                            i.putExtra("depart_ville", voy.getVille_depart());
+                            i.putExtra("compagnie", voy.getNom_com());
+                            i.putExtra("destination", voy.getAgence_arrivee());
+                            i.putExtra("destination_ville", voy.getVille_arrive());
+                            i.putExtra("date_depart", voy.getDate_debut_voy());
+                            i.putExtra("date_arrive", voy.getDate_arrivee_voy());
+                            i.putExtra("classe", voy.getCategorie_cla());
+                            i.putExtra("tarif", voy.getPrix_voy());
+                            i.putExtra("id", voy.getId_voy());
                         }
                     }
                     v.getContext().startActivity(i);
