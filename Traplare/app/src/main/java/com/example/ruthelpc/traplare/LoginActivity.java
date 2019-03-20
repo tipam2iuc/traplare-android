@@ -1,8 +1,10 @@
 package com.example.ruthelpc.traplare;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -18,6 +20,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,31 +43,15 @@ public class LoginActivity extends AppCompatActivity {
     String password;
     ProgressDialog mProgressDialog;
     public static client client;
-
-
+    public  client_connected client_connected;
     public static Context context;
 
     private ApiInterface apiInterface;
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        context = getApplicationContext();
-        if (2 == requestCode && RESULT_OK == resultCode) {
-            // Fetch the score from the Intent
-            parent = data.getSelector();
-            startActivity(parent);
-        }
-        if (0 == resultCode){
-            username = data.getStringExtra("account");
-        }
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         asset = getAssets();
 
         textView_Logo = findViewById(R.id.textView_Logo);
@@ -176,7 +164,18 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<client> call,
                                    @NonNull Response<client> response) {
-                client =response.body();
+
+                client = response.body();
+                client_connected = new client_connected(client.getUsername_cli(), client.getPrenom_cli(), client.getNom_cli(),
+                        client.getCni_cli(), client.getEmail_cli(), client.getTelephone_cli(), client.getPhoto_cli(),
+                        client.getMot_de_passe_cli());
+                SharedPreferences sharedPreferences = context.getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+                Gson gson = new Gson();
+                String json = gson.toJson(client_connected);
+                sharedPreferences.edit()
+                        .putString("client",json)
+                        .apply();
+
                 if(client.getSuccess() == 1) {
                     Intent intent = new Intent(context, classe);
                     mProgressDialog.dismiss();

@@ -25,6 +25,7 @@
         <activity android:name=".AvisClient" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".LoginActivity">
+
         </activity>
         <activity android:name=".ForgottenActivity" />
         <activity android:name=".PlanningActivity"

@@ -1,6 +1,8 @@
 package com.example.ruthelpc.traplare;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
@@ -12,46 +14,34 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.google.gson.Gson;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashScreen extends AppCompatActivity {
     Timer timer = new Timer();
     View imageView_logo;
+    Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         imageView_logo = findViewById(R.id.imageView_logo);
-
-       // timer.schedule(new TimerTask() {
-         //   @Override
-           // public void run() {
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        final String json = sharedPreferences.getString("client",null);
+        if(json != null)
+            i = new Intent(SplashScreen.this, PlanningActivity.class);
+        else
+            i = new Intent(SplashScreen.this, LoginActivity.class);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreen.this, LoginActivity.class);
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(SplashScreen.this,
-                                imageView_logo,
-                                "logo");
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    startActivity(i, options.toBundle());
-                }
-                else
                     startActivity(i);
+                    finish();
             }
         }, 5000);
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                finish();
-            }
-        }, 10000);
-
-        //          }
-    //    },5000);
     }
 }

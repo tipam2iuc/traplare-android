@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,11 +55,6 @@ public class ReservationActivity extends AppCompatActivity {
     private  ApiInterface apiInterface;
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
@@ -89,17 +85,18 @@ public class ReservationActivity extends AppCompatActivity {
         textView_date_reservation_value.setText(sdf.format(date));
 
         flo_nom = findViewById(R.id.flatbutton_edit_passager_nom);
+
+        imageView_back_to_menu.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                onBackPressed();
+                return true;
+            }
+        });
+
         flo_nom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                imageView_back_to_menu.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        finish();
-                    }
-                });
-
                 final Dialog dialog = new Dialog(ReservationActivity.this);
                 dialog.setContentView(R.layout.dialog_nom_passager);
                 dialog.setTitle("nom du passager");

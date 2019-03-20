@@ -4,11 +4,10 @@ import android.util.JsonReader;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient {
+public class ²é az"'(xcfg,;ApiClient {
     private static String BASE_URL="https://lototototo.000webhostapp.com/traplare/";
     private static Retrofit retrofit;
 

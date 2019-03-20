@@ -36,6 +36,12 @@ public interface ApiInterface {
             @Field("mot_de_passe") String password
     );
 
+    @FormUrlEncoded
+    @POST("controlleur/travels_find.php")
+    Call<List<Voyage>> findVoyage (
+            @Field("destination") String destination
+    );
+
     //@FormUrlEncoded
     @POST("controlleur/travels_list.php")
     Call<List<Voyage>>getVoyage();
