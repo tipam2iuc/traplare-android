@@ -16,7 +16,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<PlanningsHorizontalalAdapter.PlanningsHolder>{
     public static ArrayList<Voyage> voyagesListe;
@@ -46,8 +52,14 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
             planningsHolder.textView_provenance.setText(voyagesListe.get(position).getVille_depart());
             planningsHolder.textView_destination.setText(voyagesListe.get(position).getVille_arrive());
             planningsHolder.textView_categorie.setText(voyagesListe.get(position).getCategorie_cla());
+            //RequestOptions requestOptions = new RequestOptions();
+          //  requestOptions.skipMemoryCache(true);
+          //  requestOptions.diskCacheStrategy(DiskCacheStrategy.NONE);
+          //  requestOptions.placeholder(R.drawable.backgroundblue2);
+          //  requestOptions.error(R.drawable.backgroundblue2);
             planningsHolder.textView_agency_tarif_value.setText(String.valueOf(voyagesListe.get(position).getPrix_voy())+ " XAF");
-
+            Glide.with(context)
+                    .load(voyagesListe.get(position).getLogo_com()).into(planningsHolder.imageView_main_containeur);
             planningsHolder.imageView_rseerve.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -93,13 +105,13 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
 
     public static class PlanningsHolder extends RecyclerView.ViewHolder {
         private ConstraintLayout layout;
-        private ImageView imageView_flag;
         private ImageView imageView_rseerve;
         private TextView textView_agence;
         private TextView textView_categorie;
         private TextView textView_provenance;
         private TextView textView_destination;
         private TextView textView_agency_tarif_value;
+        private CircleImageView imageView_main_containeur;
         View view;
 
         public PlanningsHolder(@NonNull final View itemView) {
@@ -107,13 +119,12 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
             view = itemView;
             layout = itemView.findViewById(R.id.layout_template_travel2);
             textView_categorie = itemView.findViewById(R.id.textView_travel_classe_value);
-            imageView_flag = itemView.findViewById(R.id.imageView_main_container);
             imageView_rseerve = itemView.findViewById(R.id.image_view_reserve);
             textView_agence = itemView.findViewById(R.id.textView_agency_value);
             textView_provenance = itemView.findViewById(R.id.textView_agency_provenance_value);
             textView_destination = itemView.findViewById(R.id.textView_agency_destination_value);
             textView_agency_tarif_value = itemView.findViewById(R.id.textView_agency_tarif_value);
-
+            imageView_main_containeur=itemView.findViewById(R.id.imageView_main_container);
 
         }
     }

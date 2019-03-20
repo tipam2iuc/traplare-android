@@ -29,8 +29,23 @@ public class Voyage {
     @SerializedName("matricule_bus") private String matricule_bus;
     @SerializedName("nbr_siege_bus") private String nbr_siege_bus;
     @SerializedName("place_disponible") private String place_disponible;
+    @SerializedName("logo_com")  private  String logo_com;
 
+    public SimpleDateFormat getSdf() {
+        return sdf;
+    }
 
+    public void setSdf(SimpleDateFormat sdf) {
+        this.sdf = sdf;
+    }
+
+    public String getLogo_com() {
+        return logo_com;
+    }
+
+    public void setLogo_com(String logo_com) {
+        this.logo_com = logo_com;
+    }
 
     public String getCategorie_cla() {
         return categorie_cla;
