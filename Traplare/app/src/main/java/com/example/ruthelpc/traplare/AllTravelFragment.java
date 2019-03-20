@@ -75,16 +75,16 @@ public class AllTravelFragment extends Fragment {
 
     public  void getAll(final Context context) {
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<Voyage>> call = apiInterface.getVoyage2();
+        Call<List<Voyage>> call = apiInterface.getVoyage();
         final ArrayList<Date> dates = new ArrayList<>();
         call.enqueue(new Callback<List<Voyage>>() {
             @Override
             public void onResponse(@NonNull Call<List<Voyage>> call, @NonNull Response<List<Voyage>> response) {
                 voyages = response.body();
                 for (Voyage v : voyages) {
-                    int day = v.getDate_depart().getDate();
-                    int month = v.getDate_depart().getMonth();
-                    int year = v.getDate_depart().getYear();
+                    int day = v.getDate_debut_voy().getDate();
+                    int month = v.getDate_debut_voy().getMonth();
+                    int year = v.getDate_debut_voy().getYear();
                     Date date = new Date(year, month, day);
                     Date toDay = new Date();
                     if ((dates.isEmpty() || !dates.contains(date)) && date.compareTo(toDay) >= 0)

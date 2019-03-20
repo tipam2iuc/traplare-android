@@ -16,7 +16,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<PlanningsHorizontalalAdapter.PlanningsHolder>{
     public static ArrayList<Voyage> voyagesListe;
@@ -42,27 +48,36 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
     @Override
     public void onBindViewHolder(@NonNull final PlanningsHolder planningsHolder, final int position) {
         if(PlanningsVerticalAdapter.wellLoad) {
-            planningsHolder.textView_agence.setText(voyagesListe.get(position).getCompagnie());
-            planningsHolder.textView_provenance.setText(voyagesListe.get(position).getDepart());
-            planningsHolder.textView_destination.setText(voyagesListe.get(position).getDestination());
-            planningsHolder.textView_categorie.setText(voyagesListe.get(position).getClasse());
-            planningsHolder.textView_agency_tarif_value.setText(String.valueOf(voyagesListe.get(position).getTarif())+ " XAF");
-
+            planningsHolder.textView_agence.setText(voyagesListe.get(position).getNom_com());
+            planningsHolder.textView_provenance.setText(voyagesListe.get(position).getVille_depart());
+            planningsHolder.textView_destination.setText(voyagesListe.get(position).getVille_arrive());
+            planningsHolder.textView_categorie.setText(voyagesListe.get(position).getCategorie_cla());
+            //RequestOptions requestOptions = new RequestOptions();
+          //  requestOptions.skipMemoryCache(true);
+          //  requestOptions.diskCacheStrategy(DiskCacheStrategy.NONE);
+          //  requestOptions.placeholder(R.drawable.backgroundblue2);
+          //  requestOptions.error(R.drawable.backgroundblue2);
+            planningsHolder.textView_agency_tarif_value.setText(String.valueOf(voyagesListe.get(position).getPrix_voy())+ " XAF");
+            Glide.with(context)
+                    .load(voyagesListe.get(position).getLogo_com()).into(planningsHolder.imageView_main_containeur);
             planningsHolder.imageView_rseerve.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(v.getContext(), ReservationActivity.class);
-                    final int idv = voyagesListe.get(position).getId();
+                    final int idv = voyagesListe.get(position).getId_voy();
                     for (Voyage voy: voyagesListe) {
-                        if (voy.getId() == idv){
-                            i.putExtra("depart", voy.getDepart());
-                            i.putExtra("compagnie", voy.getCompagnie());
-                            i.putExtra("destination", voy.getDestination());
-                            i.putExtra("date_depart", voy.getDate_depart());
-                            i.putExtra("date_arrive", voy.getDate_arrivee());
-                            i.putExtra("classe", voy.getClasse());
-                            i.putExtra("tarif", voy.getTarif());
-                            i.putExtra("id", voy.getId());
+                        if (voy.getId_voy() == idv){
+                            i.putExtra("depart", voy.getAgence_depart());
+                            i.putExtra("matricule", voy.getMatricule_bus());
+                            i.putExtra("depart_ville", voy.getVille_depart());
+                            i.putExtra("compagnie", voy.getNom_com());
+                            i.putExtra("destination", voy.getAgence_arrivee());
+                            i.putExtra("destination_ville", voy.getVille_arrive());
+                            i.putExtra("date_depart", voy.getDate_debut_voy());
+                            i.putExtra("date_arrive", voy.getDate_arrivee_voy());
+                            i.putExtra("classe", voy.getCategorie_cla());
+                            i.putExtra("tarif", voy.getPrix_voy());
+                            i.putExtra("id", voy.getId_voy());
                         }
                     }
                     v.getContext().startActivity(i);
@@ -90,13 +105,13 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
 
     public static class PlanningsHolder extends RecyclerView.ViewHolder {
         private ConstraintLayout layout;
-        private ImageView imageView_flag;
         private ImageView imageView_rseerve;
         private TextView textView_agence;
         private TextView textView_categorie;
         private TextView textView_provenance;
         private TextView textView_destination;
         private TextView textView_agency_tarif_value;
+        private CircleImageView imageView_main_containeur;
         View view;
 
         public PlanningsHolder(@NonNull final View itemView) {
@@ -104,13 +119,12 @@ public class PlanningsHorizontalalAdapter extends RecyclerView.Adapter<Plannings
             view = itemView;
             layout = itemView.findViewById(R.id.layout_template_travel2);
             textView_categorie = itemView.findViewById(R.id.textView_travel_classe_value);
-            imageView_flag = itemView.findViewById(R.id.imageView_main_container);
             imageView_rseerve = itemView.findViewById(R.id.image_view_reserve);
             textView_agence = itemView.findViewById(R.id.textView_agency_value);
             textView_provenance = itemView.findViewById(R.id.textView_agency_provenance_value);
             textView_destination = itemView.findViewById(R.id.textView_agency_destination_value);
             textView_agency_tarif_value = itemView.findViewById(R.id.textView_agency_tarif_value);
-
+            imageView_main_containeur=itemView.findViewById(R.id.imageView_main_container);
 
         }
     }

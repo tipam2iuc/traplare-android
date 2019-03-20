@@ -33,7 +33,7 @@ public class RetrofitAdapter extends RecyclerView.Adapter<RetrofitAdapter.MyView
     public void onBindViewHolder(RetrofitAdapter.MyViewHolder holder, int position) {
 
         //Picasso.get().load(dataModelArrayList.get(position).getImgURL()).into(holder.iv);
-        holder.name.setText(dataModelArrayList.get(position).getCompagnie());
+        holder.name.setText(dataModelArrayList.get(position).getNom_com());
        // holder.country.setText(dataModelArrayList.get(position).getCountry());
         //holder.city.setText(dataModelArrayList.get(position).getCity());
     }

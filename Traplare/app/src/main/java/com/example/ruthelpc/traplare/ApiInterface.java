@@ -37,6 +37,6 @@ public interface ApiInterface {
     );
 
     //@FormUrlEncoded
-    @POST("display_voyages.php")
-    Call<List<Voyage>>getVoyage2();
+    @POST("controlleur/travels_list.php")
+    Call<List<Voyage>>getVoyage();
 }

@@ -50,9 +50,9 @@ public class PlanningsVerticalAdapter extends RecyclerView.Adapter<PlanningsVert
             PlanningsHorizontalalAdapter adapter_plannings;
             ArrayList<Voyage> voyageArrayList = new ArrayList<Voyage>();
             for (Voyage v : voyagesList) {
-                int year = v.getDate_depart().getYear();
-                int month = v.getDate_depart().getMonth();
-                int day = v.getDate_depart().getDate();
+                int year = v.getDate_debut_voy().getYear();
+                int month = v.getDate_debut_voy().getMonth();
+                int day = v.getDate_debut_voy().getDate();
                 Date d = new Date(year, month, day);
                 if (dayList.get(position).compareTo(d) == 0)
                     voyageArrayList.add(v);

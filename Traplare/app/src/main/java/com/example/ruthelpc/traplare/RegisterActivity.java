@@ -122,11 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
                 int v=response.body().getSuccess();
                 if (v == 1)
                 {
-                //    Toast.makeText(RegisterActivity.this,response.body().getMessage(),
-                //    Toast.LENGTH_SHORT).show();
                     login(telephone, mot_de_passe, RegisterActivity.this, PlanningActivity.class, mProgressDialog);
-                    Intent intent = new Intent(RegisterActivity.this,PlanningActivity.class);
-                    startActivity(intent);
                 }
                 else
                 {
@@ -193,19 +189,4 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-  //  private void chooseFile() {
-  //      Intent intent = new Intent();
-  //      intent.setType("image/*");
-  //      intent.setAction(Intent.ACTION_GET_CONTENT);
-  //      startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
-  //  }
-
-  //  public String getStringImage(){
-  //      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-  //      Bitmap bitmap = new Bitmap();
-  //      bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-  //      byte[] imageBytes = baos.toByteArray();
-  //      String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-  //      return encodedImage;
-   // }
 }

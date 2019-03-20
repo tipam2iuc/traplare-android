@@ -8,7 +8,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.zip.Inflater;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,8 +29,11 @@ public class ReservationActivity extends AppCompatActivity {
     TextView txt_tel;
     TextView txt_cni;
     TextView textView_depart_value;
+    TextView textView_bus_matricule;
+    TextView textView_depart_ville_value;
     TextView textView_heure_depart_value;
     TextView textView_arrive_value;
+    TextView textView_arrive_adresse_value;
     TextView textView_heure_arrive_value;
     TextView textView_classe_value;
     TextView textView_tarif_value;
@@ -68,9 +69,12 @@ public class ReservationActivity extends AppCompatActivity {
         textView_heure_reservation_value = findViewById(R.id.textView_heure_reservation_value);
         textView_date_reservation_value = findViewById(R.id.textView_date_reservation_value);
         textView_depart_value = findViewById(R.id.textView_depart_value);
+        textView_depart_ville_value = findViewById(R.id.textView_depart_ville_value);
         textView_heure_depart_value = findViewById(R.id.textView_heure_depart_value);
-        textView_arrive_value = findViewById(R.id.textView_arrive_value);
+        textView_arrive_value = findViewById(R.id.textView_arrive_ville_value);
+        textView_arrive_adresse_value = findViewById(R.id.textView_arrive_value);
         textView_heure_arrive_value = findViewById(R.id.textView_heure_arrive_value);
+        textView_bus_matricule = findViewById(R.id.textView_bus_value);
         textView_classe_value = findViewById(R.id.textView_classe_value);
         textView_tarif_value = findViewById(R.id.textView_tarif_value);
         textView_compagnie = findViewById(R.id.textView_compagnie);
@@ -92,7 +96,6 @@ public class ReservationActivity extends AppCompatActivity {
                 imageView_back_to_menu.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onBackPressed();
                         finish();
                     }
                 });
@@ -128,8 +131,11 @@ public class ReservationActivity extends AppCompatActivity {
         });
         Intent i = getIntent();
         String depart = (String) i.getSerializableExtra("depart");
+        String depart_ville = (String) i.getSerializableExtra("depart_ville");
+        String matricule = (String) i.getSerializableExtra("matricule");
         String compagnie = (String) i.getSerializableExtra("compagnie");
         String destination = (String) i.getSerializableExtra("destination");
+        String destination_ville = (String) i.getSerializableExtra("destination_ville");
         Date date_depart = (Date) i.getSerializableExtra("date_depart");
         Date date_arrive = (Date) i.getSerializableExtra("date_arrive");
         String classe = (String) i.getSerializableExtra("classe");
@@ -137,8 +143,11 @@ public class ReservationActivity extends AppCompatActivity {
         final int id = (int) i.getSerializableExtra("id");
 
         textView_compagnie.setText(compagnie.toUpperCase());
-        textView_depart_value.setText(depart);
-        textView_arrive_value.setText(destination);
+        textView_depart_value.setText(depart_ville);
+        textView_bus_matricule.setText(matricule);
+        textView_depart_ville_value.setText(depart);
+        textView_arrive_value.setText(destination_ville);
+        textView_arrive_adresse_value.setText(destination);
         textView_heure_arrive_value.setText(sdf1.format(date_arrive));
         textView_heure_depart_value.setText(sdf1.format(date_depart));
         textView_classe_value.setText(classe.toUpperCase());
